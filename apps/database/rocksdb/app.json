@@ -1,0 +1,21 @@
+{
+  "id": "database/rocksdb",
+  "type": "database",
+  "name": "rocksdb",
+  "display_name": "RocksDB",
+  "languages": [
+    "c++"
+  ],
+  "build_systems": [
+    "make"
+  ],
+  "default_version": "9.7.3",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "Facebook RocksDB",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "hpc/gsl",
+  "type": "hpc",
+  "name": "gsl",
+  "display_name": "GSL",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "2.8",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "GNU Scientific Library",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

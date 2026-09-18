@@ -1,0 +1,40 @@
+{
+  "version": "18",
+  "source": {
+    "url": "https://github.com/postgres/postgres.git",
+    "ref": "REL_18_STABLE"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": [
+      "--without-readline",
+      "--without-icu"
+    ]
+  },
+  "test": {
+    "command": [
+      "./src/bin/psql/psql",
+      "--version"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "./src/bin/psql/psql",
+        "--version"
+      ]
+    }
+  }
+}

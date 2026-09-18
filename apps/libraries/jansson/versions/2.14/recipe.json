@@ -1,0 +1,39 @@
+{
+  "version": "2.14",
+  "source": {
+    "url": "https://github.com/akheron/jansson.git",
+    "ref": "v2.14"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "test",
+      "-f",
+      "src/.libs/libjansson.a"
+    ],
+    "timeout_sec": 30
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "test",
+        "-f",
+        "src/.libs/libjansson.a"
+      ]
+    }
+  }
+}

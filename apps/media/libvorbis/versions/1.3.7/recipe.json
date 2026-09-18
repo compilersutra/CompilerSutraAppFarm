@@ -1,0 +1,38 @@
+{
+  "version": "1.3.7",
+  "source": {
+    "kind": "archive",
+    "url": "https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.7.tar.xz",
+    "ref": ""
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "custom",
+    "commands": [
+      [
+        "sh",
+        "-c",
+        "set -e; OGG=\"/home/aitr/projects/CompilerSutraAppFarm/work/clang/baseline/media/libogg/1.3.5\"; ./configure --with-ogg-libraries=\"$OGG/src/.libs\" --with-ogg-includes=\"$OGG/include\" && make -j$(nproc)"
+      ]
+    ]
+  },
+  "test": {
+    "command": ["sh", "-c", "test -f lib/.libs/libvorbis.a || test -f lib/.libs/libvorbis.so"],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": ["sh", "-c", "test -f lib/.libs/libvorbis.a || test -f lib/.libs/libvorbis.so"]
+    }
+  }
+}

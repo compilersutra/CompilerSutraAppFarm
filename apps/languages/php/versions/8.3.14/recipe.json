@@ -1,0 +1,32 @@
+{
+  "version": "8.3.14",
+  "source": {
+    "kind": "archive",
+    "url": "https://www.php.net/distributions/php-8.3.14.tar.gz",
+    "ref": ""
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": ["--disable-all", "--enable-cli", "--without-pear"]
+  },
+  "test": {
+    "command": ["./sapi/cli/php", "-v"],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": ["./sapi/cli/php", "-v"]
+    }
+  }
+}

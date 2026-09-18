@@ -1,0 +1,40 @@
+{
+  "version": "3.10",
+  "source": {
+    "kind": "archive",
+    "url": "https://ftp.gnu.org/gnu/nettle/nettle-3.10.tar.gz",
+    "ref": ""
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -f libnettle.a || test -f .libs/libnettle.a"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -f libnettle.a || test -f .libs/libnettle.a"
+      ]
+    }
+  }
+}

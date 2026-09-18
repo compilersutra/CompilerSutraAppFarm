@@ -1,0 +1,21 @@
+{
+  "id": "libraries/libevent",
+  "type": "libraries",
+  "name": "libevent",
+  "display_name": "libevent",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "2.1.12",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "event notification",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

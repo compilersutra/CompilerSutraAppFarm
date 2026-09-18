@@ -1,0 +1,39 @@
+{
+  "version": "2024-07-02",
+  "source": {
+    "url": "https://github.com/google/re2.git",
+    "ref": "2022-06-01"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "make",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -f obj/libre2.a || test -f libre2.a"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -f obj/libre2.a || test -f libre2.a"
+      ]
+    }
+  }
+}

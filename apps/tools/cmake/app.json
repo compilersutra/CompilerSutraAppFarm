@@ -1,0 +1,21 @@
+{
+  "id": "tools/cmake",
+  "type": "tools",
+  "name": "cmake",
+  "display_name": "CMake",
+  "languages": [
+    "c++"
+  ],
+  "build_systems": [
+    "custom"
+  ],
+  "default_version": "3.31.2",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "CMake build system",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

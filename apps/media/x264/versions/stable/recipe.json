@@ -1,0 +1,37 @@
+{
+  "version": "stable",
+  "source": {
+    "url": "https://code.videolan.org/videolan/x264.git",
+    "ref": "stable"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "./x264",
+      "--version"
+    ],
+    "timeout_sec": 1800
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "./x264",
+        "--version"
+      ]
+    }
+  }
+}

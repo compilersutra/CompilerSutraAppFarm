@@ -1,0 +1,30 @@
+# syntax=docker/dockerfile:1
+FROM ubuntu:24.04
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PYTHONDONTWRITEBYTECODE=1
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      build-essential \
+      clang \
+      cmake \
+      git \
+      libssl-dev \
+      python3 \
+      python3-pip \
+      python3-venv \
+      zlib1g-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /farm
+COPY pyproject.toml README.md /farm/
+COPY src /farm/src
+COPY configs /farm/configs
+COPY apps /farm/apps
+COPY schemas /farm/schemas
+
+RUN python3 -m pip install --break-system-packages -e /farm
+
+ENTRYPOINT ["csfarm"]
+CMD ["--help"]

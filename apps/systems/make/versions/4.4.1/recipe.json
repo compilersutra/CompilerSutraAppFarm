@@ -1,0 +1,38 @@
+{
+  "version": "4.4.1",
+  "source": {
+    "kind": "archive",
+    "url": "https://ftp.gnu.org/gnu/make/make-4.4.1.tar.gz",
+    "ref": ""
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "./make",
+      "--version"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "./make",
+        "--version"
+      ]
+    }
+  }
+}

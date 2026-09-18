@@ -1,0 +1,25 @@
+# syntax=docker/dockerfile:1
+FROM archlinux:latest
+
+RUN pacman -Syu --noconfirm --needed \
+      base-devel \
+      clang \
+      cmake \
+      git \
+      openssl \
+      python \
+      python-pip \
+      zlib \
+    && pacman -Scc --noconfirm
+
+WORKDIR /farm
+COPY pyproject.toml README.md /farm/
+COPY src /farm/src
+COPY configs /farm/configs
+COPY apps /farm/apps
+COPY schemas /farm/schemas
+
+RUN python3 -m pip install --break-system-packages -e /farm
+
+ENTRYPOINT ["csfarm"]
+CMD ["--help"]

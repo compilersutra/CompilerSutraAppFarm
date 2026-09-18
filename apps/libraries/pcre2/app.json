@@ -1,0 +1,21 @@
+{
+  "id": "libraries/pcre2",
+  "type": "libraries",
+  "name": "pcre2",
+  "display_name": "PCRE2",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "10.44",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "Perl Compatible Regex",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

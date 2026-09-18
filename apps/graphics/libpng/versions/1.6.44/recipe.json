@@ -1,0 +1,39 @@
+{
+  "version": "1.6.44",
+  "source": {
+    "url": "https://github.com/pnggroup/libpng.git",
+    "ref": "v1.6.44"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -f .libs/libpng16.a || test -f .libs/libpng16.so || test -f libpng.a"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -f .libs/libpng16.a || test -f .libs/libpng16.so || test -f libpng.a"
+      ]
+    }
+  }
+}

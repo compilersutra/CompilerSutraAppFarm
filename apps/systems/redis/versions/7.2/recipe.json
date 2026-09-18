@@ -1,0 +1,41 @@
+{
+  "version": "7.2",
+  "source": {
+    "url": "https://github.com/redis/redis.git",
+    "ref": "7.2.16"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "make",
+    "args": [
+      "BUILD_TLS=no"
+    ]
+  },
+  "test": {
+    "command": [
+      "./src/redis-server",
+      "--version"
+    ],
+    "timeout_sec": 120
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 5,
+      "workload": [
+        "./src/redis-benchmark",
+        "-n",
+        "10000",
+        "-q"
+      ]
+    }
+  }
+}

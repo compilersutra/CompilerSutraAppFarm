@@ -1,0 +1,21 @@
+{
+  "id": "libraries/rapidjson",
+  "type": "libraries",
+  "name": "rapidjson",
+  "display_name": "RapidJSON",
+  "languages": [
+    "c++"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "1.1.0",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "JSON parser",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

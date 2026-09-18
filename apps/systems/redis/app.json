@@ -1,0 +1,21 @@
+{
+  "id": "systems/redis",
+  "type": "systems",
+  "name": "redis",
+  "display_name": "Redis",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "make"
+  ],
+  "default_version": "8.10",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "Redis release lines with lifecycle + per-distro deps.",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

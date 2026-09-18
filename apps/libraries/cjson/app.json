@@ -1,0 +1,21 @@
+{
+  "id": "libraries/cjson",
+  "type": "libraries",
+  "name": "cjson",
+  "display_name": "cJSON",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "1.7.18",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "Ultralightweight JSON",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "version": "7.0",
+  "source": {
+    "url": "https://github.com/mongodb/mongo-c-driver.git",
+    "ref": "1.27.6"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "cmake",
+    "args": [
+      "-DENABLE_AUTOMATIC_INIT_AND_CLEANUP=OFF",
+      "-DENABLE_TESTS=OFF",
+      "-DENABLE_EXAMPLES=OFF",
+      "-DENABLE_HTML_DOCS=OFF",
+      "-DENABLE_MAN_PAGES=OFF",
+      "-DENABLE_SSL=OFF",
+      "-DENABLE_SASL=OFF"
+    ]
+  },
+  "test": {
+    "command": ["sh", "-c", "test -f build/src/libmongoc/libmongoc-static-1.0.a || test -f build/src/libmongoc/libmongoc-1.0.so || test -f build/libmongoc-1.0.so"],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": ["sh", "-c", "test -f build/src/libmongoc/libmongoc-static-1.0.a || test -f build/src/libmongoc/libmongoc-1.0.so || test -f build/libmongoc-1.0.so"]
+    }
+  }
+}

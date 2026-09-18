@@ -1,0 +1,10 @@
+{
+  "version": "7.0",
+  "channel": "stable",
+  "released": "2024-04-05",
+  "security_support_ends": null,
+  "support_ended": "2026-06-22",
+  "status": "expired",
+  "source": "https://endoflife.date/ffmpeg",
+  "notes": "FFmpeg release / LTS line for vectorization & codegen stress."
+}

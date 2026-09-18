@@ -1,0 +1,21 @@
+{
+  "id": "libraries/flatbuffers",
+  "type": "libraries",
+  "name": "flatbuffers",
+  "display_name": "FlatBuffers",
+  "languages": [
+    "c++"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "24.12.23",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "FlatBuffers",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "version": "5.4.7",
+  "source": {
+    "kind": "archive",
+    "url": "https://www.lua.org/ftp/lua-5.4.7.tar.gz",
+    "ref": ""
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "custom",
+    "commands": [["make", "-j4", "linux"]]
+  },
+  "test": {
+    "command": ["./src/lua", "-v"],
+    "timeout_sec": 30
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": ["./src/lua", "-v"]
+    }
+  }
+}

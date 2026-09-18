@@ -1,0 +1,21 @@
+{
+  "id": "libraries/msgpack_c",
+  "type": "libraries",
+  "name": "msgpack_c",
+  "display_name": "msgpack-c",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "6.1.0",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "MessagePack C",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

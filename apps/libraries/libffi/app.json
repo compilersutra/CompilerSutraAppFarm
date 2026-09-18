@@ -1,0 +1,21 @@
+{
+  "id": "libraries/libffi",
+  "type": "libraries",
+  "name": "libffi",
+  "display_name": "libffi",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "3.4.6",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "Foreign Function Interface",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

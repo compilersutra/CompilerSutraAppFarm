@@ -1,0 +1,39 @@
+{
+  "version": "2.1.12",
+  "source": {
+    "url": "https://github.com/libevent/libevent.git",
+    "ref": "release-2.1.12-stable"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "cmake",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -d build && find build -name \"*.a\" -o -name \"*.so\" | head -1 | grep -q ."
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -d build && find build -name \"*.a\" -o -name \"*.so\" | head -1 | grep -q ."
+      ]
+    }
+  }
+}

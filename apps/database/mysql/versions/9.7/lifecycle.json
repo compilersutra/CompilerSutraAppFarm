@@ -1,0 +1,10 @@
+{
+  "version": "9.7",
+  "channel": "lts",
+  "released": "2026-04-21",
+  "security_support_ends": "2034-04-21",
+  "support_ended": null,
+  "status": "supported",
+  "source": "https://endoflife.date/mysql",
+  "notes": "Oracle MySQL LTS/Innovation lines."
+}

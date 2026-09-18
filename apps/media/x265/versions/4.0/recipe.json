@@ -1,0 +1,45 @@
+{
+  "version": "4.0",
+  "source": {
+    "url": "https://bitbucket.org/multicoreware/x265_git.git",
+    "ref": "4.0"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "custom",
+    "commands": [
+      [
+        "sh",
+        "-c",
+        "cmake -S source -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j$(nproc)"
+      ]
+    ]
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -x build/x265 || test -f build/libx265.a"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -x build/x265 || test -f build/libx265.a"
+      ]
+    }
+  }
+}

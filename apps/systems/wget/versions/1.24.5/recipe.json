@@ -1,0 +1,38 @@
+{
+  "version": "1.24.5",
+  "source": {
+    "kind": "archive",
+    "url": "https://ftp.gnu.org/gnu/wget/wget-1.24.5.tar.gz",
+    "ref": ""
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "./src/wget",
+      "--version"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "./src/wget",
+        "--version"
+      ]
+    }
+  }
+}

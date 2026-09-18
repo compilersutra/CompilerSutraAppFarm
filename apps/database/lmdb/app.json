@@ -1,0 +1,21 @@
+{
+  "id": "database/lmdb",
+  "type": "database",
+  "name": "lmdb",
+  "display_name": "LMDB",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "make"
+  ],
+  "default_version": "0.9.31",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "Lightning Memory-Mapped DB",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

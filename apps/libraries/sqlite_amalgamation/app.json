@@ -1,0 +1,21 @@
+{
+  "id": "libraries/sqlite_amalgamation",
+  "type": "libraries",
+  "name": "sqlite_amalgamation",
+  "display_name": "SQLite amalgamation helper",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "make"
+  ],
+  "default_version": "3.53",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "alias-style sqlite pin",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

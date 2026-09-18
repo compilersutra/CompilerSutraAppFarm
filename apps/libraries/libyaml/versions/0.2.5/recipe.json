@@ -1,0 +1,39 @@
+{
+  "version": "0.2.5",
+  "source": {
+    "url": "https://github.com/yaml/libyaml.git",
+    "ref": "0.2.5"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -f Makefile"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -f Makefile"
+      ]
+    }
+  }
+}

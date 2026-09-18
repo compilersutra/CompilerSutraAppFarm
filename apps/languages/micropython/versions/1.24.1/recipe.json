@@ -1,0 +1,37 @@
+{
+  "version": "1.24.1",
+  "source": {
+    "url": "https://github.com/micropython/micropython.git",
+    "ref": "v1.24.1"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "custom",
+    "commands": [
+      [
+        "sh",
+        "-c",
+        "set -e; make -C mpy-cross -j$(nproc); make -C ports/unix -j$(nproc)"
+      ]
+    ]
+  },
+  "test": {
+    "command": ["./ports/unix/build-standard/micropython", "-c", "print(1)"],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": ["./ports/unix/build-standard/micropython", "-c", "print(1)"]
+    }
+  }
+}

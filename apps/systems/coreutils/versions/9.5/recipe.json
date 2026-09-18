@@ -1,0 +1,38 @@
+{
+  "version": "9.5",
+  "source": {
+    "kind": "archive",
+    "url": "https://ftp.gnu.org/gnu/coreutils/coreutils-9.5.tar.gz",
+    "ref": ""
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "./src/uname",
+      "--version"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "./src/uname",
+        "--version"
+      ]
+    }
+  }
+}

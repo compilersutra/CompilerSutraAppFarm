@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: Apache-2.0
+id: gcc
+display_name: GCC
+description: System GCC (set cc_path/cxx_path for a non-PATH install)
+cc: gcc
+cxx: g++
+# cc_path: /usr/bin/gcc
+# cxx_path: /usr/bin/g++
+version_command: ["gcc", "--version"]
+env: {}
+cflags: []
+cxxflags: []
+ldflags: []
+enabled: true

@@ -1,0 +1,45 @@
+{
+  "version": "8.6.15",
+  "source": {
+    "url": "https://github.com/tcltk/tcl.git",
+    "ref": "core-8-6-15"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "custom",
+    "commands": [
+      [
+        "sh",
+        "-c",
+        "cd unix && ./configure && make -j$(nproc)"
+      ]
+    ]
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "echo \"puts ok\" | ./unix/tclsh"
+    ],
+    "timeout_sec": 30
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "sh",
+        "-c",
+        "echo \"puts ok\" | ./unix/tclsh"
+      ]
+    }
+  }
+}

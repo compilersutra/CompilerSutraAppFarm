@@ -1,0 +1,46 @@
+{
+  "version": "3.31.2",
+  "source": {
+    "url": "https://github.com/Kitware/CMake.git",
+    "ref": "v3.31.2"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "custom",
+    "commands": [
+      [
+        "./bootstrap",
+        "--parallel=4"
+      ],
+      [
+        "make",
+        "-j4"
+      ]
+    ]
+  },
+  "test": {
+    "command": [
+      "./bin/cmake",
+      "--version"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "./bin/cmake",
+        "--version"
+      ]
+    }
+  }
+}

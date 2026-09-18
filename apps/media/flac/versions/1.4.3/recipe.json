@@ -1,0 +1,42 @@
+{
+  "version": "1.4.3",
+  "source": {
+    "kind": "archive",
+    "url": "https://downloads.xiph.org/releases/flac/flac-1.4.3.tar.xz",
+    "ref": ""
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": [
+      "--disable-ogg"
+    ]
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -f src/libFLAC/.libs/libFLAC.a || test -f src/libFLAC/.libs/libFLAC.so"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -f src/libFLAC/.libs/libFLAC.a || test -f src/libFLAC/.libs/libFLAC.so"
+      ]
+    }
+  }
+}

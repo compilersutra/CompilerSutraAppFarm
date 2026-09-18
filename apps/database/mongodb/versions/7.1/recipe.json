@@ -1,0 +1,44 @@
+{
+  "version": "7.1",
+  "source": {
+    "url": "https://github.com/mongodb/mongo.git",
+    "ref": "r7.1.0"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "custom",
+    "commands": [
+      [
+        "python3",
+        "buildscripts/scons.py",
+        "install-mongod",
+        "--disable-warnings-as-errors"
+      ]
+    ]
+  },
+  "test": {
+    "command": [
+      "./build/install/bin/mongod",
+      "--version"
+    ],
+    "timeout_sec": 120
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "./build/install/bin/mongod",
+        "--version"
+      ]
+    }
+  }
+}

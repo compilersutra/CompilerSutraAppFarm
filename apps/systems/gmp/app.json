@@ -1,0 +1,21 @@
+{
+  "id": "systems/gmp",
+  "type": "systems",
+  "name": "gmp",
+  "display_name": "GMP",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "6.3.0",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "GNU MP arithmetic",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

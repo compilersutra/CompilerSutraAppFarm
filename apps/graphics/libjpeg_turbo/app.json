@@ -1,0 +1,21 @@
+{
+  "id": "graphics/libjpeg_turbo",
+  "type": "graphics",
+  "name": "libjpeg_turbo",
+  "display_name": "libjpeg-turbo",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "3.0.4",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "JPEG library",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

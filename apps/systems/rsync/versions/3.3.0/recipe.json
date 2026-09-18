@@ -1,0 +1,38 @@
+{
+  "version": "3.3.0",
+  "source": {
+    "kind": "archive",
+    "url": "https://download.samba.org/pub/rsync/src/rsync-3.3.0.tar.gz",
+    "ref": ""
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "custom",
+    "commands": [
+      [
+        "sh",
+        "-c",
+        "./configure --disable-xxhash --disable-lz4 --disable-md2man && touch configure.sh config.h.in && make -j$(nproc)"
+      ]
+    ]
+  },
+  "test": {
+    "command": ["./rsync", "--version"],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": ["./rsync", "--version"]
+    }
+  }
+}

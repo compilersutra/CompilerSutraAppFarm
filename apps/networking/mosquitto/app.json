@@ -1,0 +1,21 @@
+{
+  "id": "networking/mosquitto",
+  "type": "networking",
+  "name": "mosquitto",
+  "display_name": "Eclipse Mosquitto",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "2.0.20",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "MQTT broker",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

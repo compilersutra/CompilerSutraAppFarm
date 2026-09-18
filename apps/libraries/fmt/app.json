@@ -1,0 +1,21 @@
+{
+  "id": "libraries/fmt",
+  "type": "libraries",
+  "name": "fmt",
+  "display_name": "fmt",
+  "languages": [
+    "c++"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "11.0.2",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "{fmt} library",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

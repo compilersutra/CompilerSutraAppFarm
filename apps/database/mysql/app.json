@@ -1,0 +1,22 @@
+{
+  "id": "database/mysql",
+  "type": "database",
+  "name": "mysql",
+  "display_name": "MySQL",
+  "languages": [
+    "c",
+    "c++"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "9.7",
+  "correctness": "upstream_tests",
+  "perf_backend": "cpu",
+  "description": "MySQL \u2014 LTS/Innovation series folders with per-distro deps.",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

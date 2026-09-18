@@ -1,0 +1,17 @@
+# SPDX-License-Identifier: Apache-2.0
+# Example AMD AOCC toolchain — enable by adding "aocc" to toolchains.enabled
+# in configs/default.yaml and fixing paths for your install.
+id: aocc
+display_name: AOCC
+description: AMD Optimizing C/C++ Compiler (template — edit paths)
+cc: clang
+cxx: clang++
+cc_path: /opt/AMD/aocc-compiler/bin/clang
+cxx_path: /opt/AMD/aocc-compiler/bin/clang++
+version_command: ["/opt/AMD/aocc-compiler/bin/clang", "--version"]
+env:
+  PATH: /opt/AMD/aocc-compiler/bin
+cflags: []
+cxxflags: []
+ldflags: []
+enabled: false

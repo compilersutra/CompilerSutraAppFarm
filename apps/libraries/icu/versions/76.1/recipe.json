@@ -1,0 +1,45 @@
+{
+  "version": "76.1",
+  "source": {
+    "url": "https://github.com/unicode-org/icu.git",
+    "ref": "release-76-1"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "custom",
+    "commands": [
+      [
+        "sh",
+        "-c",
+        "cd icu4c/source && ./configure --disable-samples --disable-tests && make -j4"
+      ]
+    ]
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -f icu4c/source/lib/libicuuc.so || test -f icu4c/source/lib/libicuuc.a"
+    ],
+    "timeout_sec": 30
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -f icu4c/source/lib/libicuuc.so || test -f icu4c/source/lib/libicuuc.a"
+      ]
+    }
+  }
+}

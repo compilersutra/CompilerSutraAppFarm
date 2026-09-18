@@ -1,0 +1,92 @@
+version: 1.3.5
+summary: Generic build deps for libogg (refine per distro as needed)
+compiler_notes: Use farm toolchains.enabled (clang/gcc). Tags/refs are best-effort pins.
+references:
+os:
+  linux:
+    common:
+      build:
+        - gcc/g++ or clang
+        - make
+        - cmake or meson as required
+        - git
+        - pkg-config
+      runtime:
+    distros:
+      arch:
+        releases:
+          - rolling
+        packages:
+          build:
+            - base-devel
+            - git
+            - cmake
+            - meson
+          runtime:
+        install:
+          build: sudo pacman -Syu --needed base-devel git cmake meson
+          runtime: true
+      debian:
+        releases:
+          - 12
+          - 13
+        packages:
+          build:
+            - build-essential
+            - git
+            - cmake
+            - meson
+            - pkg-config
+          runtime:
+        install:
+          build: "sudo apt-get update && sudo apt-get install -y build-essential git cmake meson pkg-config"
+          runtime: true
+      fedora:
+        releases:
+          - 40
+          - 41
+          - 42
+        packages:
+          build:
+            - gcc
+            - gcc-c++
+            - git
+            - cmake
+            - meson
+          runtime:
+        install:
+          build: sudo dnf install -y gcc gcc-c++ git cmake meson
+          runtime: true
+      rhel:
+        releases:
+          - 8
+          - 9
+        packages:
+          build:
+            - gcc
+            - gcc-c++
+            - git
+            - cmake
+          runtime:
+        install:
+          build: sudo dnf install -y gcc gcc-c++ git cmake
+          runtime: true
+      ubuntu:
+        releases:
+          - 22.04
+          - 24.04
+        packages:
+          build:
+            - build-essential
+            - git
+            - cmake
+            - meson
+            - pkg-config
+          runtime:
+        install:
+          build: "sudo apt-get update && sudo apt-get install -y build-essential git cmake meson pkg-config"
+          runtime: true
+  macos:
+    notes: Secondary; prefer Linux farm hosts.
+  windows:
+    notes: Use WSL2.

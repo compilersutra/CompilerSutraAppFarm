@@ -1,0 +1,21 @@
+{
+  "id": "libraries/protobuf",
+  "type": "libraries",
+  "name": "protobuf",
+  "display_name": "Protocol Buffers",
+  "languages": [
+    "c++"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "28.3",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "Google protobuf",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

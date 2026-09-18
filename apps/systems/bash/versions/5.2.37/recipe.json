@@ -1,0 +1,38 @@
+{
+  "version": "5.2.37",
+  "source": {
+    "kind": "archive",
+    "url": "https://ftp.gnu.org/gnu/bash/bash-5.2.37.tar.gz",
+    "ref": ""
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "./bash",
+      "--version"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "./bash",
+        "--version"
+      ]
+    }
+  }
+}

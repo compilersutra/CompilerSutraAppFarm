@@ -1,0 +1,21 @@
+{
+  "id": "media/aom",
+  "type": "media",
+  "name": "aom",
+  "display_name": "libaom",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "3.11.0",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "AV1 codec",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

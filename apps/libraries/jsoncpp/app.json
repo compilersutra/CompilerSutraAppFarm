@@ -1,0 +1,21 @@
+{
+  "id": "libraries/jsoncpp",
+  "type": "libraries",
+  "name": "jsoncpp",
+  "display_name": "JsonCpp",
+  "languages": [
+    "c++"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "1.9.6",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "JsonCpp",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "crypto/mbedtls",
+  "type": "crypto",
+  "name": "mbedtls",
+  "display_name": "Mbed TLS",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "3.6.2",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "Mbed TLS",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

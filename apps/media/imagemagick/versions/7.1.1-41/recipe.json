@@ -1,0 +1,37 @@
+{
+  "version": "7.1.1-41",
+  "source": {
+    "url": "https://github.com/ImageMagick/ImageMagick.git",
+    "ref": "7.1.1-41"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "./utilities/magick",
+      "-version"
+    ],
+    "timeout_sec": 1800
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "./utilities/magick",
+        "-version"
+      ]
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "version": "1.5.2",
+  "source": {
+    "url": "https://github.com/xiph/opus.git",
+    "ref": "v1.5.2"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -f .libs/libopus.a || test -f .libs/libopus.so || test -f libopus.a"
+    ],
+    "timeout_sec": 30
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -f .libs/libopus.a || test -f .libs/libopus.so || test -f libopus.a"
+      ]
+    }
+  }
+}

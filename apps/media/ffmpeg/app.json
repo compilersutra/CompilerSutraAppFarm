@@ -1,0 +1,22 @@
+{
+  "id": "media/ffmpeg",
+  "type": "media",
+  "name": "ffmpeg",
+  "display_name": "FFmpeg",
+  "languages": [
+    "c",
+    "assembly"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "9.0",
+  "correctness": "fate_smoke",
+  "perf_backend": "cpu",
+  "description": "FFmpeg release/LTS lines with lifecycle + per-distro deps.",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

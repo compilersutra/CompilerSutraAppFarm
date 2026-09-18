@@ -1,0 +1,42 @@
+{
+  "version": "1.9.0",
+  "source": {
+    "url": "https://github.com/google/benchmark.git",
+    "ref": "v1.9.0"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "cmake",
+    "args": [
+      "-DBENCHMARK_ENABLE_TESTING=OFF",
+      "-DBENCHMARK_ENABLE_GTEST_TESTS=OFF"
+    ]
+  },
+  "test": {
+    "command": [
+      "test",
+      "-f",
+      "build/src/libbenchmark.a"
+    ],
+    "timeout_sec": 30
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "test",
+        "-f",
+        "build/src/libbenchmark.a"
+      ]
+    }
+  }
+}

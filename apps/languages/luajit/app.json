@@ -1,0 +1,21 @@
+{
+  "id": "languages/luajit",
+  "type": "languages",
+  "name": "luajit",
+  "display_name": "LuaJIT",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "make"
+  ],
+  "default_version": "2.1",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "LuaJIT",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

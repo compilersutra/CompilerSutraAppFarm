@@ -1,0 +1,49 @@
+{
+  "version": "5.6.2",
+  "source": {
+    "url": "https://github.com/tukaani-project/xz.git",
+    "ref": "v5.6.2"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "custom",
+    "commands": [
+      [
+        "autoreconf",
+        "-fi"
+      ],
+      [
+        "./configure"
+      ],
+      [
+        "make",
+        "-j4"
+      ]
+    ]
+  },
+  "test": {
+    "command": [
+      "./src/xz/xz",
+      "--version"
+    ],
+    "timeout_sec": 1800
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "./src/xz/xz",
+        "--version"
+      ]
+    }
+  }
+}

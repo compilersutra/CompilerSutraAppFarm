@@ -1,0 +1,21 @@
+{
+  "id": "systems/nettle",
+  "type": "systems",
+  "name": "nettle",
+  "display_name": "Nettle",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "3.10",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "low-level crypto library",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

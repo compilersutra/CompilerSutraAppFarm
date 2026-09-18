@@ -1,0 +1,21 @@
+{
+  "id": "media/opus",
+  "type": "media",
+  "name": "opus",
+  "display_name": "Opus",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "1.5.2",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "Opus audio codec",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

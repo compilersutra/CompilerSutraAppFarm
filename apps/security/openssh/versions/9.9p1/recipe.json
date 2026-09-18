@@ -1,0 +1,45 @@
+{
+  "version": "9.9p1",
+  "source": {
+    "url": "https://github.com/openssh/openssh-portable.git",
+    "ref": "V_9_9_P1"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "custom",
+    "commands": [
+      [
+        "sh",
+        "-c",
+        "set -e; autoreconf -fi; ./configure --without-zlib-version-check; make -j$(nproc)"
+      ]
+    ]
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "./ssh -V 2>&1 | head -1"
+    ],
+    "timeout_sec": 30
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "sh",
+        "-c",
+        "./ssh -V 2>&1 | head -1"
+      ]
+    }
+  }
+}

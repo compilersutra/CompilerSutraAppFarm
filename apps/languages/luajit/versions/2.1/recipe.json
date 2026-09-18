@@ -1,0 +1,38 @@
+{
+  "version": "2.1",
+  "source": {
+    "url": "https://github.com/LuaJIT/LuaJIT.git",
+    "ref": "v2.1"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "make",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "./src/luajit",
+      "-v"
+    ],
+    "timeout_sec": 1800
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "./src/luajit",
+        "-e",
+        "print(1)"
+      ]
+    }
+  }
+}

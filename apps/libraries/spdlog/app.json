@@ -1,0 +1,21 @@
+{
+  "id": "libraries/spdlog",
+  "type": "libraries",
+  "name": "spdlog",
+  "display_name": "spdlog",
+  "languages": [
+    "c++"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "1.15.0",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "C++ logging",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

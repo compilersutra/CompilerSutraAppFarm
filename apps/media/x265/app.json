@@ -1,0 +1,21 @@
+{
+  "id": "media/x265",
+  "type": "media",
+  "name": "x265",
+  "display_name": "x265",
+  "languages": [
+    "c++"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "4.0",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "H.265 encoder",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

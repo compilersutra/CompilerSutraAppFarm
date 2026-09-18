@@ -1,0 +1,21 @@
+{
+  "id": "media/libvpx",
+  "type": "media",
+  "name": "libvpx",
+  "display_name": "libvpx",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "1.15.0",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "VP8/VP9 codec",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

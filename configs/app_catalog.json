@@ -1,0 +1,1846 @@
+[
+  {
+    "id": "compression/brotli",
+    "type": "compression",
+    "name": "brotli",
+    "display_name": "Brotli",
+    "languages": [
+      "c"
+    ],
+    "build": "cmake",
+    "default_version": "1.1.0",
+    "source": {
+      "url": "https://github.com/google/brotli.git",
+      "ref": "v1.1.0"
+    },
+    "description": "Google Brotli compression"
+  },
+  {
+    "id": "compression/bzip2",
+    "type": "compression",
+    "name": "bzip2",
+    "display_name": "bzip2",
+    "languages": [
+      "c"
+    ],
+    "build": "make",
+    "default_version": "1.0.8",
+    "source": {
+      "url": "https://gitlab.com/bzip2/bzip2.git",
+      "ref": "bzip2-1.0.8"
+    },
+    "description": "bzip2 compressor"
+  },
+  {
+    "id": "compression/lz4",
+    "type": "compression",
+    "name": "lz4",
+    "display_name": "LZ4",
+    "languages": [
+      "c"
+    ],
+    "build": "make",
+    "default_version": "1.10.0",
+    "source": {
+      "url": "https://github.com/lz4/lz4.git",
+      "ref": "v1.10.0"
+    },
+    "description": "LZ4 fast compression"
+  },
+  {
+    "id": "compression/snappy",
+    "type": "compression",
+    "name": "snappy",
+    "display_name": "Snappy",
+    "languages": [
+      "c++"
+    ],
+    "build": "cmake",
+    "default_version": "1.2.1",
+    "source": {
+      "url": "https://github.com/google/snappy.git",
+      "ref": "1.2.1"
+    },
+    "description": "Google Snappy"
+  },
+  {
+    "id": "compression/xz",
+    "type": "compression",
+    "name": "xz",
+    "display_name": "XZ Utils",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "5.6.2",
+    "source": {
+      "url": "https://github.com/tukaani-project/xz.git",
+      "ref": "v5.6.2"
+    },
+    "description": "XZ / liblzma"
+  },
+  {
+    "id": "compression/zlib",
+    "type": "compression",
+    "name": "zlib",
+    "display_name": "zlib",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "1.3.1",
+    "source": {
+      "url": "https://github.com/madler/zlib.git",
+      "ref": "v1.3.1"
+    },
+    "description": "zlib compression library"
+  },
+  {
+    "id": "compression/zstd",
+    "type": "compression",
+    "name": "zstd",
+    "display_name": "Zstandard",
+    "languages": [
+      "c"
+    ],
+    "build": "make",
+    "default_version": "1.5.6",
+    "source": {
+      "url": "https://github.com/facebook/zstd.git",
+      "ref": "v1.5.6"
+    },
+    "description": "Facebook Zstandard"
+  },
+  {
+    "id": "crypto/libsodium",
+    "type": "crypto",
+    "name": "libsodium",
+    "display_name": "libsodium",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "1.0.20",
+    "source": {
+      "url": "https://github.com/jedisct1/libsodium.git",
+      "ref": "1.0.20-RELEASE"
+    },
+    "description": "Sodium crypto library"
+  },
+  {
+    "id": "crypto/mbedtls",
+    "type": "crypto",
+    "name": "mbedtls",
+    "display_name": "Mbed TLS",
+    "languages": [
+      "c"
+    ],
+    "build": "cmake",
+    "default_version": "3.6.2",
+    "source": {
+      "url": "https://github.com/Mbed-TLS/mbedtls.git",
+      "ref": "v3.6.2"
+    },
+    "description": "Mbed TLS"
+  },
+  {
+    "id": "crypto/openssl",
+    "type": "crypto",
+    "name": "openssl",
+    "display_name": "OpenSSL",
+    "languages": [
+      "c"
+    ],
+    "build": "custom",
+    "default_version": "3.4.0",
+    "source": {
+      "url": "https://github.com/openssl/openssl.git",
+      "ref": "openssl-3.4.0"
+    },
+    "description": "OpenSSL toolkit"
+  },
+  {
+    "id": "crypto/wolfssl",
+    "type": "crypto",
+    "name": "wolfssl",
+    "display_name": "wolfSSL",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "5.7.4",
+    "source": {
+      "url": "https://github.com/wolfSSL/wolfssl.git",
+      "ref": "v5.7.4-stable"
+    },
+    "description": "wolfSSL"
+  },
+  {
+    "id": "database/duckdb",
+    "type": "database",
+    "name": "duckdb",
+    "display_name": "DuckDB",
+    "languages": [
+      "c++"
+    ],
+    "build": "make",
+    "default_version": "1.1.3",
+    "source": {
+      "url": "https://github.com/duckdb/duckdb.git",
+      "ref": "v1.1.3"
+    },
+    "description": "in-process OLAP DB"
+  },
+  {
+    "id": "database/leveldb",
+    "type": "database",
+    "name": "leveldb",
+    "display_name": "LevelDB",
+    "languages": [
+      "c++"
+    ],
+    "build": "cmake",
+    "default_version": "1.23",
+    "source": {
+      "url": "https://github.com/google/leveldb.git",
+      "ref": "1.23"
+    },
+    "description": "Google LevelDB"
+  },
+  {
+    "id": "database/lmdb",
+    "type": "database",
+    "name": "lmdb",
+    "display_name": "LMDB",
+    "languages": [
+      "c"
+    ],
+    "build": "make",
+    "default_version": "0.9.31",
+    "source": {
+      "url": "https://github.com/LMDB/lmdb.git",
+      "ref": "LMDB_0.9.31"
+    },
+    "description": "Lightning Memory-Mapped DB"
+  },
+  {
+    "id": "database/mariadb",
+    "type": "database",
+    "name": "mariadb",
+    "display_name": "MariaDB",
+    "languages": [
+      "c",
+      "c++"
+    ],
+    "build": "cmake",
+    "default_version": "11.4.4",
+    "source": {
+      "url": "https://github.com/MariaDB/server.git",
+      "ref": "mariadb-11.4.4"
+    },
+    "description": "MariaDB server"
+  },
+  {
+    "id": "database/mongodb",
+    "type": "database",
+    "name": "mongodb",
+    "display_name": "MongoDB",
+    "languages": [
+      "c++"
+    ],
+    "build": "custom",
+    "default_version": "8.3",
+    "source": {
+      "url": "https://github.com/mongodb/mongo.git",
+      "ref": "r8.3.0"
+    },
+    "description": "MongoDB (rich versions preseeded)"
+  },
+  {
+    "id": "database/mysql",
+    "type": "database",
+    "name": "mysql",
+    "display_name": "MySQL",
+    "languages": [
+      "c",
+      "c++"
+    ],
+    "build": "cmake",
+    "default_version": "9.7",
+    "source": {
+      "url": "https://github.com/mysql/mysql-server.git",
+      "ref": "mysql-9.7.2"
+    },
+    "description": "MySQL (rich versions preseeded)"
+  },
+  {
+    "id": "database/postgres",
+    "type": "database",
+    "name": "postgres",
+    "display_name": "PostgreSQL",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "18",
+    "source": {
+      "url": "https://github.com/postgres/postgres.git",
+      "ref": "REL_18_STABLE"
+    },
+    "description": "PostgreSQL (rich versions preseeded)"
+  },
+  {
+    "id": "database/rocksdb",
+    "type": "database",
+    "name": "rocksdb",
+    "display_name": "RocksDB",
+    "languages": [
+      "c++"
+    ],
+    "build": "make",
+    "default_version": "9.7.3",
+    "source": {
+      "url": "https://github.com/facebook/rocksdb.git",
+      "ref": "v9.7.3"
+    },
+    "description": "Facebook RocksDB"
+  },
+  {
+    "id": "database/sqlite",
+    "type": "database",
+    "name": "sqlite",
+    "display_name": "SQLite",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "3.53",
+    "source": {
+      "url": "https://github.com/sqlite/sqlite.git",
+      "ref": "version-3.53.4"
+    },
+    "description": "SQLite (rich versions preseeded)"
+  },
+  {
+    "id": "editors/neovim",
+    "type": "editors",
+    "name": "neovim",
+    "display_name": "Neovim",
+    "languages": [
+      "c"
+    ],
+    "build": "cmake",
+    "default_version": "0.10.2",
+    "source": {
+      "url": "https://github.com/neovim/neovim.git",
+      "ref": "v0.10.2"
+    },
+    "description": "Neovim editor"
+  },
+  {
+    "id": "editors/tmux",
+    "type": "editors",
+    "name": "tmux",
+    "display_name": "tmux",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "3.5a",
+    "source": {
+      "url": "https://github.com/tmux/tmux.git",
+      "ref": "3.5a"
+    },
+    "description": "terminal multiplexer"
+  },
+  {
+    "id": "editors/vim",
+    "type": "editors",
+    "name": "vim",
+    "display_name": "Vim",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "9.1.0",
+    "source": {
+      "url": "https://github.com/vim/vim.git",
+      "ref": "v9.1.0"
+    },
+    "description": "Vim editor"
+  },
+  {
+    "id": "graphics/cairo",
+    "type": "graphics",
+    "name": "cairo",
+    "display_name": "Cairo",
+    "languages": [
+      "c"
+    ],
+    "build": "meson",
+    "default_version": "1.18.2",
+    "source": {
+      "url": "https://gitlab.freedesktop.org/cairo/cairo.git",
+      "ref": "1.18.2"
+    },
+    "description": "2D graphics library"
+  },
+  {
+    "id": "graphics/freetype",
+    "type": "graphics",
+    "name": "freetype",
+    "display_name": "FreeType",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "2.13.3",
+    "source": {
+      "url": "https://gitlab.freedesktop.org/freetype/freetype.git",
+      "ref": "VER-2-13-3"
+    },
+    "description": "font rendering"
+  },
+  {
+    "id": "graphics/harfbuzz",
+    "type": "graphics",
+    "name": "harfbuzz",
+    "display_name": "HarfBuzz",
+    "languages": [
+      "c++"
+    ],
+    "build": "meson",
+    "default_version": "10.0.1",
+    "source": {
+      "url": "https://github.com/harfbuzz/harfbuzz.git",
+      "ref": "10.0.1"
+    },
+    "description": "text shaping"
+  },
+  {
+    "id": "graphics/libpng",
+    "type": "graphics",
+    "name": "libpng",
+    "display_name": "libpng",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "1.6.44",
+    "source": {
+      "url": "https://github.com/pnggroup/libpng.git",
+      "ref": "v1.6.44"
+    },
+    "description": "PNG library"
+  },
+  {
+    "id": "graphics/libjpeg_turbo",
+    "type": "graphics",
+    "name": "libjpeg_turbo",
+    "display_name": "libjpeg-turbo",
+    "languages": [
+      "c"
+    ],
+    "build": "cmake",
+    "default_version": "3.0.4",
+    "source": {
+      "url": "https://github.com/libjpeg-turbo/libjpeg-turbo.git",
+      "ref": "3.0.4"
+    },
+    "description": "JPEG library"
+  },
+  {
+    "id": "graphics/pixman",
+    "type": "graphics",
+    "name": "pixman",
+    "display_name": "Pixman",
+    "languages": [
+      "c"
+    ],
+    "build": "meson",
+    "default_version": "0.43.4",
+    "source": {
+      "url": "https://gitlab.freedesktop.org/pixman/pixman.git",
+      "ref": "pixman-0.43.4"
+    },
+    "description": "pixel manipulation"
+  },
+  {
+    "id": "graphics/sdl2",
+    "type": "graphics",
+    "name": "sdl2",
+    "display_name": "SDL2",
+    "languages": [
+      "c"
+    ],
+    "build": "cmake",
+    "default_version": "2.30.9",
+    "source": {
+      "url": "https://github.com/libsdl-org/SDL.git",
+      "ref": "release-2.30.9"
+    },
+    "description": "Simple DirectMedia Layer 2"
+  },
+  {
+    "id": "hpc/fftw",
+    "type": "hpc",
+    "name": "fftw",
+    "display_name": "FFTW",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "3.3.10",
+    "source": {
+      "url": "https://github.com/FFTW/fftw3.git",
+      "ref": "fftw-3.3.10"
+    },
+    "description": "Fastest Fourier Transform"
+  },
+  {
+    "id": "hpc/gsl",
+    "type": "hpc",
+    "name": "gsl",
+    "display_name": "GSL",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "2.8",
+    "source": {
+      "url": "https://github.com/ampl/gsl.git",
+      "ref": "v2.8"
+    },
+    "description": "GNU Scientific Library"
+  },
+  {
+    "id": "hpc/hdf5",
+    "type": "hpc",
+    "name": "hdf5",
+    "display_name": "HDF5",
+    "languages": [
+      "c"
+    ],
+    "build": "cmake",
+    "default_version": "1.14.5",
+    "source": {
+      "url": "https://github.com/HDFGroup/hdf5.git",
+      "ref": "hdf5_1.14.5"
+    },
+    "description": "Hierarchical Data Format"
+  },
+  {
+    "id": "hpc/openblas",
+    "type": "hpc",
+    "name": "openblas",
+    "display_name": "OpenBLAS",
+    "languages": [
+      "c",
+      "fortran"
+    ],
+    "build": "make",
+    "default_version": "0.3.28",
+    "source": {
+      "url": "https://github.com/OpenMathLib/OpenBLAS.git",
+      "ref": "v0.3.28"
+    },
+    "description": "optimized BLAS"
+  },
+  {
+    "id": "languages/lua",
+    "type": "languages",
+    "name": "lua",
+    "display_name": "Lua",
+    "languages": [
+      "c"
+    ],
+    "build": "make",
+    "default_version": "5.4.7",
+    "source": {
+      "url": "https://github.com/lua/lua.git",
+      "ref": "v5.4.7"
+    },
+    "description": "Lua language"
+  },
+  {
+    "id": "languages/luajit",
+    "type": "languages",
+    "name": "luajit",
+    "display_name": "LuaJIT",
+    "languages": [
+      "c"
+    ],
+    "build": "make",
+    "default_version": "2.1",
+    "source": {
+      "url": "https://github.com/LuaJIT/LuaJIT.git",
+      "ref": "v2.1"
+    },
+    "description": "LuaJIT"
+  },
+  {
+    "id": "languages/micropython",
+    "type": "languages",
+    "name": "micropython",
+    "display_name": "MicroPython",
+    "languages": [
+      "c"
+    ],
+    "build": "make",
+    "default_version": "1.24.1",
+    "source": {
+      "url": "https://github.com/micropython/micropython.git",
+      "ref": "v1.24.1"
+    },
+    "description": "MicroPython"
+  },
+  {
+    "id": "languages/php",
+    "type": "languages",
+    "name": "php",
+    "display_name": "PHP",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "8.3.14",
+    "source": {
+      "url": "https://github.com/php/php-src.git",
+      "ref": "php-8.3.14"
+    },
+    "description": "PHP interpreter"
+  },
+  {
+    "id": "languages/ruby",
+    "type": "languages",
+    "name": "ruby",
+    "display_name": "Ruby",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "3.3.6",
+    "source": {
+      "url": "https://github.com/ruby/ruby.git",
+      "ref": "v3_3_6"
+    },
+    "description": "Ruby language"
+  },
+  {
+    "id": "languages/tcl",
+    "type": "languages",
+    "name": "tcl",
+    "display_name": "Tcl",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "8.6.15",
+    "source": {
+      "url": "https://github.com/tcltk/tcl.git",
+      "ref": "core-8-6-15"
+    },
+    "description": "Tcl language"
+  },
+  {
+    "id": "libraries/cjson",
+    "type": "libraries",
+    "name": "cjson",
+    "display_name": "cJSON",
+    "languages": [
+      "c"
+    ],
+    "build": "cmake",
+    "default_version": "1.7.18",
+    "source": {
+      "url": "https://github.com/DaveGamble/cJSON.git",
+      "ref": "v1.7.18"
+    },
+    "description": "Ultralightweight JSON"
+  },
+  {
+    "id": "libraries/fmt",
+    "type": "libraries",
+    "name": "fmt",
+    "display_name": "fmt",
+    "languages": [
+      "c++"
+    ],
+    "build": "cmake",
+    "default_version": "11.0.2",
+    "source": {
+      "url": "https://github.com/fmtlib/fmt.git",
+      "ref": "11.0.2"
+    },
+    "description": "{fmt} library"
+  },
+  {
+    "id": "libraries/jansson",
+    "type": "libraries",
+    "name": "jansson",
+    "display_name": "Jansson",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "2.14",
+    "source": {
+      "url": "https://github.com/akheron/jansson.git",
+      "ref": "v2.14"
+    },
+    "description": "C JSON library"
+  },
+  {
+    "id": "libraries/libarchive",
+    "type": "libraries",
+    "name": "libarchive",
+    "display_name": "libarchive",
+    "languages": [
+      "c"
+    ],
+    "build": "cmake",
+    "default_version": "3.7.7",
+    "source": {
+      "url": "https://github.com/libarchive/libarchive.git",
+      "ref": "v3.7.7"
+    },
+    "description": "multi-format archive"
+  },
+  {
+    "id": "libraries/libevent",
+    "type": "libraries",
+    "name": "libevent",
+    "display_name": "libevent",
+    "languages": [
+      "c"
+    ],
+    "build": "cmake",
+    "default_version": "2.1.12",
+    "source": {
+      "url": "https://github.com/libevent/libevent.git",
+      "ref": "release-2.1.12-stable"
+    },
+    "description": "event notification"
+  },
+  {
+    "id": "libraries/libuv",
+    "type": "libraries",
+    "name": "libuv",
+    "display_name": "libuv",
+    "languages": [
+      "c"
+    ],
+    "build": "cmake",
+    "default_version": "1.49.2",
+    "source": {
+      "url": "https://github.com/libuv/libuv.git",
+      "ref": "v1.49.2"
+    },
+    "description": "async I/O"
+  },
+  {
+    "id": "libraries/libxml2",
+    "type": "libraries",
+    "name": "libxml2",
+    "display_name": "libxml2",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "2.13.5",
+    "source": {
+      "url": "https://gitlab.gnome.org/GNOME/libxml2.git",
+      "ref": "v2.13.5"
+    },
+    "description": "XML C parser"
+  },
+  {
+    "id": "libraries/libyaml",
+    "type": "libraries",
+    "name": "libyaml",
+    "display_name": "libyaml",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "0.2.5",
+    "source": {
+      "url": "https://github.com/yaml/libyaml.git",
+      "ref": "0.2.5"
+    },
+    "description": "YAML C library"
+  },
+  {
+    "id": "libraries/msgpack_c",
+    "type": "libraries",
+    "name": "msgpack_c",
+    "display_name": "msgpack-c",
+    "languages": [
+      "c"
+    ],
+    "build": "cmake",
+    "default_version": "6.1.0",
+    "source": {
+      "url": "https://github.com/msgpack/msgpack-c.git",
+      "ref": "c-6.1.0"
+    },
+    "description": "MessagePack C"
+  },
+  {
+    "id": "libraries/protobuf",
+    "type": "libraries",
+    "name": "protobuf",
+    "display_name": "Protocol Buffers",
+    "languages": [
+      "c++"
+    ],
+    "build": "cmake",
+    "default_version": "28.3",
+    "source": {
+      "url": "https://github.com/protocolbuffers/protobuf.git",
+      "ref": "v28.3"
+    },
+    "description": "Google protobuf"
+  },
+  {
+    "id": "libraries/rapidjson",
+    "type": "libraries",
+    "name": "rapidjson",
+    "display_name": "RapidJSON",
+    "languages": [
+      "c++"
+    ],
+    "build": "cmake",
+    "default_version": "1.1.0",
+    "source": {
+      "url": "https://github.com/Tencent/rapidjson.git",
+      "ref": "v1.1.0"
+    },
+    "description": "JSON parser"
+  },
+  {
+    "id": "libraries/re2",
+    "type": "libraries",
+    "name": "re2",
+    "display_name": "RE2",
+    "languages": [
+      "c++"
+    ],
+    "build": "cmake",
+    "default_version": "2024-07-02",
+    "source": {
+      "url": "https://github.com/google/re2.git",
+      "ref": "2024-07-02"
+    },
+    "description": "Google RE2 regex"
+  },
+  {
+    "id": "libraries/spdlog",
+    "type": "libraries",
+    "name": "spdlog",
+    "display_name": "spdlog",
+    "languages": [
+      "c++"
+    ],
+    "build": "cmake",
+    "default_version": "1.15.0",
+    "source": {
+      "url": "https://github.com/gabime/spdlog.git",
+      "ref": "v1.15.0"
+    },
+    "description": "C++ logging"
+  },
+  {
+    "id": "libraries/sqlite_amalgamation",
+    "type": "libraries",
+    "name": "sqlite_amalgamation",
+    "display_name": "SQLite amalgamation helper",
+    "languages": [
+      "c"
+    ],
+    "build": "make",
+    "default_version": "3.53",
+    "source": {
+      "url": "https://github.com/sqlite/sqlite.git",
+      "ref": "version-3.53.4"
+    },
+    "description": "alias-style sqlite pin"
+  },
+  {
+    "id": "media/aom",
+    "type": "media",
+    "name": "aom",
+    "display_name": "libaom",
+    "languages": [
+      "c"
+    ],
+    "build": "cmake",
+    "default_version": "3.11.0",
+    "source": {
+      "url": "https://aomedia.googlesource.com/aom",
+      "ref": "v3.11.0"
+    },
+    "description": "AV1 codec"
+  },
+  {
+    "id": "media/dav1d",
+    "type": "media",
+    "name": "dav1d",
+    "display_name": "dav1d",
+    "languages": [
+      "c"
+    ],
+    "build": "meson",
+    "default_version": "1.5.0",
+    "source": {
+      "url": "https://code.videolan.org/videolan/dav1d.git",
+      "ref": "1.5.0"
+    },
+    "description": "AV1 decoder"
+  },
+  {
+    "id": "media/ffmpeg",
+    "type": "media",
+    "name": "ffmpeg",
+    "display_name": "FFmpeg",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "9.0",
+    "source": {
+      "url": "https://github.com/FFmpeg/FFmpeg.git",
+      "ref": "n9.0.1"
+    },
+    "description": "FFmpeg (rich versions preseeded)"
+  },
+  {
+    "id": "media/flac",
+    "type": "media",
+    "name": "flac",
+    "display_name": "FLAC",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "1.4.3",
+    "source": {
+      "url": "https://github.com/xiph/flac.git",
+      "ref": "1.4.3"
+    },
+    "description": "Free Lossless Audio Codec"
+  },
+  {
+    "id": "media/imagemagick",
+    "type": "media",
+    "name": "imagemagick",
+    "display_name": "ImageMagick",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "7.1.1-41",
+    "source": {
+      "url": "https://github.com/ImageMagick/ImageMagick.git",
+      "ref": "7.1.1-41"
+    },
+    "description": "ImageMagick"
+  },
+  {
+    "id": "media/libogg",
+    "type": "media",
+    "name": "libogg",
+    "display_name": "libogg",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "1.3.5",
+    "source": {
+      "url": "https://github.com/xiph/ogg.git",
+      "ref": "v1.3.5"
+    },
+    "description": "Ogg container"
+  },
+  {
+    "id": "media/libvorbis",
+    "type": "media",
+    "name": "libvorbis",
+    "display_name": "libvorbis",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "1.3.7",
+    "source": {
+      "url": "https://github.com/xiph/vorbis.git",
+      "ref": "v1.3.7"
+    },
+    "description": "Vorbis audio"
+  },
+  {
+    "id": "media/libvpx",
+    "type": "media",
+    "name": "libvpx",
+    "display_name": "libvpx",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "1.15.0",
+    "source": {
+      "url": "https://chromium.googlesource.com/webm/libvpx",
+      "ref": "v1.15.0"
+    },
+    "description": "VP8/VP9 codec"
+  },
+  {
+    "id": "media/opus",
+    "type": "media",
+    "name": "opus",
+    "display_name": "Opus",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "1.5.2",
+    "source": {
+      "url": "https://github.com/xiph/opus.git",
+      "ref": "v1.5.2"
+    },
+    "description": "Opus audio codec"
+  },
+  {
+    "id": "media/x264",
+    "type": "media",
+    "name": "x264",
+    "display_name": "x264",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "stable",
+    "source": {
+      "url": "https://code.videolan.org/videolan/x264.git",
+      "ref": "stable"
+    },
+    "description": "H.264 encoder"
+  },
+  {
+    "id": "media/x265",
+    "type": "media",
+    "name": "x265",
+    "display_name": "x265",
+    "languages": [
+      "c++"
+    ],
+    "build": "cmake",
+    "default_version": "4.0",
+    "source": {
+      "url": "https://bitbucket.org/multicoreware/x265_git.git",
+      "ref": "4.0"
+    },
+    "description": "H.265 encoder"
+  },
+  {
+    "id": "networking/c_ares",
+    "type": "networking",
+    "name": "c_ares",
+    "display_name": "c-ares",
+    "languages": [
+      "c"
+    ],
+    "build": "cmake",
+    "default_version": "1.34.3",
+    "source": {
+      "url": "https://github.com/c-ares/c-ares.git",
+      "ref": "v1.34.3"
+    },
+    "description": "async DNS"
+  },
+  {
+    "id": "networking/curl",
+    "type": "networking",
+    "name": "curl",
+    "display_name": "curl",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "8.11.1",
+    "source": {
+      "url": "https://github.com/curl/curl.git",
+      "ref": "curl-8_11_1"
+    },
+    "description": "curl transfer tool"
+  },
+  {
+    "id": "networking/haproxy",
+    "type": "networking",
+    "name": "haproxy",
+    "display_name": "HAProxy",
+    "languages": [
+      "c"
+    ],
+    "build": "make",
+    "default_version": "3.0.6",
+    "source": {
+      "url": "https://github.com/haproxy/haproxy.git",
+      "ref": "v3.0.6"
+    },
+    "description": "load balancer"
+  },
+  {
+    "id": "networking/libssh2",
+    "type": "networking",
+    "name": "libssh2",
+    "display_name": "libssh2",
+    "languages": [
+      "c"
+    ],
+    "build": "cmake",
+    "default_version": "1.11.1",
+    "source": {
+      "url": "https://github.com/libssh2/libssh2.git",
+      "ref": "libssh2-1.11.1"
+    },
+    "description": "SSH2 client lib"
+  },
+  {
+    "id": "networking/nghttp2",
+    "type": "networking",
+    "name": "nghttp2",
+    "display_name": "nghttp2",
+    "languages": [
+      "c"
+    ],
+    "build": "cmake",
+    "default_version": "1.64.0",
+    "source": {
+      "url": "https://github.com/nghttp2/nghttp2.git",
+      "ref": "v1.64.0"
+    },
+    "description": "HTTP/2 C library"
+  },
+  {
+    "id": "networking/nginx",
+    "type": "networking",
+    "name": "nginx",
+    "display_name": "nginx",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "1.27.3",
+    "source": {
+      "url": "https://github.com/nginx/nginx.git",
+      "ref": "release-1.27.3"
+    },
+    "description": "nginx web server"
+  },
+  {
+    "id": "networking/unbound",
+    "type": "networking",
+    "name": "unbound",
+    "display_name": "Unbound",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "1.22.0",
+    "source": {
+      "url": "https://github.com/NLnetLabs/unbound.git",
+      "ref": "release-1.22.0"
+    },
+    "description": "validating DNS resolver"
+  },
+  {
+    "id": "security/openssh",
+    "type": "security",
+    "name": "openssh",
+    "display_name": "OpenSSH",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "9.9p1",
+    "source": {
+      "url": "https://github.com/openssh/openssh-portable.git",
+      "ref": "V_9_9_P1"
+    },
+    "description": "OpenSSH portable"
+  },
+  {
+    "id": "security/sudo",
+    "type": "security",
+    "name": "sudo",
+    "display_name": "Sudo",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "1.9.16p2",
+    "source": {
+      "url": "https://github.com/sudo-project/sudo.git",
+      "ref": "SUDO_1_9_16p2"
+    },
+    "description": "sudo"
+  },
+  {
+    "id": "systems/bash",
+    "type": "systems",
+    "name": "bash",
+    "display_name": "Bash",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "5.2.37",
+    "source": {
+      "url": "https://git.savannah.gnu.org/git/bash.git",
+      "ref": "bash-5.2.37"
+    },
+    "description": "GNU Bash"
+  },
+  {
+    "id": "systems/busybox",
+    "type": "systems",
+    "name": "busybox",
+    "display_name": "BusyBox",
+    "languages": [
+      "c"
+    ],
+    "build": "make",
+    "default_version": "1.37.0",
+    "source": {
+      "url": "https://github.com/mirror/busybox.git",
+      "ref": "1_37_0"
+    },
+    "description": "BusyBox utilities"
+  },
+  {
+    "id": "systems/coreutils",
+    "type": "systems",
+    "name": "coreutils",
+    "display_name": "GNU coreutils",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "9.5",
+    "source": {
+      "url": "https://github.com/coreutils/coreutils.git",
+      "ref": "v9.5"
+    },
+    "description": "GNU coreutils"
+  },
+  {
+    "id": "systems/gawk",
+    "type": "systems",
+    "name": "gawk",
+    "display_name": "Gawk",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "5.3.1",
+    "source": {
+      "url": "https://git.savannah.gnu.org/git/gawk.git",
+      "ref": "gawk-5.3.1"
+    },
+    "description": "GNU Awk"
+  },
+  {
+    "id": "systems/git",
+    "type": "systems",
+    "name": "git",
+    "display_name": "Git",
+    "languages": [
+      "c"
+    ],
+    "build": "make",
+    "default_version": "2.47.1",
+    "source": {
+      "url": "https://github.com/git/git.git",
+      "ref": "v2.47.1"
+    },
+    "description": "Git VCS"
+  },
+  {
+    "id": "systems/grep",
+    "type": "systems",
+    "name": "grep",
+    "display_name": "GNU grep",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "3.11",
+    "source": {
+      "url": "https://git.savannah.gnu.org/git/grep.git",
+      "ref": "v3.11"
+    },
+    "description": "GNU grep"
+  },
+  {
+    "id": "systems/jq",
+    "type": "systems",
+    "name": "jq",
+    "display_name": "jq",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "1.7.1",
+    "source": {
+      "url": "https://github.com/jqlang/jq.git",
+      "ref": "jq-1.7.1"
+    },
+    "description": "jq JSON processor"
+  },
+  {
+    "id": "systems/less",
+    "type": "systems",
+    "name": "less",
+    "display_name": "less",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "668",
+    "source": {
+      "url": "https://github.com/gwsw/less.git",
+      "ref": "v668"
+    },
+    "description": "less pager"
+  },
+  {
+    "id": "systems/make",
+    "type": "systems",
+    "name": "make",
+    "display_name": "GNU Make",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "4.4.1",
+    "source": {
+      "url": "https://git.savannah.gnu.org/git/make.git",
+      "ref": "4.4.1"
+    },
+    "description": "GNU Make"
+  },
+  {
+    "id": "systems/nano",
+    "type": "systems",
+    "name": "nano",
+    "display_name": "nano",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "8.2",
+    "source": {
+      "url": "https://git.savannah.gnu.org/git/nano.git",
+      "ref": "v8.2"
+    },
+    "description": "GNU nano"
+  },
+  {
+    "id": "systems/redis",
+    "type": "systems",
+    "name": "redis",
+    "display_name": "Redis",
+    "languages": [
+      "c"
+    ],
+    "build": "make",
+    "default_version": "8.10",
+    "source": {
+      "url": "https://github.com/redis/redis.git",
+      "ref": "8.10.1"
+    },
+    "description": "Redis (rich versions preseeded)"
+  },
+  {
+    "id": "systems/rsync",
+    "type": "systems",
+    "name": "rsync",
+    "display_name": "rsync",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "3.3.0",
+    "source": {
+      "url": "https://github.com/RsyncProject/rsync.git",
+      "ref": "v3.3.0"
+    },
+    "description": "rsync"
+  },
+  {
+    "id": "systems/sed",
+    "type": "systems",
+    "name": "sed",
+    "display_name": "GNU sed",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "4.9",
+    "source": {
+      "url": "https://git.savannah.gnu.org/git/sed.git",
+      "ref": "v4.9"
+    },
+    "description": "GNU sed"
+  },
+  {
+    "id": "systems/tar",
+    "type": "systems",
+    "name": "tar",
+    "display_name": "GNU tar",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "1.35",
+    "source": {
+      "url": "https://git.savannah.gnu.org/git/tar.git",
+      "ref": "release_1_35"
+    },
+    "description": "GNU tar"
+  },
+  {
+    "id": "systems/wget",
+    "type": "systems",
+    "name": "wget",
+    "display_name": "GNU Wget",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "1.25.0",
+    "source": {
+      "url": "https://git.savannah.gnu.org/git/wget.git",
+      "ref": "v1.25.0"
+    },
+    "description": "GNU Wget"
+  },
+  {
+    "id": "systems/zsh",
+    "type": "systems",
+    "name": "zsh",
+    "display_name": "Zsh",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "5.9",
+    "source": {
+      "url": "https://github.com/zsh-users/zsh.git",
+      "ref": "zsh-5.9"
+    },
+    "description": "Z shell"
+  },
+  {
+    "id": "tools/cmake",
+    "type": "tools",
+    "name": "cmake",
+    "display_name": "CMake",
+    "languages": [
+      "c++"
+    ],
+    "build": "custom",
+    "default_version": "3.31.2",
+    "source": {
+      "url": "https://github.com/Kitware/CMake.git",
+      "ref": "v3.31.2"
+    },
+    "description": "CMake build system"
+  },
+  {
+    "id": "tools/ninja",
+    "type": "tools",
+    "name": "ninja",
+    "display_name": "Ninja",
+    "languages": [
+      "c++"
+    ],
+    "build": "cmake",
+    "default_version": "1.12.1",
+    "source": {
+      "url": "https://github.com/ninja-build/ninja.git",
+      "ref": "v1.12.1"
+    },
+    "description": "Ninja build"
+  },
+  {
+    "id": "tools/pkgconf",
+    "type": "tools",
+    "name": "pkgconf",
+    "display_name": "pkgconf",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "2.3.0",
+    "source": {
+      "url": "https://github.com/pkgconf/pkgconf.git",
+      "ref": "pkgconf-2.3.0"
+    },
+    "description": "pkg-config implementation"
+  },
+  {
+    "id": "tools/strace",
+    "type": "tools",
+    "name": "strace",
+    "display_name": "strace",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "6.12",
+    "source": {
+      "url": "https://github.com/strace/strace.git",
+      "ref": "v6.12"
+    },
+    "description": "strace"
+  },
+  {
+    "id": "libraries/abseil",
+    "type": "libraries",
+    "name": "abseil",
+    "display_name": "Abseil",
+    "languages": [
+      "c++"
+    ],
+    "build": "cmake",
+    "default_version": "20240722.0",
+    "source": {
+      "url": "https://github.com/abseil/abseil-cpp.git",
+      "ref": "20240722.0"
+    },
+    "description": "Abseil C++"
+  },
+  {
+    "id": "libraries/benchmark",
+    "type": "libraries",
+    "name": "benchmark",
+    "display_name": "Google Benchmark",
+    "languages": [
+      "c++"
+    ],
+    "build": "cmake",
+    "default_version": "1.9.0",
+    "source": {
+      "url": "https://github.com/google/benchmark.git",
+      "ref": "v1.9.0"
+    },
+    "description": "microbenchmark framework"
+  },
+  {
+    "id": "libraries/double_conversion",
+    "type": "libraries",
+    "name": "double_conversion",
+    "display_name": "double-conversion",
+    "languages": [
+      "c++"
+    ],
+    "build": "cmake",
+    "default_version": "3.3.0",
+    "source": {
+      "url": "https://github.com/google/double-conversion.git",
+      "ref": "v3.3.0"
+    },
+    "description": "binary-decimal conversion"
+  },
+  {
+    "id": "libraries/flatbuffers",
+    "type": "libraries",
+    "name": "flatbuffers",
+    "display_name": "FlatBuffers",
+    "languages": [
+      "c++"
+    ],
+    "build": "cmake",
+    "default_version": "24.12.23",
+    "source": {
+      "url": "https://github.com/google/flatbuffers.git",
+      "ref": "v24.12.23"
+    },
+    "description": "FlatBuffers"
+  },
+  {
+    "id": "libraries/gflags",
+    "type": "libraries",
+    "name": "gflags",
+    "display_name": "gflags",
+    "languages": [
+      "c++"
+    ],
+    "build": "cmake",
+    "default_version": "2.2.2",
+    "source": {
+      "url": "https://github.com/gflags/gflags.git",
+      "ref": "v2.2.2"
+    },
+    "description": "commandline flags"
+  },
+  {
+    "id": "libraries/glog",
+    "type": "libraries",
+    "name": "glog",
+    "display_name": "glog",
+    "languages": [
+      "c++"
+    ],
+    "build": "cmake",
+    "default_version": "0.7.1",
+    "source": {
+      "url": "https://github.com/google/glog.git",
+      "ref": "v0.7.1"
+    },
+    "description": "Google logging"
+  },
+  {
+    "id": "libraries/googletest",
+    "type": "libraries",
+    "name": "googletest",
+    "display_name": "GoogleTest",
+    "languages": [
+      "c++"
+    ],
+    "build": "cmake",
+    "default_version": "1.15.2",
+    "source": {
+      "url": "https://github.com/google/googletest.git",
+      "ref": "v1.15.2"
+    },
+    "description": "GoogleTest / gmock"
+  },
+  {
+    "id": "libraries/icu",
+    "type": "libraries",
+    "name": "icu",
+    "display_name": "ICU",
+    "languages": [
+      "c",
+      "c++"
+    ],
+    "build": "configure",
+    "default_version": "76.1",
+    "source": {
+      "url": "https://github.com/unicode-org/icu.git",
+      "ref": "release-76-1"
+    },
+    "description": "International Components for Unicode"
+  },
+  {
+    "id": "libraries/jsoncpp",
+    "type": "libraries",
+    "name": "jsoncpp",
+    "display_name": "JsonCpp",
+    "languages": [
+      "c++"
+    ],
+    "build": "cmake",
+    "default_version": "1.9.6",
+    "source": {
+      "url": "https://github.com/open-source-parsers/jsoncpp.git",
+      "ref": "1.9.6"
+    },
+    "description": "JsonCpp"
+  },
+  {
+    "id": "libraries/libffi",
+    "type": "libraries",
+    "name": "libffi",
+    "display_name": "libffi",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "3.4.6",
+    "source": {
+      "url": "https://github.com/libffi/libffi.git",
+      "ref": "v3.4.6"
+    },
+    "description": "Foreign Function Interface"
+  },
+  {
+    "id": "libraries/pcre2",
+    "type": "libraries",
+    "name": "pcre2",
+    "display_name": "PCRE2",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "10.44",
+    "source": {
+      "url": "https://github.com/PCRE2Project/pcre2.git",
+      "ref": "pcre2-10.44"
+    },
+    "description": "Perl Compatible Regex"
+  },
+  {
+    "id": "libraries/utf8proc",
+    "type": "libraries",
+    "name": "utf8proc",
+    "display_name": "utf8proc",
+    "languages": [
+      "c"
+    ],
+    "build": "make",
+    "default_version": "2.9.0",
+    "source": {
+      "url": "https://github.com/JuliaStrings/utf8proc.git",
+      "ref": "v2.9.0"
+    },
+    "description": "UTF-8 processing"
+  },
+  {
+    "id": "networking/lighttpd",
+    "type": "networking",
+    "name": "lighttpd",
+    "display_name": "lighttpd",
+    "languages": [
+      "c"
+    ],
+    "build": "cmake",
+    "default_version": "1.4.76",
+    "source": {
+      "url": "https://github.com/lighttpd/lighttpd1.4.git",
+      "ref": "lighttpd-1.4.76"
+    },
+    "description": "lighttpd web server"
+  },
+  {
+    "id": "networking/mosquitto",
+    "type": "networking",
+    "name": "mosquitto",
+    "display_name": "Eclipse Mosquitto",
+    "languages": [
+      "c"
+    ],
+    "build": "cmake",
+    "default_version": "2.0.20",
+    "source": {
+      "url": "https://github.com/eclipse-mosquitto/mosquitto.git",
+      "ref": "v2.0.20"
+    },
+    "description": "MQTT broker"
+  },
+  {
+    "id": "systems/findutils",
+    "type": "systems",
+    "name": "findutils",
+    "display_name": "GNU findutils",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "4.10.0",
+    "source": {
+      "url": "https://git.savannah.gnu.org/git/findutils.git",
+      "ref": "v4.10.0"
+    },
+    "description": "GNU findutils"
+  },
+  {
+    "id": "systems/gmp",
+    "type": "systems",
+    "name": "gmp",
+    "display_name": "GMP",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "6.3.0",
+    "source": {
+      "url": "https://github.com/alisw/GMP.git",
+      "ref": "v6.3.0"
+    },
+    "description": "GNU MP arithmetic"
+  },
+  {
+    "id": "systems/htop",
+    "type": "systems",
+    "name": "htop",
+    "display_name": "htop",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "3.3.0",
+    "source": {
+      "url": "https://github.com/htop-dev/htop.git",
+      "ref": "3.3.0"
+    },
+    "description": "htop process viewer"
+  },
+  {
+    "id": "systems/nettle",
+    "type": "systems",
+    "name": "nettle",
+    "display_name": "Nettle",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "3.10",
+    "source": {
+      "url": "https://git.lysator.liu.se/nettle/nettle.git",
+      "ref": "nettle_3.10_release_20240607"
+    },
+    "description": "low-level crypto library"
+  },
+  {
+    "id": "tools/bison",
+    "type": "tools",
+    "name": "bison",
+    "display_name": "Bison",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "3.8.2",
+    "source": {
+      "url": "https://git.savannah.gnu.org/git/bison.git",
+      "ref": "v3.8.2"
+    },
+    "description": "GNU Bison"
+  },
+  {
+    "id": "tools/flex",
+    "type": "tools",
+    "name": "flex",
+    "display_name": "flex",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "2.6.4",
+    "source": {
+      "url": "https://github.com/westes/flex.git",
+      "ref": "v2.6.4"
+    },
+    "description": "fast lexical analyzer"
+  },
+  {
+    "id": "tools/patch",
+    "type": "tools",
+    "name": "patch",
+    "display_name": "GNU patch",
+    "languages": [
+      "c"
+    ],
+    "build": "configure",
+    "default_version": "2.7.6",
+    "source": {
+      "url": "https://git.savannah.gnu.org/git/patch.git",
+      "ref": "v2.7.6"
+    },
+    "description": "GNU patch"
+  }
+]

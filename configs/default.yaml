@@ -1,0 +1,129 @@
+# SPDX-License-Identifier: Apache-2.0
+# Global farm defaults: compiler flags for testing + csperf runtime behaviour.
+# Linguistic (A–Z) keys are preferred in typed sections below.
+#
+# Customize compilers here → then:  csfarm registries
+
+farm:
+  name: CompilerSutraAppFarm
+  apps_root: apps
+  cache_root: cache
+  work_root: work
+  results_root: results
+  # Always walk / emit apps in linguistic order
+  sort: linguistic
+
+# ---------------------------------------------------------------------------
+# Toolchains — EDIT THIS to change compilers (no code changes needed)
+# ---------------------------------------------------------------------------
+# 1) Put full definitions under configs/toolchains/<id>.yaml  (or use define:)
+# 2) List which ids are active in ``enabled`` (this is what matrices use)
+# 3) Set ``default`` for plain ``csfarm plan …`` when --toolchain is omitted
+toolchains:
+  dir: configs/toolchains
+  default: clang
+  # People customize this list freely — add aocc, custom-clang, gcc-14, …
+  enabled:
+    - clang
+    - gcc
+  # Optional inline compilers / overrides (merged over YAML files by id)
+  # Uncomment and edit paths for a local LLVM build:
+  define: {}
+  # define:
+  #   custom-clang:
+  #     id: custom-clang
+  #     display_name: "Local LLVM/Clang"
+  #     description: "Point cc_path/cxx_path at your build"
+  #     cc: clang
+  #     cxx: clang++
+  #     cc_path: /opt/llvm/bin/clang
+  #     cxx_path: /opt/llvm/bin/clang++
+  #     version_command: ["/opt/llvm/bin/clang", "--version"]
+  #     env:
+  #       PATH: "/opt/llvm/bin"
+  #     cflags: ["-fPIC"]
+  #     cxxflags: ["-fPIC"]
+  #     ldflags: []
+  #     enabled: true
+
+# ---------------------------------------------------------------------------
+# Compiler flags
+# Merge order (append; preset replaces ``all`` when selected):
+#   all → toolchain-local → preset → types → apps → app.json → recipe → CLI
+# ---------------------------------------------------------------------------
+compiler:
+  # Fallback tools if a toolchain file omits cc/cxx (prefer toolchains.* above)
+  cc: clang
+  cxx: clang++
+
+  # Generic — applied to every app
+  all:
+    cflags: ["-O2", "-g"]
+    cxxflags: ["-O2", "-g"]
+    ldflags: []
+
+  # Per-type extras (all apps under that type folder)
+  types:
+    database:
+      cflags: []
+      cxxflags: []
+    media:
+      cflags: ["-fno-strict-aliasing"]
+      cxxflags: ["-fno-strict-aliasing"]
+    systems:
+      cflags: []
+      cxxflags: []
+
+  # Per-app extras (typed id). Customize any one app from the farm config.
+  apps:
+    database/mysql:
+      cflags: []
+      cxxflags: ["-fno-exceptions"]
+    database/sqlite:
+      cflags: ["-DSQLITE_THREADSAFE=1"]
+      cxxflags: []
+    media/ffmpeg:
+      cflags: []
+      cxxflags: []
+    systems/redis:
+      cflags: []
+      cxxflags: []
+
+  # Named sets selected with: csfarm plan ... --flags sanitize
+  # When set, replaces ``all`` then type/app/recipe/CLI still append.
+  presets:
+    baseline:
+      cflags: ["-O2"]
+      cxxflags: ["-O2"]
+    optimize:
+      cflags: ["-O3", "-ffast-math"]
+      cxxflags: ["-O3", "-ffast-math"]
+    sanitize:
+      cflags: ["-O1", "-fsanitize=address,undefined", "-fno-omit-frame-pointer"]
+      cxxflags: ["-O1", "-fsanitize=address,undefined", "-fno-omit-frame-pointer"]
+      ldflags: ["-fsanitize=address,undefined"]
+    lto:
+      cflags: ["-O3", "-flto"]
+      cxxflags: ["-O3", "-flto"]
+      ldflags: ["-flto"]
+
+# Runtime measurement handed off to compilersutra-perf (csperf).
+csperf:
+  enabled: true
+  binary: csperf
+  backend: cpu
+  warmup_runs: 1
+  repeat_runs: 5
+  no_perf: false
+  cpu_affinity: null
+  report_format: both
+  extra_args: []
+  output_name: csperf.json
+
+# Matrix sweeps — toolchains list empty ⇒ uses toolchains.enabled above
+matrix:
+  toolchains: []          # keep empty to follow toolchains.enabled
+  flag_presets: [baseline, optimize]
+  fail_on_build_error: true
+  fail_on_test_error: true
+  fail_on_regress_pct: 5.0

@@ -1,0 +1,37 @@
+{
+  "version": "1.12.1",
+  "source": {
+    "url": "https://github.com/ninja-build/ninja.git",
+    "ref": "v1.12.1"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "cmake",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "./ninja",
+      "--version"
+    ],
+    "timeout_sec": 1800
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "./ninja",
+        "--version"
+      ]
+    }
+  }
+}

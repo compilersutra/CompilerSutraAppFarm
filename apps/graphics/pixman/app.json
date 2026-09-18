@@ -1,0 +1,21 @@
+{
+  "id": "graphics/pixman",
+  "type": "graphics",
+  "name": "pixman",
+  "display_name": "Pixman",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "meson"
+  ],
+  "default_version": "0.43.4",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "pixel manipulation",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

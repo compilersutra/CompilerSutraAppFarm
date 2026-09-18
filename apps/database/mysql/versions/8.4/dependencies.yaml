@@ -1,0 +1,136 @@
+version: 8.4
+summary: MySQL 8.4 CMake source-build dependencies
+compiler_notes: C/C++ via CMake. Use farm toolchains.enabled for CC/CXX.
+references:
+  - "https://endoflife.date/mysql"
+  - "https://github.com/mysql/mysql-server"
+os:
+  linux:
+    common:
+      build:
+        - cmake
+        - gcc/g++ or clang
+        - bison
+        - ncurses devel
+        - openssl devel
+        - libaio
+      runtime:
+        - openssl
+        - ncurses
+        - libaio
+    distros:
+      arch:
+        releases:
+          - rolling
+        packages:
+          build:
+            - base-devel
+            - git
+            - python
+            - openssl
+            - zlib
+            - cmake
+            - ncurses
+            - libaio
+          runtime:
+            - openssl
+            - zlib
+        install:
+          build: sudo pacman -Syu --needed base-devel git python openssl zlib
+          runtime: sudo pacman -S --needed openssl zlib
+      debian:
+        releases:
+          - 12
+          - 13
+        packages:
+          build:
+            - build-essential
+            - git
+            - python3
+            - libssl-dev
+            - zlib1g-dev
+            - cmake
+            - libncurses-dev
+            - libaio-dev
+            - bison
+          runtime:
+            - libssl3
+            - zlib1g
+        install:
+          build: "sudo apt-get update && sudo apt-get install -y build-essential git python3 libssl-dev zlib1g-dev"
+          runtime: "sudo apt-get update && sudo apt-get install -y libssl3 zlib1g"
+      fedora:
+        releases:
+          - 40
+          - 41
+          - 42
+        packages:
+          build:
+            - gcc
+            - gcc-c++
+            - git
+            - python3
+            - openssl-devel
+            - zlib-devel
+            - cmake
+            - ncurses-devel
+            - libaio-devel
+            - bison
+          runtime:
+            - openssl
+            - zlib
+        install:
+          build: sudo dnf install -y gcc gcc-c++ git python3 openssl-devel zlib-devel
+          runtime: sudo dnf install -y openssl zlib
+      rhel:
+        releases:
+          - 8
+          - 9
+        packages:
+          build:
+            - gcc
+            - gcc-c++
+            - git
+            - python3
+            - openssl-devel
+            - zlib-devel
+            - cmake
+            - ncurses-devel
+            - libaio-devel
+            - bison
+          runtime:
+            - openssl
+            - zlib
+        install:
+          build: sudo dnf install -y gcc gcc-c++ git python3 openssl-devel zlib-devel
+          runtime: sudo dnf install -y openssl zlib
+      ubuntu:
+        releases:
+          - 22.04
+          - 24.04
+        packages:
+          build:
+            - build-essential
+            - git
+            - python3
+            - libssl-dev
+            - zlib1g-dev
+            - cmake
+            - libncurses-dev
+            - libaio-dev
+            - bison
+          runtime:
+            - libssl3
+            - zlib1g
+        install:
+          build: "sudo apt-get update && sudo apt-get install -y build-essential git python3 libssl-dev zlib1g-dev"
+          runtime: "sudo apt-get update && sudo apt-get install -y libssl3 zlib1g"
+  macos:
+    notes: Secondary target; prefer Linux for the compiler farm.
+    install:
+      build: |
+        xcode-select --install || true
+        brew install python openssl
+      runtime: brew install openssl
+  windows:
+    notes: Use WSL2 (Ubuntu) and follow os.linux.distros.ubuntu.

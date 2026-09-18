@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://compilersutra.com/schemas/appfarm/recipe.schema.json",
+  "title": "CompilerSutraAppFarm version recipe",
+  "type": "object",
+  "required": ["version", "source", "build"],
+  "properties": {
+    "version": { "type": "string" },
+    "source": {
+      "type": "object",
+      "required": ["url", "ref"],
+      "properties": {
+        "url": { "type": "string" },
+        "ref": { "type": "string" },
+        "subdir": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "toolchain": {
+      "type": "object",
+      "properties": {
+        "cc": { "type": "string" },
+        "cxx": { "type": "string" },
+        "cflags": { "type": "array", "items": { "type": "string" } },
+        "cxxflags": { "type": "array", "items": { "type": "string" } },
+        "ldflags": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "build": {
+      "type": "object",
+      "required": ["system"],
+      "properties": {
+        "system": {
+          "type": "string",
+          "enum": ["cmake", "configure", "make", "meson", "custom"]
+        },
+        "args": { "type": "array", "items": { "type": "string" } },
+        "env": { "type": "object", "additionalProperties": { "type": "string" } },
+        "workdir": { "type": "string" },
+        "commands": {
+          "type": "array",
+          "items": { "type": "array", "items": { "type": "string" } }
+        }
+      },
+      "additionalProperties": false
+    },
+    "test": {
+      "type": "object",
+      "properties": {
+        "command": { "type": "array", "items": { "type": "string" } },
+        "env": { "type": "object", "additionalProperties": { "type": "string" } },
+        "timeout_sec": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": false
+    },
+    "perf": {
+      "type": "object",
+      "properties": {
+        "csperf": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "backend": { "type": "string" },
+            "warmup_runs": { "type": "integer", "minimum": 0 },
+            "repeat_runs": { "type": "integer", "minimum": 1 },
+            "no_perf": { "type": "boolean" },
+            "cpu_affinity": { "type": ["integer", "null"] },
+            "report_format": { "type": "string" },
+            "extra_args": { "type": "array", "items": { "type": "string" } },
+            "workload": { "type": "array", "items": { "type": "string" } },
+            "input": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

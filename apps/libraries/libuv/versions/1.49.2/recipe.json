@@ -1,0 +1,39 @@
+{
+  "version": "1.49.2",
+  "source": {
+    "url": "https://github.com/libuv/libuv.git",
+    "ref": "v1.49.2"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "cmake",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "test",
+      "-f",
+      "build/libuv.a"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "test",
+        "-f",
+        "build/libuv.a"
+      ]
+    }
+  }
+}

@@ -1,0 +1,48 @@
+# CompilerSutra AppFarm — distro matrix
+# Usage:
+#   docker compose -f docker/compose.yaml build
+#   docker compose -f docker/compose.yaml run --rm ubuntu-clang registries
+#
+# Live-mount the repo (dev): profiles.dev overrides COPY with a bind mount.
+
+name: csfarm
+
+x-farm-volumes: &farm_volumes
+  - ..:/farm:rw
+
+services:
+  ubuntu-clang:
+    image: csfarm/ubuntu-clang:local
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.ubuntu
+    working_dir: /farm
+    volumes: *farm_volumes
+    entrypoint: ["csfarm"]
+
+  debian-clang:
+    image: csfarm/debian-clang:local
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.debian
+    working_dir: /farm
+    volumes: *farm_volumes
+    entrypoint: ["csfarm"]
+
+  fedora-clang:
+    image: csfarm/fedora-clang:local
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.fedora
+    working_dir: /farm
+    volumes: *farm_volumes
+    entrypoint: ["csfarm"]
+
+  arch-clang:
+    image: csfarm/arch-clang:local
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.arch
+    working_dir: /farm
+    volumes: *farm_volumes
+    entrypoint: ["csfarm"]

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://compilersutra.com/schemas/appfarm/dependencies.schema.json",
+  "title": "Per-version OS/distro dependencies",
+  "type": "object",
+  "required": ["version", "os"],
+  "properties": {
+    "version": { "type": "string" },
+    "summary": { "type": "string" },
+    "os": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "common": {
+            "type": "object",
+            "properties": {
+              "build": { "type": "array", "items": { "type": "string" } },
+              "runtime": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "distros": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "releases": { "type": "array", "items": { "type": "string" } },
+                "packages": {
+                  "type": "object",
+                  "properties": {
+                    "build": { "type": "array", "items": { "type": "string" } },
+                    "runtime": { "type": "array", "items": { "type": "string" } }
+                  }
+                },
+                "install": {
+                  "type": "object",
+                  "properties": {
+                    "build": { "type": "string" },
+                    "runtime": { "type": "string" }
+                  }
+                },
+                "notes": { "type": "string" }
+              }
+            }
+          },
+          "install": {
+            "type": "object",
+            "properties": {
+              "build": { "type": "string" },
+              "runtime": { "type": "string" }
+            }
+          },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "compiler_notes": { "type": "string" },
+    "references": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}

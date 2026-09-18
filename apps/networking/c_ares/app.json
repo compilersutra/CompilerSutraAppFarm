@@ -1,0 +1,21 @@
+{
+  "id": "networking/c_ares",
+  "type": "networking",
+  "name": "c_ares",
+  "display_name": "c-ares",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "1.34.3",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "async DNS",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

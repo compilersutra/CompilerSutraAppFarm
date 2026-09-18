@@ -1,0 +1,46 @@
+{
+  "version": "0.9.31",
+  "source": {
+    "url": "https://github.com/LMDB/lmdb.git",
+    "ref": "LMDB_0.9.31"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "custom",
+    "commands": [
+      [
+        "make",
+        "-C",
+        "libraries/liblmdb",
+        "-j4"
+      ]
+    ]
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -f libraries/liblmdb/liblmdb.a"
+    ],
+    "timeout_sec": 30
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -f libraries/liblmdb/liblmdb.a"
+      ]
+    }
+  }
+}

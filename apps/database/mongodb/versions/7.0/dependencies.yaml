@@ -1,0 +1,133 @@
+version: 7.0
+summary: MongoDB 7.0 source-build dependencies
+compiler_notes: C++ / SCons. Prefer clang-17+/gcc-12+ for 8.x; clang-16+/gcc-11+ for 7.x.
+references:
+  - "https://endoflife.date/mongodb"
+  - "https://github.com/mongodb/mongo"
+os:
+  linux:
+    common:
+      build:
+        - python3
+        - pip
+        - gcc/g++ or clang/clang++
+        - git
+        - openssl devel
+        - libcurl devel
+        - zlib devel
+      runtime:
+        - openssl
+        - libcurl
+        - zlib
+    distros:
+      arch:
+        releases:
+          - rolling
+        packages:
+          build:
+            - base-devel
+            - git
+            - python
+            - openssl
+            - zlib
+            - python-pip
+            - curl
+          runtime:
+            - openssl
+            - curl
+            - zlib
+        install:
+          build: sudo pacman -Syu --needed base-devel git python openssl zlib
+          runtime: sudo pacman -S --needed openssl zlib
+      debian:
+        releases:
+          - 12
+          - 13
+        packages:
+          build:
+            - build-essential
+            - git
+            - python3
+            - libssl-dev
+            - zlib1g-dev
+            - python3-pip
+            - libcurl4-openssl-dev
+          runtime:
+            - libssl3
+            - libcurl4
+            - zlib1g
+        install:
+          build: "sudo apt-get update && sudo apt-get install -y build-essential git python3 libssl-dev zlib1g-dev"
+          runtime: "sudo apt-get update && sudo apt-get install -y libssl3 zlib1g"
+      fedora:
+        releases:
+          - 40
+          - 41
+          - 42
+        packages:
+          build:
+            - gcc
+            - gcc-c++
+            - git
+            - python3
+            - openssl-devel
+            - zlib-devel
+            - python3-pip
+            - libcurl-devel
+          runtime:
+            - openssl
+            - libcurl
+            - zlib
+        install:
+          build: sudo dnf install -y gcc gcc-c++ git python3 openssl-devel zlib-devel
+          runtime: sudo dnf install -y openssl zlib
+      rhel:
+        releases:
+          - 8
+          - 9
+        packages:
+          build:
+            - gcc
+            - gcc-c++
+            - git
+            - python3
+            - openssl-devel
+            - zlib-devel
+            - python3-pip
+            - libcurl-devel
+          runtime:
+            - openssl
+            - libcurl
+            - zlib
+        install:
+          build: sudo dnf install -y gcc gcc-c++ git python3 openssl-devel zlib-devel
+          runtime: sudo dnf install -y openssl zlib
+      ubuntu:
+        releases:
+          - 22.04
+          - 24.04
+        packages:
+          build:
+            - build-essential
+            - git
+            - python3
+            - libssl-dev
+            - zlib1g-dev
+            - python3-pip
+            - libcurl4-openssl-dev
+          runtime:
+            - libssl3
+            - libcurl4
+            - zlib1g
+        install:
+          build: "sudo apt-get update && sudo apt-get install -y build-essential git python3 libssl-dev zlib1g-dev"
+          runtime: "sudo apt-get update && sudo apt-get install -y libssl3 zlib1g"
+  macos:
+    notes: Secondary target; prefer Linux for the compiler farm.
+    install:
+      build: |
+        xcode-select --install || true
+        brew install python openssl
+      runtime: brew install openssl
+  windows:
+    notes: Use WSL2 (Ubuntu) and follow os.linux.distros.ubuntu.

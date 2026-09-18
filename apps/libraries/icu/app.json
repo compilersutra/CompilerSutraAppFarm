@@ -1,0 +1,22 @@
+{
+  "id": "libraries/icu",
+  "type": "libraries",
+  "name": "icu",
+  "display_name": "ICU",
+  "languages": [
+    "c",
+    "c++"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "76.1",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "International Components for Unicode",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

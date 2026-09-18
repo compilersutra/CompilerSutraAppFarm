@@ -1,0 +1,21 @@
+{
+  "id": "networking/libssh2",
+  "type": "networking",
+  "name": "libssh2",
+  "display_name": "libssh2",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "1.11.1",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "SSH2 client lib",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

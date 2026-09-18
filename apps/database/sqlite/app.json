@@ -1,0 +1,24 @@
+{
+  "id": "database/sqlite",
+  "type": "database",
+  "name": "sqlite",
+  "display_name": "SQLite",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure",
+    "make"
+  ],
+  "default_version": "3.53",
+  "correctness": "upstream_tests",
+  "perf_backend": "cpu",
+  "description": "SQLite 3.x release-line folders with per-distro deps.",
+  "flags": {
+    "cflags": [
+      "-DSQLITE_ENABLE_FTS5"
+    ],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

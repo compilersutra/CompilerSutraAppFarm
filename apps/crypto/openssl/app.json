@@ -1,0 +1,21 @@
+{
+  "id": "crypto/openssl",
+  "type": "crypto",
+  "name": "openssl",
+  "display_name": "OpenSSL",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "custom"
+  ],
+  "default_version": "3.4.0",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "OpenSSL toolkit",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

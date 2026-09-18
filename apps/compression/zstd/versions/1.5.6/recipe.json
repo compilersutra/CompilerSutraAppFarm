@@ -1,0 +1,43 @@
+{
+  "version": "1.5.6",
+  "source": {
+    "url": "https://github.com/facebook/zstd.git",
+    "ref": "v1.5.6"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [
+      "-fPIC"
+    ],
+    "cxxflags": [
+      "-fPIC"
+    ],
+    "ldflags": []
+  },
+  "build": {
+    "system": "make",
+    "args": [
+      "zstd"
+    ]
+  },
+  "test": {
+    "command": [
+      "./zstd",
+      "--version"
+    ],
+    "timeout_sec": 120
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "./zstd",
+        "--version"
+      ]
+    }
+  }
+}

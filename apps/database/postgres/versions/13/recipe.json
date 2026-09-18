@@ -1,0 +1,41 @@
+{
+  "version": "13",
+  "source": {
+    "url": "https://github.com/postgres/postgres.git",
+    "ref": "REL_13_STABLE"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": [
+      "--enable-debug"
+    ]
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -f Makefile"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -f Makefile"
+      ]
+    }
+  }
+}

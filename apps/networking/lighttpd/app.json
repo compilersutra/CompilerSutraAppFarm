@@ -1,0 +1,21 @@
+{
+  "id": "networking/lighttpd",
+  "type": "networking",
+  "name": "lighttpd",
+  "display_name": "lighttpd",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "1.4.76",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "lighttpd web server",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

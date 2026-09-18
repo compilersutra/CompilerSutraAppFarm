@@ -1,0 +1,37 @@
+{
+  "version": "3.5a",
+  "source": {
+    "url": "https://github.com/tmux/tmux.git",
+    "ref": "3.5a"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "custom",
+    "commands": [
+      [
+        "sh",
+        "-c",
+        "set -e; PREFIX=\"$PWD/.deps/prefix\"; mkdir -p .deps; if [ ! -f \"$PREFIX/lib/libevent.a\" ]; then git clone --depth 1 --branch release-2.1.12-stable https://github.com/libevent/libevent.git .deps/libevent; cmake -S .deps/libevent -B .deps/libevent/build -DCMAKE_INSTALL_PREFIX=\"$PREFIX\" -DEVENT__DISABLE_OPENSSL=ON -DEVENT__DISABLE_BENCHMARK=ON -DEVENT__DISABLE_TESTS=ON -DEVENT__DISABLE_SAMPLES=ON -DEVENT__LIBRARY_TYPE=STATIC; cmake --build .deps/libevent/build -j\"$(nproc)\"; cmake --install .deps/libevent/build; fi; ./autogen.sh; ./configure --enable-static --disable-shared CPPFLAGS=\"-I$PREFIX/include\" LDFLAGS=\"-L$PREFIX/lib\" LIBS=\"-levent -lpthread\"; make -j\"$(nproc)\""
+      ]
+    ]
+  },
+  "test": {
+    "command": ["./tmux", "-V"],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": ["./tmux", "-V"]
+    }
+  }
+}

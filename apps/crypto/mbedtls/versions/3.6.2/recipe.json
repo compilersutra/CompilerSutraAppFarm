@@ -1,0 +1,39 @@
+{
+  "version": "3.6.2",
+  "source": {
+    "url": "https://github.com/Mbed-TLS/mbedtls.git",
+    "ref": "v3.6.2"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "cmake",
+    "args": [
+      "-DENABLE_TESTING=OFF",
+      "-DENABLE_PROGRAMS=ON",
+      "-DUSE_SHARED_MBEDTLS_LIBRARY=ON"
+    ]
+  },
+  "test": {
+    "command": [
+      "./build/programs/test/selftest"
+    ],
+    "timeout_sec": 120
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "./build/programs/test/selftest"
+      ]
+    }
+  }
+}

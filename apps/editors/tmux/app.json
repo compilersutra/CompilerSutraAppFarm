@@ -1,0 +1,21 @@
+{
+  "id": "editors/tmux",
+  "type": "editors",
+  "name": "tmux",
+  "display_name": "tmux",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "3.5a",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "terminal multiplexer",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

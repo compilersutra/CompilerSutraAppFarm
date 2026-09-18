@@ -1,0 +1,112 @@
+version: 8.0
+summary: Redis 8.0 Make source-build dependencies
+compiler_notes: Mostly C. Fast compile cycle for toolchain matrices.
+references:
+  - "https://endoflife.date/redis"
+  - "https://github.com/redis/redis"
+os:
+  linux:
+    common:
+      build:
+        - gcc or clang
+        - make
+        - pkg-config
+        - openssl (TLS builds)
+      runtime:
+    distros:
+      arch:
+        releases:
+          - rolling
+        packages:
+          build:
+            - base-devel
+            - git
+            - python
+            - openssl
+            - zlib
+          runtime:
+            - openssl
+            - zlib
+        install:
+          build: sudo pacman -Syu --needed base-devel git python openssl zlib
+          runtime: sudo pacman -S --needed openssl zlib
+      debian:
+        releases:
+          - 12
+          - 13
+        packages:
+          build:
+            - build-essential
+            - git
+            - python3
+            - libssl-dev
+            - zlib1g-dev
+          runtime:
+            - libssl3
+            - zlib1g
+        install:
+          build: "sudo apt-get update && sudo apt-get install -y build-essential git python3 libssl-dev zlib1g-dev"
+          runtime: "sudo apt-get update && sudo apt-get install -y libssl3 zlib1g"
+      fedora:
+        releases:
+          - 40
+          - 41
+          - 42
+        packages:
+          build:
+            - gcc
+            - gcc-c++
+            - git
+            - python3
+            - openssl-devel
+            - zlib-devel
+          runtime:
+            - openssl
+            - zlib
+        install:
+          build: sudo dnf install -y gcc gcc-c++ git python3 openssl-devel zlib-devel
+          runtime: sudo dnf install -y openssl zlib
+      rhel:
+        releases:
+          - 8
+          - 9
+        packages:
+          build:
+            - gcc
+            - gcc-c++
+            - git
+            - python3
+            - openssl-devel
+            - zlib-devel
+          runtime:
+            - openssl
+            - zlib
+        install:
+          build: sudo dnf install -y gcc gcc-c++ git python3 openssl-devel zlib-devel
+          runtime: sudo dnf install -y openssl zlib
+      ubuntu:
+        releases:
+          - 22.04
+          - 24.04
+        packages:
+          build:
+            - build-essential
+            - git
+            - python3
+            - libssl-dev
+            - zlib1g-dev
+          runtime:
+            - libssl3
+            - zlib1g
+        install:
+          build: "sudo apt-get update && sudo apt-get install -y build-essential git python3 libssl-dev zlib1g-dev"
+          runtime: "sudo apt-get update && sudo apt-get install -y libssl3 zlib1g"
+  macos:
+    notes: Secondary target; prefer Linux for the compiler farm.
+    install:
+      build: |
+        xcode-select --install || true
+        brew install python openssl
+      runtime: brew install openssl
+  windows:
+    notes: Use WSL2 (Ubuntu) and follow os.linux.distros.ubuntu.

@@ -1,0 +1,45 @@
+{
+  "version": "9.7",
+  "source": {
+    "url": "https://github.com/mysql/mysql-server.git",
+    "ref": "mysql-9.7.0"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "custom",
+    "commands": [
+      [
+        "sh",
+        "-c",
+        "set -e\nTOOLS=/home/aitr/projects/CompilerSutraAppFarm/tools\nexport PKG_CONFIG_PATH=$TOOLS/lib/pkgconfig:${PKG_CONFIG_PATH:-}\nexport CMAKE_PREFIX_PATH=$TOOLS:${CMAKE_PREFIX_PATH:-}\n# Patch out forced -fno-exceptions for client-only smoke build\nfind . -name '*.cmake' -print0 | xargs -0 sed -i 's/-fno-exceptions/-fexceptions/g' || true\ncmake -S . -B build \\\n  -DCMAKE_C_COMPILER=\"${CC:-clang}\" -DCMAKE_CXX_COMPILER=\"${CXX:-clang++}\" \\\n  -DCMAKE_C_FLAGS=\"-O2\" -DCMAKE_CXX_FLAGS=\"-O2 -fexceptions\" \\\n  -DCMAKE_BUILD_TYPE=Release \\\n  -DWITHOUT_SERVER=ON -DWITH_UNIT_TESTS=OFF -DWITH_TEST_SUITE=OFF \\\n  -DWITH_CURL=OFF -DWITH_SSL=system -DDOWNLOAD_BOOST=ON -DWITH_BOOST=boost\ncmake --build build -j\"$(nproc)\" --target mysql || cmake --build build -j\"$(nproc)\"\n"
+      ]
+    ]
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "find build -name mysql -type f | head -1 | grep -q ."
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "find build -name mysql -type f | head -1 | grep -q ."
+      ]
+    }
+  }
+}

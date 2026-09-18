@@ -1,0 +1,38 @@
+{
+  "version": "2.7.6",
+  "source": {
+    "kind": "archive",
+    "url": "https://ftp.gnu.org/gnu/patch/patch-2.7.6.tar.gz",
+    "ref": ""
+  },
+  "build": {
+    "system": "configure",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "./src/patch",
+      "--version"
+    ],
+    "timeout_sec": 60
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "./src/patch",
+        "--version"
+      ]
+    }
+  }
+}

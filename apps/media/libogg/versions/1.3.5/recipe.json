@@ -1,0 +1,39 @@
+{
+  "version": "1.3.5",
+  "source": {
+    "url": "https://github.com/xiph/ogg.git",
+    "ref": "v1.3.5"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -f src/.libs/libogg.a || test -f src/.libs/libogg.so"
+    ],
+    "timeout_sec": 30
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -f src/.libs/libogg.a || test -f src/.libs/libogg.so"
+      ]
+    }
+  }
+}

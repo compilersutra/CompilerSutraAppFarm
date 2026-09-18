@@ -1,0 +1,43 @@
+{
+  "version": "6.12",
+  "source": {
+    "url": "https://github.com/strace/strace.git",
+    "ref": "v6.12"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "custom",
+    "commands": [
+      [
+        "sh",
+        "-c",
+        "set -e; ./bootstrap; ./configure --enable-mpers=no; make -j$(nproc)"
+      ]
+    ]
+  },
+  "test": {
+    "command": [
+      "./src/strace",
+      "-V"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "./src/strace",
+        "-V"
+      ]
+    }
+  }
+}

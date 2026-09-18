@@ -1,0 +1,21 @@
+{
+  "id": "media/dav1d",
+  "type": "media",
+  "name": "dav1d",
+  "display_name": "dav1d",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "meson"
+  ],
+  "default_version": "1.5.0",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "AV1 decoder",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

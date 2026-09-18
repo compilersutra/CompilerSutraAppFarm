@@ -1,0 +1,21 @@
+{
+  "id": "libraries/utf8proc",
+  "type": "libraries",
+  "name": "utf8proc",
+  "display_name": "utf8proc",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "make"
+  ],
+  "default_version": "2.9.0",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "UTF-8 processing",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

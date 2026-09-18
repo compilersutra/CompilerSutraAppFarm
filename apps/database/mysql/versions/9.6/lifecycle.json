@@ -1,0 +1,10 @@
+{
+  "version": "9.6",
+  "channel": "innovation",
+  "released": "2026-01-20",
+  "security_support_ends": null,
+  "support_ended": "2026-04-21",
+  "status": "expired",
+  "source": "https://endoflife.date/mysql",
+  "notes": "Oracle MySQL LTS/Innovation lines."
+}

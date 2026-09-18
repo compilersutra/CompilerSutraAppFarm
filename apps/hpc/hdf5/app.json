@@ -1,0 +1,21 @@
+{
+  "id": "hpc/hdf5",
+  "type": "hpc",
+  "name": "hdf5",
+  "display_name": "HDF5",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "1.14.5",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "Hierarchical Data Format",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

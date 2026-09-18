@@ -1,0 +1,39 @@
+{
+  "version": "1.1.0",
+  "source": {
+    "url": "https://github.com/google/brotli.git",
+    "ref": "v1.1.0"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "cmake",
+    "args": [
+      "-DBROTLI_BUILD_TESTS=OFF"
+    ]
+  },
+  "test": {
+    "command": [
+      "./build/brotli",
+      "--version"
+    ],
+    "timeout_sec": 1800
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "./build/brotli",
+        "--version"
+      ]
+    }
+  }
+}

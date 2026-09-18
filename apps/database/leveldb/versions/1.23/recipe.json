@@ -1,0 +1,42 @@
+{
+  "version": "1.23",
+  "source": {
+    "url": "https://github.com/google/leveldb.git",
+    "ref": "1.23"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "cmake",
+    "args": [
+      "-DLEVELDB_BUILD_TESTS=OFF",
+      "-DLEVELDB_BUILD_BENCHMARKS=OFF"
+    ]
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -d build && find build -name \"*.a\" -o -name \"*.so\" | head -1 | grep -q ."
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -d build && find build -name \"*.a\" -o -name \"*.so\" | head -1 | grep -q ."
+      ]
+    }
+  }
+}

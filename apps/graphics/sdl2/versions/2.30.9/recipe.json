@@ -1,0 +1,39 @@
+{
+  "version": "2.30.9",
+  "source": {
+    "url": "https://github.com/libsdl-org/SDL.git",
+    "ref": "release-2.30.9"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "cmake",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -f build/libSDL2.a || test -f build/libSDL2-2.0.so || test -f build/libSDL2.so"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "sh",
+        "-c",
+        "test -f build/libSDL2.a || test -f build/libSDL2-2.0.so || test -f build/libSDL2.so"
+      ]
+    }
+  }
+}

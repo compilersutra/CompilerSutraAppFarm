@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: Apache-2.0
+# Template for a local LLVM build. Copy/edit, then add id to toolchains.enabled.
+id: custom-clang
+display_name: Custom Clang
+description: Point cc_path/cxx_path at your llvm-project build
+cc: clang
+cxx: clang++
+cc_path: /home/aitr/llvm-project/build/bin/clang
+cxx_path: /home/aitr/llvm-project/build/bin/clang++
+version_command: ["/home/aitr/llvm-project/build/bin/clang", "--version"]
+env:
+  PATH: /home/aitr/llvm-project/build/bin
+cflags: []
+cxxflags: []
+ldflags: []
+enabled: false

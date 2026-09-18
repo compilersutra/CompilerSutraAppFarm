@@ -1,0 +1,37 @@
+{
+  "version": "9.1.0",
+  "source": {
+    "url": "https://github.com/vim/vim.git",
+    "ref": "v9.1.0"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "./src/vim",
+      "--version"
+    ],
+    "timeout_sec": 1800
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "./src/vim",
+        "--version"
+      ]
+    }
+  }
+}

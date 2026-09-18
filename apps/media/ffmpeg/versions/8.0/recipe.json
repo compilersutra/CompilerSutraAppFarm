@@ -1,0 +1,47 @@
+{
+  "version": "8.0",
+  "source": {
+    "url": "https://github.com/FFmpeg/FFmpeg.git",
+    "ref": "n8.0.3"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": [
+      "--disable-doc",
+      "--disable-network",
+      "--cc=${CC}"
+    ]
+  },
+  "test": {
+    "command": [
+      "make",
+      "fate-tiny"
+    ],
+    "timeout_sec": 3600
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 5,
+      "workload": [
+        "./ffmpeg",
+        "-f",
+        "lavfi",
+        "-i",
+        "testsrc=duration=2:size=640x360:rate=30",
+        "-f",
+        "null",
+        "-"
+      ]
+    }
+  }
+}

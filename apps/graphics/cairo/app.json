@@ -1,0 +1,21 @@
+{
+  "id": "graphics/cairo",
+  "type": "graphics",
+  "name": "cairo",
+  "display_name": "Cairo",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "meson"
+  ],
+  "default_version": "1.18.2",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "2D graphics library",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

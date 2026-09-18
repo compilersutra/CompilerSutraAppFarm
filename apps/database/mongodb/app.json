@@ -1,0 +1,21 @@
+{
+  "id": "database/mongodb",
+  "type": "database",
+  "name": "mongodb",
+  "display_name": "MongoDB",
+  "languages": [
+    "c++"
+  ],
+  "build_systems": [
+    "scons"
+  ],
+  "default_version": "7.0",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "Document DB \u2014 all EOL series under versions/ with deps per Linux distro.",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

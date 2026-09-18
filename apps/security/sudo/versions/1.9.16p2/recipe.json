@@ -1,0 +1,39 @@
+{
+  "version": "1.9.16p2",
+  "source": {
+    "url": "https://github.com/sudo-project/sudo.git",
+    "ref": "SUDO_1_9_16p2"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -x src/.libs/sudo || test -x src/sudo"
+    ],
+    "timeout_sec": 30
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "sh",
+        "-c",
+        "test -x src/.libs/sudo || test -x src/sudo"
+      ]
+    }
+  }
+}

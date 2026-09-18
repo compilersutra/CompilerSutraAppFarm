@@ -1,0 +1,40 @@
+{
+  "version": "3.3.6",
+  "source": {
+    "url": "https://github.com/ruby/ruby.git",
+    "ref": "v3_3_6"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": [
+      "--disable-install-doc",
+      "--disable-install-rdoc"
+    ]
+  },
+  "test": {
+    "command": [
+      "./ruby",
+      "-v"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "./ruby",
+        "-v"
+      ]
+    }
+  }
+}

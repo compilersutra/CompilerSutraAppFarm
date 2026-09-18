@@ -1,0 +1,21 @@
+{
+  "id": "libraries/re2",
+  "type": "libraries",
+  "name": "re2",
+  "display_name": "RE2",
+  "languages": [
+    "c++"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "2024-07-02",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "Google RE2 regex",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

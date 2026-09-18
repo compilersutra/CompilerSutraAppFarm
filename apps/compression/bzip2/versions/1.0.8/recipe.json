@@ -1,0 +1,37 @@
+{
+  "version": "1.0.8",
+  "source": {
+    "url": "https://gitlab.com/bzip2/bzip2.git",
+    "ref": "bzip2-1.0.8"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "make",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "./bzip2",
+      "--help"
+    ],
+    "timeout_sec": 1800
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "./bzip2",
+        "--help"
+      ]
+    }
+  }
+}

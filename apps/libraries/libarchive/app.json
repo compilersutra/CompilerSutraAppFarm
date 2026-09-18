@@ -1,0 +1,21 @@
+{
+  "id": "libraries/libarchive",
+  "type": "libraries",
+  "name": "libarchive",
+  "display_name": "libarchive",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "3.7.7",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "multi-format archive",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

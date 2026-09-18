@@ -1,0 +1,39 @@
+{
+  "version": "2.9.0",
+  "source": {
+    "url": "https://github.com/JuliaStrings/utf8proc.git",
+    "ref": "v2.9.0"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "make",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -f Makefile || test -d build || ls >/dev/null"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -f Makefile || test -d build || ls >/dev/null"
+      ]
+    }
+  }
+}

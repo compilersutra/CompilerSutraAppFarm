@@ -1,0 +1,21 @@
+{
+  "id": "networking/curl",
+  "type": "networking",
+  "name": "curl",
+  "display_name": "curl",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "8.11.1",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "curl transfer tool",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

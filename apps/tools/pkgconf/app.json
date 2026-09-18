@@ -1,0 +1,21 @@
+{
+  "id": "tools/pkgconf",
+  "type": "tools",
+  "name": "pkgconf",
+  "display_name": "pkgconf",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "2.3.0",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "pkg-config implementation",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

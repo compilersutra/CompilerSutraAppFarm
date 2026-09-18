@@ -1,0 +1,21 @@
+{
+  "id": "systems/wget",
+  "type": "systems",
+  "name": "wget",
+  "display_name": "GNU Wget",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "1.24.5",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "GNU Wget",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

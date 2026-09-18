@@ -1,0 +1,21 @@
+{
+  "id": "languages/tcl",
+  "type": "languages",
+  "name": "tcl",
+  "display_name": "Tcl",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "8.6.15",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "Tcl language",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

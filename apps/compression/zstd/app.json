@@ -1,0 +1,21 @@
+{
+  "id": "compression/zstd",
+  "type": "compression",
+  "name": "zstd",
+  "display_name": "Zstandard",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "make"
+  ],
+  "default_version": "1.5.6",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "Facebook Zstandard",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

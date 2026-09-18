@@ -1,0 +1,22 @@
+{
+  "id": "database/postgres",
+  "type": "database",
+  "name": "postgres",
+  "display_name": "PostgreSQL",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure",
+    "meson"
+  ],
+  "default_version": "18",
+  "correctness": "upstream_tests",
+  "perf_backend": "cpu",
+  "description": "PostgreSQL majors with lifecycle + per-distro deps.",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

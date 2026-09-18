@@ -1,0 +1,39 @@
+{
+  "version": "28.3",
+  "source": {
+    "url": "https://github.com/protocolbuffers/protobuf.git",
+    "ref": "v28.3"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "cmake",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -x build/protoc || test -f build/libprotobuf.a"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -x build/protoc || test -f build/libprotobuf.a"
+      ]
+    }
+  }
+}

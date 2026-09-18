@@ -1,0 +1,10 @@
+{
+  "version": "8.2",
+  "channel": "stable",
+  "released": "2025-08-04",
+  "security_support_ends": "2030-09-01",
+  "support_ended": null,
+  "status": "supported",
+  "source": "https://endoflife.date/redis",
+  "notes": "Redis OSS release line."
+}

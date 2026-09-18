@@ -1,0 +1,35 @@
+{
+  "version": "3.4.0",
+  "source": {
+    "url": "https://github.com/openssl/openssl.git",
+    "ref": "openssl-3.4.0"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "custom",
+    "commands": [
+      ["./Configure", "linux-x86_64", "no-docs", "no-shared"],
+      ["make", "-j4"]
+    ]
+  },
+  "test": {
+    "command": ["./apps/openssl", "version"],
+    "timeout_sec": 60,
+    "env": {"LD_LIBRARY_PATH": "."}
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": ["./apps/openssl", "version"]
+    }
+  }
+}

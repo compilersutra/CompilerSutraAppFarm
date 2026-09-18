@@ -1,0 +1,21 @@
+{
+  "id": "libraries/abseil",
+  "type": "libraries",
+  "name": "abseil",
+  "display_name": "Abseil",
+  "languages": [
+    "c++"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "20240722.0",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "Abseil C++",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

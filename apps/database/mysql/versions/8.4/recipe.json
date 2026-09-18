@@ -1,0 +1,43 @@
+{
+  "version": "8.4",
+  "source": {
+    "url": "https://github.com/mysql/mysql-server.git",
+    "ref": "mysql-8.4.11"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "cmake",
+    "args": [
+      "-DWITH_DEBUG=OFF",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DDOWNLOAD_BOOST=1"
+    ]
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -d build && find build -name \"*.a\" -o -name \"*.so\" | head -1 | grep -q ."
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -d build && find build -name \"*.a\" -o -name \"*.so\" | head -1 | grep -q ."
+      ]
+    }
+  }
+}

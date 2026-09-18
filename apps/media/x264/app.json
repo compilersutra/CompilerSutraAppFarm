@@ -1,0 +1,21 @@
+{
+  "id": "media/x264",
+  "type": "media",
+  "name": "x264",
+  "display_name": "x264",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "stable",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "H.264 encoder",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

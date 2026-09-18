@@ -1,0 +1,21 @@
+{
+  "id": "media/libvorbis",
+  "type": "media",
+  "name": "libvorbis",
+  "display_name": "libvorbis",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "1.3.7",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "Vorbis audio",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

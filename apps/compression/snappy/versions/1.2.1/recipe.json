@@ -1,0 +1,44 @@
+{
+  "version": "1.2.1",
+  "source": {
+    "url": "https://github.com/google/snappy.git",
+    "ref": "1.2.1"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "cmake",
+    "args": [
+      "-DSNAPPY_BUILD_TESTS=OFF",
+      "-DSNAPPY_BUILD_BENCHMARKS=OFF",
+      "-DBUILD_SHARED_LIBS=ON"
+    ]
+  },
+  "test": {
+    "command": [
+      "cmake",
+      "--build",
+      "build",
+      "--target",
+      "help"
+    ],
+    "timeout_sec": 1800
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "cmake",
+        "--version"
+      ]
+    }
+  }
+}

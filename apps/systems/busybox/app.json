@@ -1,0 +1,21 @@
+{
+  "id": "systems/busybox",
+  "type": "systems",
+  "name": "busybox",
+  "display_name": "BusyBox",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "make"
+  ],
+  "default_version": "1.37.0",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "BusyBox utilities",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

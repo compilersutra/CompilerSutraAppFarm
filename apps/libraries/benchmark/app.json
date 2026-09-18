@@ -1,0 +1,21 @@
+{
+  "id": "libraries/benchmark",
+  "type": "libraries",
+  "name": "benchmark",
+  "display_name": "Google Benchmark",
+  "languages": [
+    "c++"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "1.9.0",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "microbenchmark framework",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

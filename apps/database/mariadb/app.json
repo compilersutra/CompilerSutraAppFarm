@@ -1,0 +1,22 @@
+{
+  "id": "database/mariadb",
+  "type": "database",
+  "name": "mariadb",
+  "display_name": "MariaDB",
+  "languages": [
+    "c",
+    "c++"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "11.4.4",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "MariaDB server",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

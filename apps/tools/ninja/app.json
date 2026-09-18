@@ -1,0 +1,21 @@
+{
+  "id": "tools/ninja",
+  "type": "tools",
+  "name": "ninja",
+  "display_name": "Ninja",
+  "languages": [
+    "c++"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "1.12.1",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "Ninja build",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

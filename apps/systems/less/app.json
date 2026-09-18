@@ -1,0 +1,21 @@
+{
+  "id": "systems/less",
+  "type": "systems",
+  "name": "less",
+  "display_name": "less",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "661",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "less pager",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "version": "2.47.1",
+  "source": {
+    "url": "https://github.com/git/git.git",
+    "ref": "v2.47.1"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "make",
+    "args": [
+      "NO_CURL=1",
+      "NO_GETTEXT=1",
+      "NO_TCLTK=1"
+    ]
+  },
+  "test": {
+    "command": [
+      "./git",
+      "--version"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "./git",
+        "--version"
+      ]
+    }
+  }
+}

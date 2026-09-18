@@ -1,0 +1,44 @@
+{
+  "version": "3.3.10",
+  "source": {
+    "kind": "archive",
+    "url": "https://www.fftw.org/fftw-3.3.10.tar.gz",
+    "ref": ""
+  },
+  "build": {
+    "system": "configure",
+    "args": [
+      "--enable-static",
+      "--disable-shared",
+      "--disable-doc"
+    ]
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -f .libs/libfftw3.a || test -f libfftw3.a"
+    ],
+    "timeout_sec": 60
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -f .libs/libfftw3.a || test -f libfftw3.a"
+      ]
+    }
+  }
+}

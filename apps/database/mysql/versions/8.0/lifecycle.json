@@ -1,0 +1,10 @@
+{
+  "version": "8.0",
+  "channel": "lts",
+  "released": "2018-04-08",
+  "security_support_ends": null,
+  "support_ended": "2026-04-30",
+  "status": "expired",
+  "source": "https://endoflife.date/mysql",
+  "notes": "Oracle MySQL LTS/Innovation lines."
+}

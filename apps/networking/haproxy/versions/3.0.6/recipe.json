@@ -1,0 +1,32 @@
+{
+  "version": "3.0.6",
+  "source": {
+    "kind": "archive",
+    "url": "https://www.haproxy.org/download/3.0/src/haproxy-3.0.6.tar.gz",
+    "ref": ""
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "make",
+    "args": ["TARGET=linux-glibc", "USE_OPENSSL=1", "USE_ZLIB=1"]
+  },
+  "test": {
+    "command": ["./haproxy", "-v"],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": ["./haproxy", "-v"]
+    }
+  }
+}

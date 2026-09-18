@@ -1,0 +1,43 @@
+{
+  "version": "0.3.28",
+  "source": {
+    "url": "https://github.com/OpenMathLib/OpenBLAS.git",
+    "ref": "v0.3.28"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "make",
+    "args": [
+      "TARGET=GENERIC",
+      "USE_THREAD=0",
+      "NO_LAPACK=0"
+    ]
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -f libopenblas.a || test -f libopenblas.so"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -f libopenblas.a || test -f libopenblas.so"
+      ]
+    }
+  }
+}

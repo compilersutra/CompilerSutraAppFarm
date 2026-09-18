@@ -1,0 +1,21 @@
+{
+  "id": "editors/vim",
+  "type": "editors",
+  "name": "vim",
+  "display_name": "Vim",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "9.1.0",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "Vim editor",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

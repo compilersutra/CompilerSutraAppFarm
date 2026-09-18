@@ -1,0 +1,39 @@
+{
+  "version": "3.53",
+  "source": {
+    "url": "https://github.com/sqlite/sqlite.git",
+    "ref": "version-3.53.4"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "./sqlite3",
+      ":memory:",
+      "select sqlite_version();"
+    ],
+    "timeout_sec": 120
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 5,
+      "workload": [
+        "./sqlite3",
+        ":memory:",
+        "select 1;"
+      ]
+    }
+  }
+}

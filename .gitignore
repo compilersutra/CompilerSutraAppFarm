@@ -1,0 +1,25 @@
+# SPDX-License-Identifier: Apache-2.0
+__pycache__/
+*.py[cod]
+.venv/
+dist/
+build/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+cache/
+work/
+results/
+tools/src/
+tools/mongo-venv/
+tools/bin/
+tools/lib/
+tools/include/
+tools/share/
+tools/etc/
+.coverage
+*.xlsx
+*.archive
+*.extract/
+.DS_Store

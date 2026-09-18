@@ -1,0 +1,21 @@
+{
+  "id": "libraries/googletest",
+  "type": "libraries",
+  "name": "googletest",
+  "display_name": "GoogleTest",
+  "languages": [
+    "c++"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "1.15.2",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "GoogleTest / gmock",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

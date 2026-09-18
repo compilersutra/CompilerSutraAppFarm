@@ -1,0 +1,21 @@
+{
+  "id": "compression/xz",
+  "type": "compression",
+  "name": "xz",
+  "display_name": "XZ Utils",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "5.6.2",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "XZ / liblzma",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

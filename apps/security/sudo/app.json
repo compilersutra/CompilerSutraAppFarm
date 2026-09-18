@@ -1,0 +1,21 @@
+{
+  "id": "security/sudo",
+  "type": "security",
+  "name": "sudo",
+  "display_name": "Sudo",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "1.9.16p2",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "sudo",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

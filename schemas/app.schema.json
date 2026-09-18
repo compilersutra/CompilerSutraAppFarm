@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://compilersutra.com/schemas/appfarm/app.schema.json",
+  "title": "CompilerSutraAppFarm app identity",
+  "type": "object",
+  "required": ["id", "type", "name", "default_version"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Typed path id, e.g. database/mysql",
+      "pattern": "^[a-z0-9_]+/[a-z0-9_]+$"
+    },
+    "type": { "type": "string" },
+    "name": { "type": "string" },
+    "display_name": { "type": "string" },
+    "languages": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "build_systems": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "default_version": { "type": "string" },
+    "correctness": { "type": "string" },
+    "perf_backend": { "type": "string", "default": "cpu" },
+    "description": { "type": "string" },
+    "flags": {
+      "type": "object",
+      "description": "App-local cflags/cxxflags/ldflags (all versions).",
+      "properties": {
+        "cflags": { "type": "array", "items": { "type": "string" } },
+        "cxxflags": { "type": "array", "items": { "type": "string" } },
+        "ldflags": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

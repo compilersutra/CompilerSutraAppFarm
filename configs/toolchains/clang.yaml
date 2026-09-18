@@ -1,0 +1,15 @@
+# SPDX-License-Identifier: Apache-2.0
+# Edit this file to point at your Clang, or copy as custom-clang.yaml
+id: clang
+display_name: Clang
+description: System Clang (change cc/cxx or cc_path for a custom build)
+cc: clang
+cxx: clang++
+# cc_path: /usr/bin/clang
+# cxx_path: /usr/bin/clang++
+version_command: ["clang", "--version"]
+env: {}
+cflags: []
+cxxflags: []
+ldflags: []
+enabled: true

@@ -1,0 +1,43 @@
+{
+  "version": "9.0",
+  "source": {
+    "url": "https://github.com/FFmpeg/FFmpeg.git",
+    "ref": "n9.0.1"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": [
+      "--disable-doc",
+      "--disable-network",
+      "--disable-debug",
+      "--disable-ffplay",
+      "--disable-ffprobe"
+    ]
+  },
+  "test": {
+    "command": [
+      "./ffmpeg",
+      "-version"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "./ffmpeg",
+        "-version"
+      ]
+    }
+  }
+}

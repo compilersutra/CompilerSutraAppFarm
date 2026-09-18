@@ -1,0 +1,21 @@
+{
+  "id": "networking/unbound",
+  "type": "networking",
+  "name": "unbound",
+  "display_name": "Unbound",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "1.22.0",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "validating DNS resolver",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

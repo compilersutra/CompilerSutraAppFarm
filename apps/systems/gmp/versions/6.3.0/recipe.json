@@ -1,0 +1,40 @@
+{
+  "version": "6.3.0",
+  "source": {
+    "kind": "archive",
+    "url": "https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz",
+    "ref": ""
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -f .libs/libgmp.a || test -f libgmp.a"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -f .libs/libgmp.a || test -f libgmp.a"
+      ]
+    }
+  }
+}

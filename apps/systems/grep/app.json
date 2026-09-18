@@ -1,0 +1,21 @@
+{
+  "id": "systems/grep",
+  "type": "systems",
+  "name": "grep",
+  "display_name": "GNU grep",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "3.11",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "GNU grep",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

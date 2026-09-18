@@ -1,0 +1,21 @@
+{
+  "id": "networking/haproxy",
+  "type": "networking",
+  "name": "haproxy",
+  "display_name": "HAProxy",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "make"
+  ],
+  "default_version": "3.0.6",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "load balancer",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

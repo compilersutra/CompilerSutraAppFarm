@@ -1,0 +1,21 @@
+{
+  "id": "database/leveldb",
+  "type": "database",
+  "name": "leveldb",
+  "display_name": "LevelDB",
+  "languages": [
+    "c++"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "1.23",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "Google LevelDB",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

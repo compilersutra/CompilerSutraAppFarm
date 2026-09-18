@@ -1,0 +1,21 @@
+{
+  "id": "graphics/harfbuzz",
+  "type": "graphics",
+  "name": "harfbuzz",
+  "display_name": "HarfBuzz",
+  "languages": [
+    "c++"
+  ],
+  "build_systems": [
+    "meson"
+  ],
+  "default_version": "10.0.1",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "text shaping",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

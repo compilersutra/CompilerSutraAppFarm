@@ -1,0 +1,10 @@
+{
+  "version": "4.4",
+  "channel": "stable",
+  "released": "2021-04-08",
+  "security_support_ends": null,
+  "support_ended": null,
+  "status": "supported",
+  "source": "https://endoflife.date/ffmpeg",
+  "notes": "FFmpeg release / LTS line for vectorization & codegen stress."
+}

@@ -1,0 +1,21 @@
+{
+  "id": "compression/bzip2",
+  "type": "compression",
+  "name": "bzip2",
+  "display_name": "bzip2",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "make"
+  ],
+  "default_version": "1.0.8",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "bzip2 compressor",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "version": "1.4.76",
+  "source": {
+    "url": "https://github.com/lighttpd/lighttpd1.4.git",
+    "ref": "lighttpd-1.4.76"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "cmake",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "./build/build/lighttpd",
+      "-v"
+    ],
+    "timeout_sec": 1800
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "./build/build/lighttpd",
+        "-v"
+      ]
+    }
+  }
+}

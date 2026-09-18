@@ -1,0 +1,26 @@
+# syntax=docker/dockerfile:1
+FROM fedora:41
+
+RUN dnf install -y \
+      clang \
+      cmake \
+      gcc \
+      gcc-c++ \
+      git \
+      openssl-devel \
+      python3 \
+      python3-pip \
+      zlib-devel \
+    && dnf clean all
+
+WORKDIR /farm
+COPY pyproject.toml README.md /farm/
+COPY src /farm/src
+COPY configs /farm/configs
+COPY apps /farm/apps
+COPY schemas /farm/schemas
+
+RUN python3 -m pip install -e /farm
+
+ENTRYPOINT ["csfarm"]
+CMD ["--help"]

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://compilersutra.com/schemas/appfarm/lifecycle.schema.json",
+  "title": "Version lifecycle (EOL / support)",
+  "type": "object",
+  "required": ["version", "status"],
+  "properties": {
+    "version": { "type": "string" },
+    "channel": {
+      "type": "string",
+      "enum": ["stable", "rapid", "lts", "legacy", "other"]
+    },
+    "released": { "type": "string", "description": "ISO date or YYYY-MM" },
+    "security_support_ends": { "type": ["string", "null"] },
+    "support_ended": { "type": ["string", "null"] },
+    "status": {
+      "type": "string",
+      "enum": ["supported", "expired", "preview", "unknown"]
+    },
+    "atlas_only": { "type": "boolean", "default": false },
+    "source": { "type": "string" },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,21 @@
+{
+  "id": "libraries/double_conversion",
+  "type": "libraries",
+  "name": "double_conversion",
+  "display_name": "double-conversion",
+  "languages": [
+    "c++"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "3.3.0",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "binary-decimal conversion",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "networking/nghttp2",
+  "type": "networking",
+  "name": "nghttp2",
+  "display_name": "nghttp2",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "1.64.0",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "HTTP/2 C library",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

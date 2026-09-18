@@ -1,0 +1,21 @@
+{
+  "id": "tools/patch",
+  "type": "tools",
+  "name": "patch",
+  "display_name": "GNU patch",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "2.7.6",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "GNU patch",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

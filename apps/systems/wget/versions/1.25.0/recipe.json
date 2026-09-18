@@ -1,0 +1,37 @@
+{
+  "version": "1.25.0",
+  "source": {
+    "url": "https://git.savannah.gnu.org/git/wget.git",
+    "ref": "v1.25.0"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "./src/wget",
+      "--version"
+    ],
+    "timeout_sec": 1800
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "./src/wget",
+        "--version"
+      ]
+    }
+  }
+}

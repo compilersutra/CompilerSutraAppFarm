@@ -1,0 +1,38 @@
+{
+  "version": "4.10.0",
+  "source": {
+    "kind": "archive",
+    "url": "https://ftp.gnu.org/gnu/findutils/findutils-4.10.0.tar.xz",
+    "ref": ""
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "configure",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "./find/find",
+      "--version"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "./find/find",
+        "--version"
+      ]
+    }
+  }
+}

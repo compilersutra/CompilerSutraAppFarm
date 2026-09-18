@@ -1,0 +1,34 @@
+{
+  "version": "1.27.3",
+  "source": {
+    "url": "https://github.com/nginx/nginx.git",
+    "ref": "release-1.27.3"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "custom",
+    "commands": [
+      ["./auto/configure", "--with-http_ssl_module", "--without-http_rewrite_module"],
+      ["make", "-j4"]
+    ]
+  },
+  "test": {
+    "command": ["./objs/nginx", "-v"],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": ["./objs/nginx", "-v"]
+    }
+  }
+}

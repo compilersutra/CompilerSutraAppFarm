@@ -1,0 +1,39 @@
+{
+  "version": "10.0.1",
+  "source": {
+    "url": "https://github.com/harfbuzz/harfbuzz.git",
+    "ref": "10.0.1"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "meson",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -d build && find build -type f \\( -name \"*.a\" -o -name \"*.so\" -o -name \"*.so.*\" \\) | head -1 | grep -q ."
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -d build && find build -type f \\( -name \"*.a\" -o -name \"*.so\" -o -name \"*.so.*\" \\) | head -1 | grep -q ."
+      ]
+    }
+  }
+}

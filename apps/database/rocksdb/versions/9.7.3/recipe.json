@@ -1,0 +1,45 @@
+{
+  "version": "9.7.3",
+  "source": {
+    "url": "https://github.com/facebook/rocksdb.git",
+    "ref": "v9.7.3"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "cmake",
+    "args": [
+      "-DWITH_TESTS=OFF",
+      "-DWITH_BENCHMARK_TOOLS=OFF",
+      "-DWITH_TOOLS=OFF",
+      "-DWITH_GFLAGS=OFF",
+      "-DROCKSDB_BUILD_SHARED=OFF"
+    ]
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -f build/librocksdb.a || test -f build/librocksdb.so"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 1,
+      "repeat_runs": 3,
+      "workload": [
+        "sh",
+        "-c",
+        "test -f build/librocksdb.a || test -f build/librocksdb.so"
+      ]
+    }
+  }
+}

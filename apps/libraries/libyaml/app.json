@@ -1,0 +1,21 @@
+{
+  "id": "libraries/libyaml",
+  "type": "libraries",
+  "name": "libyaml",
+  "display_name": "libyaml",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "0.2.5",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "YAML C library",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

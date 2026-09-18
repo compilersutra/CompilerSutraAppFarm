@@ -1,0 +1,10 @@
+{
+  "version": "8.4",
+  "channel": "lts",
+  "released": "2024-04-10",
+  "security_support_ends": "2032-04-30",
+  "support_ended": null,
+  "status": "supported",
+  "source": "https://endoflife.date/mysql",
+  "notes": "Oracle MySQL LTS/Innovation lines."
+}

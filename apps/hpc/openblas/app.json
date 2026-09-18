@@ -1,0 +1,22 @@
+{
+  "id": "hpc/openblas",
+  "type": "hpc",
+  "name": "openblas",
+  "display_name": "OpenBLAS",
+  "languages": [
+    "c",
+    "fortran"
+  ],
+  "build_systems": [
+    "make"
+  ],
+  "default_version": "0.3.28",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "optimized BLAS",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

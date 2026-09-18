@@ -1,0 +1,21 @@
+{
+  "id": "systems/htop",
+  "type": "systems",
+  "name": "htop",
+  "display_name": "htop",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "configure"
+  ],
+  "default_version": "3.3.0",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "htop process viewer",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

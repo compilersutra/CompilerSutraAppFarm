@@ -1,0 +1,10 @@
+{
+  "version": "18",
+  "channel": "stable",
+  "released": "2025-09-25",
+  "security_support_ends": "2030-11-14",
+  "support_ended": null,
+  "status": "supported",
+  "source": "https://endoflife.date/postgresql",
+  "notes": "PostgreSQL major version (5-year support)."
+}

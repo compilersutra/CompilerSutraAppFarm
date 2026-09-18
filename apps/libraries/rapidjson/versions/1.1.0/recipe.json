@@ -1,0 +1,44 @@
+{
+  "version": "1.1.0",
+  "source": {
+    "url": "https://github.com/Tencent/rapidjson.git",
+    "ref": "v1.1.0"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "cmake",
+    "args": [
+      "-DRAPIDJSON_BUILD_TESTS=OFF",
+      "-DRAPIDJSON_BUILD_EXAMPLES=OFF",
+      "-DRAPIDJSON_BUILD_DOC=OFF",
+      "-DCMAKE_CXX_STANDARD=11"
+    ]
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -f build/CMakeCache.txt && test -d include/rapidjson"
+    ],
+    "timeout_sec": 30
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -f build/CMakeCache.txt && test -d include/rapidjson"
+      ]
+    }
+  }
+}

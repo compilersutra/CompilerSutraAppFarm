@@ -1,0 +1,42 @@
+{
+  "version": "3.11.0",
+  "source": {
+    "url": "https://aomedia.googlesource.com/aom",
+    "ref": "v3.11.0"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "cmake",
+    "args": [
+      "-DENABLE_TESTS=OFF",
+      "-DENABLE_DOCS=OFF"
+    ]
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -x build/aomenc || test -f build/libaom.a"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -x build/aomenc || test -f build/libaom.a"
+      ]
+    }
+  }
+}

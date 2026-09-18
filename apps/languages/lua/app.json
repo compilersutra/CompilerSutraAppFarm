@@ -1,0 +1,21 @@
+{
+  "id": "languages/lua",
+  "type": "languages",
+  "name": "lua",
+  "display_name": "Lua",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "make"
+  ],
+  "default_version": "5.4.7",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "Lua language",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

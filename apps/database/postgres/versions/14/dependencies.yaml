@@ -1,0 +1,143 @@
+version: 14
+summary: PostgreSQL 14 configure/meson source-build dependencies
+compiler_notes: Mostly C. Good clang/gcc matrix target.
+references:
+  - "https://endoflife.date/postgresql"
+  - "https://github.com/postgres/postgres"
+os:
+  linux:
+    common:
+      build:
+        - bison
+        - flex
+        - readline devel
+        - openssl devel
+        - icu devel
+        - libxml2
+      runtime:
+        - openssl
+        - readline
+        - icu
+        - libxml2
+    distros:
+      arch:
+        releases:
+          - rolling
+        packages:
+          build:
+            - base-devel
+            - git
+            - python
+            - openssl
+            - zlib
+            - bison
+            - flex
+            - readline
+            - libxml2
+            - icu
+          runtime:
+            - openssl
+            - zlib
+        install:
+          build: sudo pacman -Syu --needed base-devel git python openssl zlib
+          runtime: sudo pacman -S --needed openssl zlib
+      debian:
+        releases:
+          - 12
+          - 13
+        packages:
+          build:
+            - build-essential
+            - git
+            - python3
+            - libssl-dev
+            - zlib1g-dev
+            - bison
+            - flex
+            - libreadline-dev
+            - libxml2-dev
+            - libicu-dev
+          runtime:
+            - libssl3
+            - zlib1g
+        install:
+          build: "sudo apt-get update && sudo apt-get install -y build-essential git python3 libssl-dev zlib1g-dev"
+          runtime: "sudo apt-get update && sudo apt-get install -y libssl3 zlib1g"
+      fedora:
+        releases:
+          - 40
+          - 41
+          - 42
+        packages:
+          build:
+            - gcc
+            - gcc-c++
+            - git
+            - python3
+            - openssl-devel
+            - zlib-devel
+            - bison
+            - flex
+            - readline-devel
+            - libxml2-devel
+            - libicu-devel
+          runtime:
+            - openssl
+            - zlib
+        install:
+          build: sudo dnf install -y gcc gcc-c++ git python3 openssl-devel zlib-devel
+          runtime: sudo dnf install -y openssl zlib
+      rhel:
+        releases:
+          - 8
+          - 9
+        packages:
+          build:
+            - gcc
+            - gcc-c++
+            - git
+            - python3
+            - openssl-devel
+            - zlib-devel
+            - bison
+            - flex
+            - readline-devel
+            - libxml2-devel
+            - libicu-devel
+          runtime:
+            - openssl
+            - zlib
+        install:
+          build: sudo dnf install -y gcc gcc-c++ git python3 openssl-devel zlib-devel
+          runtime: sudo dnf install -y openssl zlib
+      ubuntu:
+        releases:
+          - 22.04
+          - 24.04
+        packages:
+          build:
+            - build-essential
+            - git
+            - python3
+            - libssl-dev
+            - zlib1g-dev
+            - bison
+            - flex
+            - libreadline-dev
+            - libxml2-dev
+            - libicu-dev
+          runtime:
+            - libssl3
+            - zlib1g
+        install:
+          build: "sudo apt-get update && sudo apt-get install -y build-essential git python3 libssl-dev zlib1g-dev"
+          runtime: "sudo apt-get update && sudo apt-get install -y libssl3 zlib1g"
+  macos:
+    notes: Secondary target; prefer Linux for the compiler farm.
+    install:
+      build: |
+        xcode-select --install || true
+        brew install python openssl
+      runtime: brew install openssl
+  windows:
+    notes: Use WSL2 (Ubuntu) and follow os.linux.distros.ubuntu.

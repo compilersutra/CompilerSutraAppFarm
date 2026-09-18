@@ -1,0 +1,21 @@
+{
+  "id": "languages/micropython",
+  "type": "languages",
+  "name": "micropython",
+  "display_name": "MicroPython",
+  "languages": [
+    "c"
+  ],
+  "build_systems": [
+    "make"
+  ],
+  "default_version": "1.24.1",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "MicroPython",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

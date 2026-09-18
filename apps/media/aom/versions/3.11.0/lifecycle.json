@@ -1,0 +1,10 @@
+{
+  "version": "3.11.0",
+  "channel": "stable",
+  "released": null,
+  "security_support_ends": null,
+  "support_ended": null,
+  "status": "unknown",
+  "source": "catalog-seed",
+  "notes": "Best-effort pin from app_catalog; refine via endoflife.date as needed."
+}

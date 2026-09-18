@@ -1,0 +1,21 @@
+{
+  "id": "libraries/glog",
+  "type": "libraries",
+  "name": "glog",
+  "display_name": "glog",
+  "languages": [
+    "c++"
+  ],
+  "build_systems": [
+    "cmake"
+  ],
+  "default_version": "0.7.1",
+  "correctness": "smoke",
+  "perf_backend": "cpu",
+  "description": "Google logging",
+  "flags": {
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  }
+}

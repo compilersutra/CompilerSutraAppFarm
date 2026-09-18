@@ -1,0 +1,39 @@
+{
+  "version": "1.5.0",
+  "source": {
+    "url": "https://code.videolan.org/videolan/dav1d.git",
+    "ref": "1.5.0"
+  },
+  "toolchain": {
+    "cc": "${CC}",
+    "cxx": "${CXX}",
+    "cflags": [],
+    "cxxflags": [],
+    "ldflags": []
+  },
+  "build": {
+    "system": "meson",
+    "args": []
+  },
+  "test": {
+    "command": [
+      "sh",
+      "-c",
+      "test -x build/tools/dav1d || test -f build/src/libdav1d.so || test -f build/src/libdav1d.a"
+    ],
+    "timeout_sec": 60
+  },
+  "perf": {
+    "csperf": {
+      "enabled": true,
+      "backend": "cpu",
+      "warmup_runs": 0,
+      "repeat_runs": 1,
+      "workload": [
+        "sh",
+        "-c",
+        "test -x build/tools/dav1d || test -f build/src/libdav1d.so || test -f build/src/libdav1d.a"
+      ]
+    }
+  }
+}

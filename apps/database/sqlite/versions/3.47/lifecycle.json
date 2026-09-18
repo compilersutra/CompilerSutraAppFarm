@@ -1,0 +1,10 @@
+{
+  "version": "3.47",
+  "channel": "stable",
+  "released": "2024-10-21",
+  "security_support_ends": null,
+  "support_ended": null,
+  "status": "supported",
+  "source": "https://endoflife.date/sqlite",
+  "notes": "Only SQLite 3 is supported upstream; folders are release-line pins for the farm."
+}

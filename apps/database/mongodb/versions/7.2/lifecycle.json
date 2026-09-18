@@ -1,0 +1,11 @@
+{
+  "version": "7.2",
+  "channel": "rapid",
+  "released": "2024-01",
+  "security_support_ends": null,
+  "support_ended": "2024-03-27",
+  "status": "expired",
+  "atlas_only": true,
+  "source": "https://endoflife.date/mongodb",
+  "notes": "Compiler-farm series folder; pin git ref in recipe.json."
+}
