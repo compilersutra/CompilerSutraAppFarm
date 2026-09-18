@@ -19,8 +19,10 @@ COPY src /farm/src
 COPY configs /farm/configs
 COPY apps /farm/apps
 COPY schemas /farm/schemas
+COPY docker/entrypoint.sh /usr/local/bin/csfarm-entrypoint.sh
+RUN chmod +x /usr/local/bin/csfarm-entrypoint.sh
 
 RUN python3 -m pip install -e /farm
 
-ENTRYPOINT ["csfarm"]
+ENTRYPOINT ["/usr/local/bin/csfarm-entrypoint.sh"]
 CMD ["--help"]

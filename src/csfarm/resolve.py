@@ -125,7 +125,7 @@ class FarmSession:
 
     def toolchain_details(self) -> dict[str, dict[str, object]]:
         details: dict[str, dict[str, object]] = {}
-        for tid in self.toolchains.keys():
+        for tid in self.toolchains:
             tc = self.toolchains.get(tid)
             details[tid] = {
                 "display_name": tc.display_name,

@@ -3,6 +3,8 @@
 
 # CompilerSutra AppFarm
 
+[![CI](https://github.com/compilersutra/CompilerSutraAppFarm/actions/workflows/ci.yml/badge.svg)](https://github.com/compilersutra/CompilerSutraAppFarm/actions/workflows/ci.yml)
+
 Typed open-source **application farm** for compiler testing: pick an app and
 version, compose toolchain flags, then **fetch → build → test → measure**.
 
@@ -11,7 +13,7 @@ CLI: **`csfarm`**. Runtime timing hooks into
 otherwise AppFarm records a timed workload JSON itself.
 
 **Status: v0.1.0 alpha** — usable on a Linux host with clang/gcc. See
-[Status](#status) for what is and is not claimed.
+[Status](#status) and [`docs/VISION.md`](docs/VISION.md) for what is and is not claimed.
 
 ## Quick start
 
@@ -119,12 +121,12 @@ Image matrix (amd64) — see [`docker/README.md`](docker/README.md):
 ```bash
 ./scripts/docker_matrix.sh build
 ./scripts/docker_matrix.sh run ubuntu registries
+./scripts/docker_matrix.sh run ubuntu run database/sqlite@3.53 --flags baseline
 ```
 
-**Alpha caveat:** images install and run the CLI; full in-container `csfarm run`
-against a host-mounted tree can hit git `safe.directory` ownership issues.
-Host runs are the supported path for the 0.1.0 smoke matrix. Arm64 cross-build
-needs a working buildx+QEMU (or a native ARM host).
+Images use `docker/entrypoint.sh` so host-mounted `/farm` gets `git safe.directory`
+before `csfarm`. Host batch runs remain the primary path for the full smoke
+matrix. Arm64 cross-build needs buildx+QEMU (or a native ARM host).
 
 ## Perf / csperf
 

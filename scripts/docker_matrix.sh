@@ -143,7 +143,7 @@ case "$cmd" in
       fi
       echo "======== $name ($cmd) @ ${PLATFORM:-host} ========"
       # shellcheck disable=SC2046
-      docker run --rm $(platform_flags) -v "$ROOT:/farm:rw" -w /farm --entrypoint csfarm "$run_image" "$cmd"
+      docker run --rm $(platform_flags) -v "$ROOT:/farm:rw" -w /farm "$run_image" "$cmd"
     done
     ;;
   plan)
@@ -163,7 +163,7 @@ case "$cmd" in
       fi
       echo "======== $name plan $target ========"
       # shellcheck disable=SC2046
-      docker run --rm $(platform_flags) -v "$ROOT:/farm:rw" -w /farm --entrypoint csfarm "$run_image" plan "$target" "$@"
+      docker run --rm $(platform_flags) -v "$ROOT:/farm:rw" -w /farm "$run_image" plan "$target" "$@"
     done
     ;;
   run)
@@ -192,7 +192,8 @@ case "$cmd" in
       done
     fi
     # shellcheck disable=SC2046
-    docker run --rm $(platform_flags) -v "$ROOT:/farm:rw" -w /farm --entrypoint csfarm "$run_image" "$@"
+    # Use image ENTRYPOINT (entrypoint.sh → git safe.directory, then csfarm)
+    docker run --rm $(platform_flags) -v "$ROOT:/farm:rw" -w /farm "$run_image" "$@"
     ;;
   ""|-h|--help|help)
     usage

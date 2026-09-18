@@ -16,12 +16,14 @@ This project uses [Semantic Versioning](https://semver.org/).
 - `scripts/batch_run.py` green/red batch report
 - Docker distro images: Ubuntu, Debian, Fedora, Arch (`scripts/docker_matrix.sh`)
 - Unit tests for catalog ordering, overlays, and toolchain config
-- Docs: README, ARCHITECTURE, RELEASE, CONTRIBUTING
+- Docs: README, ARCHITECTURE, RELEASE, VISION, CONTRIBUTING
+- Docker entrypoint marks host-mounted `/farm` as git `safe.directory`
 
 ### Known limitations (alpha)
 
 - Many recipes use **smoke** tests (artifact/`--version`), not full upstream suites
-- Host batch is the validated path; Docker full-farm runs are incomplete
+- Host batch is the validated path; Docker sample `csfarm run` works with
+  the entrypoint; full in-image farm rebuilds are still incomplete
 - `database/mongodb` recipe builds mongo-c-driver, not full `mongod`
 - Arm64 image cross-build requires extra buildx/QEMU setup on amd64 hosts
 

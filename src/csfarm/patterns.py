@@ -21,7 +21,7 @@ from __future__ import annotations
 
 from collections.abc import Callable, Iterable, Iterator
 from dataclasses import dataclass, field, replace
-from enum import Enum
+from enum import StrEnum
 from typing import Generic, TypeVar
 
 T = TypeVar("T")
@@ -180,7 +180,7 @@ class CsperfOptions:
 # ---------------------------------------------------------------------------
 
 
-class OverlayKind(str, Enum):
+class OverlayKind(StrEnum):
     """Specificity order (low → high). Mirrors LLVM default < flag < attr."""
 
     ALL = "all"  # generic for every app
@@ -226,10 +226,7 @@ class OverlayComposer:
         applied: list[FlagOverlay] = []
         acc = FlagOptions()
         for layer in self.layers:
-            if layer.replace_base:
-                acc = layer.flags
-            else:
-                acc = acc.extended(layer.flags)
+            acc = layer.flags if layer.replace_base else acc.extended(layer.flags)
             applied.append(layer)
         return acc, applied
 
@@ -239,7 +236,7 @@ class OverlayComposer:
 # ---------------------------------------------------------------------------
 
 
-class StageStatus(str, Enum):
+class StageStatus(StrEnum):
     PENDING = "pending"
     SKIPPED = "skipped"
     OK = "ok"

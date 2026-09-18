@@ -22,24 +22,19 @@ cd ~/projects/CompilerSutraAppFarm
 Host path for plan output: `results/plan/.../plan.json`  
 (inside the container the tree is mounted at `/farm`).
 
-## App `run` inside Docker (alpha)
+## App `run` inside Docker
 
-`docker run` mounts the host repo at `/farm`. If `cache/` was created on the
-host, git may refuse fetch with `safe.directory` / ownership errors.
-
-Workarounds until this is fixed in the entrypoint:
+`docker run` mounts the host repo at `/farm`. Images use
+[`entrypoint.sh`](entrypoint.sh) to mark `/farm` (and `*`) as a git
+`safe.directory` before invoking `csfarm`, so host-owned `cache/` works.
 
 ```bash
-# clean cache for that app on the host, then:
 ./scripts/docker_matrix.sh run ubuntu run database/sqlite@3.53 --flags baseline
-
-# or, once, inside a throwaway shell:
-docker run --rm -v "$PWD:/farm:rw" -w /farm --entrypoint bash csfarm/ubuntu-clang:local \
-  -lc 'git config --global --add safe.directory "*"; csfarm run database/sqlite@3.53 --flags baseline'
 ```
 
-For **v0.1.0**, prefer host `csfarm run` / `scripts/batch_run.py` for the farm
-matrix. Use Docker to validate the **CLI package** across distros.
+For the full catalog smoke matrix, prefer host `csfarm run` /
+`scripts/batch_run.py`. Use Docker to validate the CLI and sample apps across
+distros.
 
 ## Arm64
 
@@ -62,4 +57,5 @@ CSFARM_PLATFORM=linux/arm64 ./scripts/docker_matrix.sh build-platform
 | `docker/Dockerfile.debian` | Debian 12 |
 | `docker/Dockerfile.fedora` | Fedora 41 |
 | `docker/Dockerfile.arch` | Arch rolling |
+| `docker/entrypoint.sh` | git safe.directory, then `csfarm` |
 | `scripts/docker_matrix.sh` | Build / run matrix |

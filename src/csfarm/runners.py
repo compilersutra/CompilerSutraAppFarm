@@ -124,7 +124,7 @@ def _ensure_configure(build_root: Path, env: dict[str, str], log: Path) -> str |
     # GNU packages from git often need a tarball version stamp
     tarball_version = build_root / ".tarball-version"
     if not tarball_version.is_file():
-        for marker in (build_root / "NEWS", build_root / "README"):
+        for _marker in (build_root / "NEWS", build_root / "README"):
             pass
         # best-effort: leave for recipe; stub git-version-gen if missing
     git_version_gen = build_root / "build-aux" / "git-version-gen"

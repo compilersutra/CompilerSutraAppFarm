@@ -7,6 +7,8 @@ from typing import Any
 import yaml
 from pydantic import BaseModel, Field, model_validator
 
+from csfarm.patterns import FlagOptions
+
 
 class FlagSet(BaseModel):
     """Reusable cflags / cxxflags / ldflags bundle."""
@@ -277,10 +279,6 @@ def load_toolchain(path: Path) -> Toolchain:
     return Toolchain.model_validate(load_yaml(path))
 
 
-# Keep merge helpers importable for scripts; prefer FarmSession.plan()
-from csfarm.patterns import FlagOptions as _FlagOptions  # noqa: F401
-
-
 def merge_compiler_flags(
     defaults: CompilerConfig,
     toolchain: Toolchain,
@@ -301,8 +299,8 @@ def merge_compiler_flags(
     """
     from csfarm.patterns import FlagOverlay, OverlayComposer, OverlayKind
 
-    def _fo(fs: FlagSet) -> _FlagOptions:
-        return _FlagOptions.from_lists(fs.cflags, fs.cxxflags, fs.ldflags)
+    def _fo(fs: FlagSet) -> FlagOptions:
+        return FlagOptions.from_lists(fs.cflags, fs.cxxflags, fs.ldflags)
 
     composer = OverlayComposer()
     composer.add(FlagOverlay(OverlayKind.ALL, "all", _fo(defaults.all)))
@@ -330,7 +328,7 @@ def merge_compiler_flags(
         FlagOverlay(
             OverlayKind.RECIPE,
             "recipe",
-            _FlagOptions.from_lists(
+            FlagOptions.from_lists(
                 recipe.toolchain.cflags, recipe.toolchain.cxxflags, recipe.toolchain.ldflags
             ),
         )
@@ -339,7 +337,7 @@ def merge_compiler_flags(
         FlagOverlay(
             OverlayKind.CLI,
             "cli",
-            _FlagOptions.from_lists(extra_cflags, extra_cxxflags, extra_ldflags),
+            FlagOptions.from_lists(extra_cflags, extra_cxxflags, extra_ldflags),
         )
     )
     merged, applied = composer.compose()

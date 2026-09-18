@@ -6,7 +6,6 @@ from pathlib import Path
 from csfarm.patterns import OverlayKind, Registry
 from csfarm.resolve import FarmSession
 
-
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -23,8 +22,8 @@ def test_catalog_linguistic_order() -> None:
 def test_registries_linguistic() -> None:
     session = FarmSession(ROOT, ROOT / "configs" / "default.yaml")
     assert session.toolchains.keys() == sorted(session.toolchains.keys(), key=str.casefold)
-    assert "clang" in session.toolchains.keys()
-    assert "sanitize" in session.presets.keys()
+    assert "clang" in session.toolchains
+    assert "sanitize" in session.presets
     assert session.apps.keys() == sorted(session.apps.keys(), key=str.casefold)
     assert session.apps.contains("database/sqlite")
 
@@ -67,8 +66,8 @@ def test_enabled_toolchains_from_config() -> None:
     assert session.defaults.toolchains.enabled == ["clang", "gcc"]
     assert session.enabled_toolchains() == ["clang", "gcc"]
     assert session.defaults.toolchains.default == "clang"
-    assert "aocc" in session.toolchains.keys()
-    assert "custom-clang" in session.toolchains.keys()
+    assert "aocc" in session.toolchains
+    assert "custom-clang" in session.toolchains
     details = session.toolchain_details()
     assert details["clang"]["cc"] == "clang"
     assert details["custom-clang"]["in_enabled_list"] is False
@@ -79,7 +78,7 @@ def test_registry_duplicate() -> None:
     reg.register("a", 1)
     try:
         reg.register("a", 2)
-        assert False, "expected KeyError"
+        raise AssertionError("expected KeyError")
     except KeyError:
         pass
     reg.register("a", 2, overwrite=True)
