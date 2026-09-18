@@ -23,8 +23,9 @@
   },
   "test": {
     "command": [
-      "./zstd",
-      "--version"
+      "sh",
+      "-c",
+      "printf 'csfarm-zstd' | ./zstd | ./zstd -d | grep -qx 'csfarm-zstd'"
     ],
     "timeout_sec": 120
   },
@@ -35,8 +36,9 @@
       "warmup_runs": 1,
       "repeat_runs": 3,
       "workload": [
-        "./zstd",
-        "--version"
+        "sh",
+        "-c",
+        "printf 'csfarm-zstd' | ./zstd | ./zstd -d >/dev/null"
       ]
     }
   }

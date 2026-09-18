@@ -17,10 +17,11 @@
   },
   "test": {
     "command": [
-      "./minigzip",
-      "-h"
+      "sh",
+      "-c",
+      "printf 'csfarm-zlib' | ./minigzip | ./minigzip -d | grep -qx 'csfarm-zlib'"
     ],
-    "timeout_sec": 1800
+    "timeout_sec": 120
   },
   "perf": {
     "csperf": {
@@ -29,8 +30,9 @@
       "warmup_runs": 1,
       "repeat_runs": 3,
       "workload": [
-        "./minigzip",
-        "-h"
+        "sh",
+        "-c",
+        "printf 'csfarm-zlib' | ./minigzip | ./minigzip -d >/dev/null"
       ]
     }
   }

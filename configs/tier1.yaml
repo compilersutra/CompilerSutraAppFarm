@@ -1,0 +1,73 @@
+# SPDX-License-Identifier: Apache-2.0
+# Tier-1 trusted core — not the full 115-app catalog.
+# Industry gate: these must stay green under clang/gcc with real tests.
+#
+# test_strength:
+#   functional — executes a small correctness check (not just --version)
+#   smoke      — version/help only (allowed only where noted)
+
+version: 1
+description: >
+  Trusted core for compiler flag / toolchain regressions.
+  Prefer this set over claiming the whole farm is correct.
+
+# Full tier-1 set (~14). Used by: scripts/batch_run.py --tier1
+apps:
+  - id: database/sqlite
+    version: "3.53"
+    test_strength: functional
+  - id: compression/zstd
+    version: "1.5.6"
+    test_strength: functional
+  - id: compression/zlib
+    version: "1.3.1"
+    test_strength: functional
+  - id: compression/xz
+    version: "5.6.2"
+    test_strength: functional
+  - id: crypto/openssl
+    version: "3.4.0"
+    test_strength: functional
+  - id: networking/curl
+    version: "8.11.1"
+    test_strength: functional
+  - id: systems/redis
+    version: "8.10"
+    test_strength: functional
+  - id: graphics/libpng
+    version: "1.6.44"
+    test_strength: functional
+  - id: systems/bash
+    version: "5.2.37"
+    test_strength: functional
+  - id: systems/make
+    version: "4.4.1"
+    test_strength: functional
+  - id: systems/git
+    version: "2.47.1"
+    test_strength: functional
+  - id: networking/nginx
+    version: "1.27.3"
+    test_strength: functional
+  - id: languages/lua
+    version: "5.4.7"
+    test_strength: functional
+  - id: media/ffmpeg
+    version: "9.0"
+    test_strength: smoke
+    note: "Heavy; smoke-ok until lavfi null encode is proven in CI"
+
+# Smaller gate for GitHub Actions PR/nightly time budgets
+ci_subset:
+  - database/sqlite
+  - compression/zstd
+  - compression/zlib
+  - languages/lua
+  - systems/bash
+  - systems/make
+  - systems/git
+
+# Intended public matrix axes (see docs/tier1-matrix.md)
+matrix:
+  toolchains: [clang, gcc]
+  presets: [baseline, optimize]

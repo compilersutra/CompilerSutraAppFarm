@@ -19,8 +19,12 @@
     ]
   },
   "test": {
-    "command": ["./apps/openssl", "version"],
-    "timeout_sec": 60,
+    "command": [
+      "sh",
+      "-c",
+      "./apps/openssl version && printf 'csfarm' | ./apps/openssl enc -aes-256-cbc -pass pass:csfarm -out /tmp/csfarm-ossl.enc && ./apps/openssl enc -d -aes-256-cbc -pass pass:csfarm -in /tmp/csfarm-ossl.enc | grep -qx csfarm"
+    ],
+    "timeout_sec": 120,
     "env": {"LD_LIBRARY_PATH": "."}
   },
   "perf": {
@@ -29,7 +33,11 @@
       "backend": "cpu",
       "warmup_runs": 1,
       "repeat_runs": 3,
-      "workload": ["./apps/openssl", "version"]
+      "workload": [
+        "sh",
+        "-c",
+        "printf 'csfarm' | ./apps/openssl enc -aes-256-cbc -pass pass:csfarm >/dev/null"
+      ]
     }
   }
 }

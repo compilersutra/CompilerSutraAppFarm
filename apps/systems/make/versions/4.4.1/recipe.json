@@ -18,8 +18,9 @@
   },
   "test": {
     "command": [
-      "./make",
-      "--version"
+      "sh",
+      "-c",
+      "printf 'all:\\n\\t@echo ok\\n' > /tmp/csfarm-make.mk && ./make -f /tmp/csfarm-make.mk | grep -qx ok"
     ],
     "timeout_sec": 60
   },
@@ -30,8 +31,9 @@
       "warmup_runs": 0,
       "repeat_runs": 1,
       "workload": [
-        "./make",
-        "--version"
+        "sh",
+        "-c",
+        "printf 'all:\\n\\t@echo ok\\n' > /tmp/csfarm-make.mk && ./make -f /tmp/csfarm-make.mk >/dev/null"
       ]
     }
   }

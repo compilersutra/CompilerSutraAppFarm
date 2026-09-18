@@ -5,7 +5,16 @@ All notable changes to CompilerSutra AppFarm are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This project uses [Semantic Versioning](https://semver.org/).
 
-## [0.1.0] — 2026-09-15
+## [Unreleased]
+
+### Added
+
+- Tier-1 trusted core: `configs/tier1.yaml`, `batch_run.py --tier1` / `--ci`
+- Functional tests for most tier-1 recipes (round-trip / eval / config check)
+- `.github/workflows/tier1.yml` (CI subset + nightly full)
+- `docs/tier1-matrix.md` + `scripts/tier1_matrix.py`
+
+## [0.1.0] — 2026-09-18
 
 ### Added
 

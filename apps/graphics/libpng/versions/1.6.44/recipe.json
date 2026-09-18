@@ -19,9 +19,9 @@
     "command": [
       "sh",
       "-c",
-      "test -f .libs/libpng16.a || test -f .libs/libpng16.so || test -f libpng.a"
+      "(test -x ./pngtest && ./pngtest pngtest.png) || (test -x .libs/lt-pngtest && .libs/lt-pngtest pngtest.png) || (test -f .libs/libpng16.a || test -f .libs/libpng16.so || test -f libpng.a)"
     ],
-    "timeout_sec": 60
+    "timeout_sec": 120
   },
   "perf": {
     "csperf": {

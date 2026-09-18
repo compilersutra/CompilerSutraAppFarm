@@ -19,7 +19,11 @@
     ]
   },
   "test": {
-    "command": ["./objs/nginx", "-v"],
+    "command": [
+      "sh",
+      "-c",
+      "printf 'events{}\\nhttp{server{listen 127.0.0.1:18080;}}\\n' > /tmp/csfarm-nginx.conf && ./objs/nginx -t -c /tmp/csfarm-nginx.conf"
+    ],
     "timeout_sec": 60
   },
   "perf": {
@@ -28,7 +32,7 @@
       "backend": "cpu",
       "warmup_runs": 0,
       "repeat_runs": 1,
-      "workload": ["./objs/nginx", "-v"]
+      "workload": ["./objs/nginx", "-V"]
     }
   }
 }

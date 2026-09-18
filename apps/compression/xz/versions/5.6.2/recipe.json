@@ -29,10 +29,11 @@
   },
   "test": {
     "command": [
-      "./src/xz/xz",
-      "--version"
+      "sh",
+      "-c",
+      "printf 'csfarm-xz' | ./src/xz/xz | ./src/xz/xz -d | grep -qx 'csfarm-xz'"
     ],
-    "timeout_sec": 1800
+    "timeout_sec": 120
   },
   "perf": {
     "csperf": {
@@ -41,8 +42,9 @@
       "warmup_runs": 1,
       "repeat_runs": 3,
       "workload": [
-        "./src/xz/xz",
-        "--version"
+        "sh",
+        "-c",
+        "printf 'csfarm-xz' | ./src/xz/xz | ./src/xz/xz -d >/dev/null"
       ]
     }
   }

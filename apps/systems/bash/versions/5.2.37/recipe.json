@@ -19,7 +19,8 @@
   "test": {
     "command": [
       "./bash",
-      "--version"
+      "-c",
+      "test $((2+2)) -eq 4 && echo ok | grep -qx ok"
     ],
     "timeout_sec": 60
   },
@@ -29,10 +30,7 @@
       "backend": "cpu",
       "warmup_runs": 0,
       "repeat_runs": 1,
-      "workload": [
-        "./bash",
-        "--version"
-      ]
+      "workload": ["./bash", "-c", "echo ok"]
     }
   }
 }

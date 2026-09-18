@@ -1,0 +1,104 @@
+# SPDX-License-Identifier: Apache-2.0
+name: tier1
+
+on:
+  schedule:
+    # Nightly 06:00 UTC
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "configs/tier1.yaml"
+      - "apps/compression/**"
+      - "apps/crypto/**"
+      - "apps/database/sqlite/**"
+      - "apps/graphics/libpng/**"
+      - "apps/languages/lua/**"
+      - "apps/media/ffmpeg/**"
+      - "apps/networking/**"
+      - "apps/systems/**"
+      - "scripts/batch_run.py"
+      - ".github/workflows/tier1.yml"
+
+jobs:
+  tier1-ci-subset:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: System packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential clang cmake git \
+            autoconf automake libtool pkg-config \
+            zlib1g-dev libssl-dev
+
+      - name: Install csfarm
+        run: |
+          python -m pip install -U pip
+          pip install -e '.[dev]'
+
+      - name: Tier-1 CI subset (clang × baseline)
+        run: |
+          python3 scripts/batch_run.py --tier1 --ci \
+            --toolchain clang --flags baseline --skip-perf \
+            --report results/batch/tier1-ci-clang-baseline.json
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tier1-ci-report
+          path: results/batch/tier1-ci-clang-baseline.json
+
+  tier1-full-nightly:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: System packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential clang gcc g++ cmake git \
+            autoconf automake libtool pkg-config \
+            zlib1g-dev libssl-dev yasm nasm
+
+      - name: Install csfarm
+        run: |
+          python -m pip install -U pip
+          pip install -e '.[dev]'
+
+      - name: Full tier-1 (clang × baseline)
+        run: |
+          python3 scripts/batch_run.py --tier1 \
+            --toolchain clang --flags baseline --skip-perf \
+            --report results/batch/tier1-clang-baseline.json
+
+      - name: Render matrix
+        if: always()
+        run: |
+          python3 scripts/tier1_matrix.py \
+            --report results/batch/tier1-clang-baseline.json \
+            --out docs/tier1-matrix.md
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tier1-full-report
+          path: |
+            results/batch/tier1-clang-baseline.json
+            docs/tier1-matrix.md

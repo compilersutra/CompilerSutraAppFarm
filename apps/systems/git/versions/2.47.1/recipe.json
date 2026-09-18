@@ -21,8 +21,9 @@
   },
   "test": {
     "command": [
-      "./git",
-      "--version"
+      "sh",
+      "-c",
+      "d=/tmp/csfarm-git-$$; rm -rf \"$d\" && ./git init -q \"$d\" && ./git -C \"$d\" status >/dev/null && rm -rf \"$d\""
     ],
     "timeout_sec": 60
   },
@@ -32,10 +33,7 @@
       "backend": "cpu",
       "warmup_runs": 0,
       "repeat_runs": 1,
-      "workload": [
-        "./git",
-        "--version"
-      ]
+      "workload": ["./git", "--version"]
     }
   }
 }

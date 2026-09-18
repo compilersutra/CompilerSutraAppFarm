@@ -17,7 +17,11 @@
     "commands": [["make", "-j4", "linux"]]
   },
   "test": {
-    "command": ["./src/lua", "-v"],
+    "command": [
+      "./src/lua",
+      "-e",
+      "assert(1+1==2); assert(('x'):rep(3)=='xxx'); print('ok')"
+    ],
     "timeout_sec": 30
   },
   "perf": {
@@ -26,7 +30,7 @@
       "backend": "cpu",
       "warmup_runs": 0,
       "repeat_runs": 1,
-      "workload": ["./src/lua", "-v"]
+      "workload": ["./src/lua", "-e", "for i=1,10000 do end"]
     }
   }
 }

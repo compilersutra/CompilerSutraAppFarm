@@ -34,7 +34,7 @@ matrices. AppFarm makes the same idea open and scriptable.
 ## Success bar (near term)
 
 1. CI green on every PR  
-2. Tier-1 apps with real tests under clang/gcc  
+2. Tier-1 apps with real tests under clang/gcc — see [`tier1.yaml`](../configs/tier1.yaml)  
 3. Results always tagged with runner / ISA / emulated  
 4. Perf claims only from documented methodology on real hardware  
 

@@ -16,7 +16,11 @@
     "args": ["--with-openssl", "--without-libpsl"]
   },
   "test": {
-    "command": ["./src/curl", "--version"],
+    "command": [
+      "sh",
+      "-c",
+      "./src/curl --version | grep -qi curl && ./src/curl -s -o /tmp/csfarm-curl.out file:///etc/hosts && test -s /tmp/csfarm-curl.out"
+    ],
     "timeout_sec": 60
   },
   "perf": {
@@ -25,7 +29,7 @@
       "backend": "cpu",
       "warmup_runs": 0,
       "repeat_runs": 1,
-      "workload": ["./src/curl", "--version"]
+      "workload": ["./src/curl", "-s", "-o", "/dev/null", "file:///etc/hosts"]
     }
   }
 }

@@ -83,3 +83,21 @@ def test_registry_duplicate() -> None:
         pass
     reg.register("a", 2, overwrite=True)
     assert reg.get("a") == 2
+
+
+def test_tier1_config_resolves() -> None:
+    import yaml
+
+    data = yaml.safe_load((ROOT / "configs" / "tier1.yaml").read_text(encoding="utf-8"))
+    assert data["version"] == 1
+    apps = data["apps"]
+    assert 12 <= len(apps) <= 20
+    session = FarmSession(ROOT, ROOT / "configs" / "default.yaml")
+    ids = {a["id"] for a in apps}
+    for a in apps:
+        assert session.apps.contains(a["id"])
+        ref = session.catalog.get(a["id"])
+        assert a["version"] in ref.list_versions()
+    subset = set(data["ci_subset"])
+    assert subset <= ids
+    assert "database/sqlite" in subset

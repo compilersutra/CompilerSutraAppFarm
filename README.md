@@ -36,6 +36,15 @@ python3 scripts/batch_run.py --flags baseline
 python3 scripts/batch_run.py --continue --flags baseline
 ```
 
+**Tier-1** (trusted core — see [`configs/tier1.yaml`](configs/tier1.yaml),
+matrix: [`docs/tier1-matrix.md`](docs/tier1-matrix.md)):
+
+```bash
+python3 scripts/batch_run.py --tier1 --flags baseline --skip-perf
+# faster CI subset:
+python3 scripts/batch_run.py --tier1 --ci --flags baseline --skip-perf
+```
+
 Optional local tools (nasm, etc.) live under `tools/` when you build them;
 `csfarm` prepends `tools/bin` automatically when present.
 
@@ -139,6 +148,7 @@ matrix. Arm64 cross-build needs buildx+QEMU (or a native ARM host).
 | Claim | v0.1.0 |
 |-------|--------|
 | Catalog size | **115** apps |
+| Tier-1 set | **14** apps in [`configs/tier1.yaml`](configs/tier1.yaml) |
 | Host smoke (`clang` + `baseline`) | Batch report green on a developed Linux host |
 | “Full upstream test suites for every app” | **No** — many recipes use build/smoke checks |
 | Docker: build tool images | **Yes** (amd64) |

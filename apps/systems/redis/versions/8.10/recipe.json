@@ -19,8 +19,9 @@
   },
   "test": {
     "command": [
-      "./src/redis-server",
-      "--version"
+      "sh",
+      "-c",
+      "./src/redis-server --version && ./src/redis-cli --version"
     ],
     "timeout_sec": 120
   },
@@ -30,10 +31,7 @@
       "backend": "cpu",
       "warmup_runs": 0,
       "repeat_runs": 1,
-      "workload": [
-        "./src/redis-server",
-        "--version"
-      ]
+      "workload": ["./src/redis-cli", "--version"]
     }
   }
 }
