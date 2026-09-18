@@ -1,0 +1,27 @@
+# SPDX-License-Identifier: Apache-2.0
+name: docker-matrix
+
+on:
+  schedule:
+    - cron: "30 6 * * 1" # weekly Monday 06:30 UTC
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "docker/**"
+      - "scripts/docker_matrix.sh"
+      - ".github/workflows/docker-matrix.yml"
+      - "pyproject.toml"
+      - "src/**"
+
+jobs:
+  ubuntu-registries:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Ubuntu image
+        run: ./scripts/docker_matrix.sh build ubuntu
+
+      - name: Registries smoke
+        run: ./scripts/docker_matrix.sh run ubuntu registries

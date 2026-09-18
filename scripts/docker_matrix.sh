@@ -52,7 +52,7 @@ IMAGES=(
 usage() {
   cat <<'EOF'
 Usage:
-  ./scripts/docker_matrix.sh build                 # build all distro images (host arch)
+  ./scripts/docker_matrix.sh build [distro]        # all, or one of ubuntu|debian|fedora|arch
   ./scripts/docker_matrix.sh build-platform        # rebuild using CSFARM_PLATFORM (e.g. arm64)
   ./scripts/docker_matrix.sh registries
   ./scripts/docker_matrix.sh plan <target> [args]
@@ -100,8 +100,12 @@ shift || true
 
 case "$cmd" in
   build)
+    only="${1:-}"
     for row in "${IMAGES[@]}"; do
       IFS='|' read -r name dockerfile image <<<"$row"
+      if [[ -n "$only" && "$name" != "$only" ]]; then
+        continue
+      fi
       echo "======== build $image ========"
       docker_build -f "$ROOT/$dockerfile" -t "$image" "$ROOT"
     done

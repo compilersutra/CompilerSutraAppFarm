@@ -30,6 +30,7 @@ from csfarm.patterns import (
     StageStatus,
     default_plan_pipeline,
 )
+from csfarm.runner_meta import resolve_runner_meta
 from csfarm.runners import default_run_pipeline
 
 
@@ -53,6 +54,9 @@ class ResolvedCompileJob:
     result_dir: str
     mode: str = "plan"
     ok: bool = True
+    runner: str = "host"
+    isa: str = "x86_64"
+    emulated: bool = False
 
     def as_dict(self) -> dict[str, object]:
         return {
@@ -62,6 +66,9 @@ class ResolvedCompileJob:
             "version": self.version,
             "toolchain_id": self.toolchain_id,
             "preset": self.preset,
+            "runner": self.runner,
+            "isa": self.isa,
+            "emulated": self.emulated,
             "compiler": {
                 "cc": self.compiler.cc,
                 "cxx": self.compiler.cxx,
@@ -297,11 +304,15 @@ class FarmSession:
         extra_cflags: list[str] | None = None,
         extra_cxxflags: list[str] | None = None,
         pipeline: Pipeline | None = None,
+        runner: str | None = None,
+        isa: str | None = None,
+        emulated: bool | None = None,
     ) -> ResolvedCompileJob:
         app, ver = self.catalog.parse_target(target)
         version, recipe = app.load_recipe(ver)
         tid = toolchain_id or self.defaults.toolchains.default
         toolchain = self.toolchains.get(tid)
+        run_meta = resolve_runner_meta(runner=runner, isa=isa, emulated=emulated)
 
         compiler, overlays = self.compose_flags(
             app=app,
@@ -360,6 +371,9 @@ class FarmSession:
             pipeline_results=pipe_results,
             csperf_command=list(cmd) if isinstance(cmd, list) else None,
             result_dir=result_dir,
+            runner=run_meta[0],
+            isa=run_meta[1],
+            emulated=run_meta[2],
         )
 
         # Persist plan artifacts (plan does NOT run csperf — no csperf.json yet)
@@ -404,6 +418,9 @@ class FarmSession:
         skip_test: bool = False,
         skip_perf: bool = False,
         pipeline: Pipeline | None = None,
+        runner: str | None = None,
+        isa: str | None = None,
+        emulated: bool | None = None,
     ) -> ResolvedCompileJob:
         """Fetch → build → test → timed workload (real execution pipeline)."""
         app, ver = self.catalog.parse_target(target)
@@ -411,6 +428,7 @@ class FarmSession:
         tid = toolchain_id or self.defaults.toolchains.default
         toolchain = self.toolchains.get(tid)
         preset = preset_name or "default"
+        run_meta = resolve_runner_meta(runner=runner, isa=isa, emulated=emulated)
 
         compiler, overlays = self.compose_flags(
             app=app,
@@ -467,6 +485,9 @@ class FarmSession:
                 "build_dir": str(build_dir),
                 "skip_test": skip_test,
                 "skip_perf": skip_perf,
+                "runner": run_meta[0],
+                "isa": run_meta[1],
+                "emulated": run_meta[2],
             }
         )
 
@@ -501,6 +522,9 @@ class FarmSession:
             result_dir=str(result_dir),
             mode="run",
             ok=ok,
+            runner=run_meta[0],
+            isa=run_meta[1],
+            emulated=run_meta[2],
         )
         (result_dir / "run.json").write_text(
             json.dumps(job.as_dict(), indent=2) + "\n", encoding="utf-8"

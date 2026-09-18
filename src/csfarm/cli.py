@@ -98,6 +98,10 @@ def plan_run(
     flags: str | None = typer.Option(None, "--flags", "-F", help="Preset registry key."),
     cflag: list[str] = typer.Option([], "--cflag", help="CLI overlay CFLAG."),
     cxxflag: list[str] = typer.Option([], "--cxxflag", help="CLI overlay CXXFLAG."),
+    runner: str | None = typer.Option(
+        None, "--runner", help="host|docker|qemu-user|hw (default: host)."
+    ),
+    isa: str | None = typer.Option(None, "--isa", help="ISA label (default: host machine)."),
     config: Path | None = typer.Option(None, "--config", "-c"),
 ) -> None:
     """Dry-run: compose overlays → resolve options → write plan.json."""
@@ -108,6 +112,8 @@ def plan_run(
         preset_name=flags,
         extra_cflags=cflag,
         extra_cxxflags=cxxflag,
+        runner=runner,
+        isa=isa,
     )
     console.print_json(json.dumps(job.as_dict(), indent=2))
 
@@ -119,6 +125,10 @@ def run_app(
     flags: str | None = typer.Option(None, "--flags", "-F", help="Preset registry key."),
     cflag: list[str] = typer.Option([], "--cflag"),
     cxxflag: list[str] = typer.Option([], "--cxxflag"),
+    runner: str | None = typer.Option(
+        None, "--runner", help="host|docker|qemu-user|hw (default: host)."
+    ),
+    isa: str | None = typer.Option(None, "--isa", help="ISA label (default: host machine)."),
     skip_test: bool = typer.Option(False, "--skip-test"),
     skip_perf: bool = typer.Option(False, "--skip-perf"),
     config: Path | None = typer.Option(None, "--config", "-c"),
@@ -133,6 +143,8 @@ def run_app(
         extra_cxxflags=cxxflag,
         skip_test=skip_test,
         skip_perf=skip_perf,
+        runner=runner,
+        isa=isa,
     )
     console.print_json(json.dumps(job.as_dict(), indent=2))
     if not job.ok:

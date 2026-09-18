@@ -13,6 +13,9 @@ This project uses [Semantic Versioning](https://semver.org/).
 - Functional tests for most tier-1 recipes (round-trip / eval / config check)
 - `.github/workflows/tier1.yml` (CI subset + nightly full)
 - `docs/tier1-matrix.md` + `scripts/tier1_matrix.py`
+- `runner` / `isa` / `emulated` on plan/run JSON and batch reports (`--runner` / `--isa`)
+- Weekly Docker ubuntu `registries` smoke workflow
+- QEMU user-mode notes in `docker/README.md`
 
 ## [0.1.0] — 2026-09-18
 

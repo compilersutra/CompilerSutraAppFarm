@@ -49,6 +49,43 @@ unset CSFARM_PLATFORM
 CSFARM_PLATFORM=linux/arm64 ./scripts/docker_matrix.sh build-platform
 ```
 
+## QEMU user-mode (cross-ISA correctness)
+
+**Not HW performance.** `qemu-user` emulates a foreign ISA for *correctness*
+smoke only. Always tag results with `--runner qemu-user --isa aarch64`
+(`emulated=true` is set automatically).
+
+### Host packages (Ubuntu/Debian)
+
+```bash
+sudo apt-get install -y qemu-user-static binfmt-support
+# optional cross compilers:
+sudo apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+```
+
+Confirm binfmt:
+
+```bash
+ls /proc/sys/fs/binfmt_misc/qemu-* 2>/dev/null | head
+```
+
+### Image note
+
+Current `Dockerfile.*` are host-arch tool images. A future `Dockerfile.ubuntu-qemu`
+may bake `qemu-user-static` + aarch64 cross gcc. Until then, install packages on
+the host or extend the Ubuntu Dockerfile locally.
+
+### CLI (metadata wired; cross-build still your job)
+
+```bash
+# Tag a plan/run as emulated aarch64 (does not auto-install qemu):
+csfarm plan languages/lua@5.4.7 --runner qemu-user --isa aarch64 --flags baseline
+csfarm run  languages/lua@5.4.7 --runner qemu-user --isa aarch64 --flags baseline
+```
+
+For real foreign-ISA binaries you still need a cross toolchain (or QEMU system)
+and recipes that honor it — M2 tracks that work.
+
 ## Files
 
 | Path | Role |

@@ -59,6 +59,12 @@ def main() -> int:
     ap.add_argument("--limit", type=int, default=0, help="Max apps (0=all)")
     ap.add_argument("--toolchain", default="clang")
     ap.add_argument("--flags", default="baseline")
+    ap.add_argument(
+        "--runner",
+        default="host",
+        help="host|docker|qemu-user|hw (tagged into report)",
+    )
+    ap.add_argument("--isa", default=None, help="ISA label (default: host machine)")
     ap.add_argument("--skip-test", action="store_true")
     ap.add_argument("--skip-perf", action="store_true")
     ap.add_argument("--continue", dest="cont", action="store_true", help="Skip already-green apps")
@@ -68,6 +74,10 @@ def main() -> int:
         help="Report path",
     )
     args = ap.parse_args()
+
+    from csfarm.runner_meta import resolve_runner_meta
+
+    runner, isa, emulated = resolve_runner_meta(runner=args.runner, isa=args.isa)
 
     session = FarmSession(ROOT, ROOT / "configs" / "default.yaml")
 
@@ -118,6 +128,9 @@ def main() -> int:
                 preset_name=args.flags,
                 skip_test=args.skip_test,
                 skip_perf=args.skip_perf,
+                runner=runner,
+                isa=isa,
+                emulated=emulated,
             )
             ok = job.ok
             entry = {
@@ -125,6 +138,9 @@ def main() -> int:
                 "seconds": round(time.time() - t0, 1),
                 "pipeline": job.pipeline_results,
                 "result_dir": job.result_dir,
+                "runner": job.runner,
+                "isa": job.isa,
+                "emulated": job.emulated,
             }
         except Exception as exc:  # noqa: BLE001
             ok = False
@@ -143,6 +159,15 @@ def main() -> int:
 
         green = sum(1 for v in results.values() if v.get("ok"))
         red = sum(1 for v in results.values() if v.get("ok") is False)
+        by_runner: dict[str, dict[str, int]] = {}
+        for v in results.values():
+            rk = str(v.get("runner") or runner)
+            bucket = by_runner.setdefault(rk, {"green": 0, "red": 0, "total": 0})
+            bucket["total"] += 1
+            if v.get("ok") is True:
+                bucket["green"] += 1
+            elif v.get("ok") is False:
+                bucket["red"] += 1
         report_path.write_text(
             json.dumps(
                 {
@@ -151,6 +176,10 @@ def main() -> int:
                     "total": len(results),
                     "toolchain": args.toolchain,
                     "flags": args.flags,
+                    "runner": runner,
+                    "isa": isa,
+                    "emulated": emulated,
+                    "by_runner": by_runner,
                     "tier1": bool(args.tier1),
                     "ci_subset": bool(args.tier1 and args.ci),
                     "results": results,

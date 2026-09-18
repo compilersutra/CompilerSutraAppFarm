@@ -101,3 +101,23 @@ def test_tier1_config_resolves() -> None:
     subset = set(data["ci_subset"])
     assert subset <= ids
     assert "database/sqlite" in subset
+
+
+def test_runner_meta_on_plan() -> None:
+    from csfarm.runner_meta import resolve_runner_meta
+
+    r, isa, emu = resolve_runner_meta(runner="qemu-user", isa="arm64")
+    assert r == "qemu-user" and isa == "aarch64" and emu is True
+    session = FarmSession(ROOT, ROOT / "configs" / "default.yaml")
+    job = session.plan(
+        "database/sqlite@3.53",
+        toolchain_id="clang",
+        preset_name="baseline",
+        runner="qemu-user",
+        isa="aarch64",
+    )
+    assert job.runner == "qemu-user"
+    assert job.isa == "aarch64"
+    assert job.emulated is True
+    d = job.as_dict()
+    assert d["runner"] == "qemu-user" and d["emulated"] is True
