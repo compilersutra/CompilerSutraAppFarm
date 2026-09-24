@@ -1,8 +1,9 @@
 {
   "version": "3.4.6",
   "source": {
-    "url": "https://github.com/libffi/libffi.git",
-    "ref": "v3.4.6"
+    "kind": "archive",
+    "url": "https://github.com/libffi/libffi/releases/download/v3.4.6/libffi-3.4.6.tar.gz",
+    "ref": ""
   },
   "toolchain": {
     "cc": "${CC}",
@@ -19,7 +20,7 @@
     "command": [
       "sh",
       "-c",
-      "test -f Makefile"
+      "test -n \"$(find . -path '*/.libs/libffi.a' -o -path '*/.libs/libffi.so' 2>/dev/null | head -1)\""
     ],
     "timeout_sec": 60
   },
@@ -32,7 +33,7 @@
       "workload": [
         "sh",
         "-c",
-        "test -f Makefile"
+        "test -n \"$(find . -path '*/.libs/libffi.a' 2>/dev/null | head -1)\""
       ]
     }
   }

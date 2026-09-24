@@ -14,7 +14,12 @@
   "build": {
     "system": "custom",
     "commands": [
-      ["./auto/configure", "--with-http_ssl_module", "--without-http_rewrite_module"],
+      [
+        "./auto/configure",
+        "--prefix=./nginx-prefix",
+        "--with-http_ssl_module",
+        "--without-http_rewrite_module"
+      ],
       ["make", "-j4"]
     ]
   },
@@ -22,7 +27,7 @@
     "command": [
       "sh",
       "-c",
-      "printf 'events{}\\nhttp{server{listen 127.0.0.1:18080;}}\\n' > /tmp/csfarm-nginx.conf && ./objs/nginx -t -c /tmp/csfarm-nginx.conf"
+      "mkdir -p nginx-prefix/logs && printf 'error_log logs/error.log;\\npid logs/nginx.pid;\\nevents{}\\nhttp{server{listen 127.0.0.1:18080;}}\\n' > /tmp/csfarm-nginx.conf && ./objs/nginx -t -p \"$PWD/nginx-prefix\" -c /tmp/csfarm-nginx.conf"
     ],
     "timeout_sec": 60
   },

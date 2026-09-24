@@ -1,8 +1,9 @@
 {
   "version": "3.3.6",
   "source": {
-    "url": "https://github.com/ruby/ruby.git",
-    "ref": "v3_3_6"
+    "kind": "archive",
+    "url": "https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.6.tar.gz",
+    "ref": ""
   },
   "toolchain": {
     "cc": "${CC}",
@@ -15,13 +16,15 @@
     "system": "configure",
     "args": [
       "--disable-install-doc",
-      "--disable-install-rdoc"
+      "--disable-install-rdoc",
+      "--disable-yjit"
     ]
   },
   "test": {
     "command": [
       "./ruby",
-      "-v"
+      "-e",
+      "raise 'bad' unless 1+1==2; puts 'ok'"
     ],
     "timeout_sec": 60
   },
@@ -33,7 +36,8 @@
       "repeat_runs": 3,
       "workload": [
         "./ruby",
-        "-v"
+        "-e",
+        "1000.times { |i| i*i }"
       ]
     }
   }

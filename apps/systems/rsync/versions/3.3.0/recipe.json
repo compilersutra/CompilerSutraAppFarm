@@ -18,12 +18,16 @@
       [
         "sh",
         "-c",
-        "./configure --disable-xxhash --disable-lz4 --disable-md2man && touch configure.sh config.h.in && make -j$(nproc)"
+        "./configure --disable-xxhash --disable-lz4 --disable-zstd --disable-md2man && touch configure.sh config.h.in && make -j$(nproc)"
       ]
     ]
   },
   "test": {
-    "command": ["./rsync", "--version"],
+    "command": [
+      "sh",
+      "-c",
+      "./rsync --version | grep -qi rsync"
+    ],
     "timeout_sec": 60
   },
   "perf": {
