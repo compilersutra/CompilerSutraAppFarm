@@ -631,9 +631,23 @@ class PerfStage(Stage):
 
         samples_sorted = sorted(samples)
         mid = samples_sorted[len(samples_sorted) // 2]
+        native_path = Path(ctx.result_dir) / "csperf-native.json"
+        csperf_bin = shutil.which(ctx.csperf.binary)
+        used_csperf = False
+        if csperf_bin:
+            cmd = build_csperf_argv(ctx.csperf, output=str(native_path))
+            native_log = Path(ctx.result_dir) / "logs" / "csperf.log"
+            try:
+                native = _run(cmd, cwd=build_src, env=env, timeout=600, log_path=native_log)
+                used_csperf = native.returncode == 0 and native_path.is_file()
+            except (OSError, subprocess.TimeoutExpired):
+                used_csperf = False
+
         payload = {
-            "tool": "csfarm",
-            "mode": "timed_workload",
+            "tool": "csperf" if used_csperf else "csfarm",
+            "mode": "csperf" if used_csperf else "timed_workload",
+            "method": "csperf" if used_csperf else "wall_clock",
+            "hardware_counters": bool(used_csperf),
             "backend": ctx.csperf.backend,
             "workload": workload,
             "warmup_runs": warmup,
@@ -646,20 +660,20 @@ class PerfStage(Stage):
             "app_id": ctx.app_id,
             "version": ctx.version,
             "toolchain_id": ctx.toolchain_id,
+            "runner": ctx.extras.get("runner", "host"),
+            "isa": ctx.extras.get("isa"),
+            "emulated": bool(ctx.extras.get("emulated", False)),
         }
         out_json.parent.mkdir(parents=True, exist_ok=True)
         out_json.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
-        if shutil.which(ctx.csperf.binary) and ctx.csperf.input:
-            cmd = build_csperf_argv(ctx.csperf, output=str(Path(ctx.result_dir) / "csperf-native.json"))
-            _run(cmd, cwd=build_src, env=env, timeout=600, log_path=Path(ctx.result_dir) / "logs" / "csperf.log")
-
         ctx.extras["csperf_command"] = workload
         ctx.extras["perf_json"] = str(out_json)
+        detail = f"median={mid:.4f}s n={repeats} method={payload['method']} → {out_json}"
         return StageResult(
             self.name,
             StageStatus.OK,
-            detail=f"median={mid:.4f}s n={repeats} → {out_json}",
+            detail=detail,
             artifacts={"csperf.json": str(out_json)},
         )
 

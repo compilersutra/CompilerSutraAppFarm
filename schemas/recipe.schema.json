@@ -8,8 +8,9 @@
     "version": { "type": "string" },
     "source": {
       "type": "object",
-      "required": ["url", "ref"],
+      "required": ["url"],
       "properties": {
+        "kind": { "type": "string", "enum": ["git", "archive"] },
         "url": { "type": "string" },
         "ref": { "type": "string" },
         "subdir": { "type": "string" }

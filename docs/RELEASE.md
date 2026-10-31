@@ -1,13 +1,18 @@
-# Release checklist (v0.1.x alpha)
+# Release checklist (v0.1.1 alpha)
+
+`v0.1.0` is published. This tree is prepared as **v0.1.1**. Tag only after
+push + CI green. Do not claim 1.0.
 
 ## Before tagging
 
-- [ ] `pytest` green
-- [ ] `ruff check src tests` clean (or documented exceptions)
-- [ ] README **Status** table still matches reality
-- [ ] `CHANGELOG.md` updated for the version
-- [ ] No secrets, `cache/`, `work/`, or huge `results/` in the commit
-- [ ] `pyproject.toml` version matches the tag (`0.1.0` → `v0.1.0`)
+- [x] `pytest` green
+- [x] `ruff check src tests` clean
+- [x] README **Status** table matches reality
+- [x] `CHANGELOG.md` `[0.1.1]` written
+- [x] `pyproject.toml` / `csfarm.__version__` are `0.1.1`
+- [x] No secrets, `cache/`, `work/`, or huge `results/` in the commit
+- [ ] Push to `main` and confirm GitHub Actions `ci.yml` green
+- [ ] Tag `v0.1.1` + GitHub Release from CHANGELOG
 
 ## Suggested smoke before publish
 
@@ -15,17 +20,19 @@
 source .venv/bin/activate
 pip install -e '.[dev]'
 pytest
+ruff check src tests
+csfarm doctor
 csfarm list | head
 csfarm run compression/zstd@1.5.6 --flags baseline
 csfarm run database/sqlite@3.53 --flags baseline
 ./scripts/docker_matrix.sh run ubuntu registries
 ```
 
-## Tag
+## Tag (only when CI is green)
 
 ```bash
-git tag -a v0.1.0 -m "CompilerSutra AppFarm 0.1.0 alpha"
-git push origin v0.1.0
+git tag -a v0.1.1 -m "CompilerSutra AppFarm 0.1.1 alpha"
+git push origin v0.1.1
 ```
 
 ## Do not claim in 0.1.x release notes
@@ -33,6 +40,4 @@ git push origin v0.1.0
 - Full upstream correctness for all 115 apps
 - Docker from-scratch farm parity with host
 - Production support / stable recipe ABI
-
-Those belong in a later **1.0** once CI covers a tier-1 set with real tests and
-Docker `run` is fixed (git safe.directory + richer image deps).
+- QEMU user-mode as hardware performance

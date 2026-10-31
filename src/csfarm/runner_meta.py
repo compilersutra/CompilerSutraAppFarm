@@ -1,9 +1,14 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Runner / ISA metadata for honest multi-runner results."""
+"""Runner / ISA metadata for honest multi-runner results.
+
+Self-contained: ``csfarm`` does not require compilersutra-perf. Optional extra
+``.[perf]`` can still be installed for real ``csperf`` measurement.
+"""
 
 from __future__ import annotations
 
 import platform
+from dataclasses import dataclass
 
 # Host / Docker / QEMU / bare metal — keep small and explicit.
 KNOWN_RUNNERS = frozenset({"host", "docker", "qemu-user", "hw"})
@@ -23,6 +28,15 @@ _ISA_ALIASES = {
 }
 
 
+@dataclass(frozen=True)
+class RunnerPlan:
+    """Resolved runner label for a plan/run (not a HW perf claim)."""
+
+    runner: str
+    isa: str
+    emulated: bool
+
+
 def normalize_isa(value: str | None) -> str:
     if not value:
         return detect_host_isa()
@@ -32,6 +46,10 @@ def normalize_isa(value: str | None) -> str:
 
 def detect_host_isa() -> str:
     return normalize_isa(platform.machine())
+
+
+def is_emulated_runner(runner: str) -> bool:
+    return runner.startswith("qemu")
 
 
 def resolve_runner_meta(
@@ -50,5 +68,23 @@ def resolve_runner_meta(
         known = ", ".join(sorted(KNOWN_RUNNERS))
         raise ValueError(f"Unknown runner {runner!r}; known: {known}")
     arch = normalize_isa(isa)
-    emu = r.startswith("qemu") if emulated is None else bool(emulated)
+    emu = is_emulated_runner(r) if emulated is None else bool(emulated)
     return r, arch, emu
+
+
+def qemu_user_binary(isa: str | None = None) -> str:
+    return f"qemu-{normalize_isa(isa)}"
+
+
+def resolve_qemu_user_bin(isa: str | None = None) -> str:
+    return qemu_user_binary(isa)
+
+
+def plan_runner(
+    *,
+    runner: str | None = None,
+    isa: str | None = None,
+    emulated: bool | None = None,
+) -> RunnerPlan:
+    r, arch, emu = resolve_runner_meta(runner=runner, isa=isa, emulated=emulated)
+    return RunnerPlan(runner=r, isa=arch, emulated=emu)

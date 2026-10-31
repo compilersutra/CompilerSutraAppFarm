@@ -9,7 +9,14 @@ from rich.console import Console
 from rich.table import Table
 
 from csfarm import __version__
+from csfarm.doctor import doctor_ok, run_doctor
 from csfarm.patterns import OverlayKind
+from csfarm.reports import (
+    compare_reports,
+    dashboard_markdown,
+    load_report,
+    write_dashboard,
+)
 from csfarm.resolve import FarmSession
 
 app = typer.Typer(
@@ -265,6 +272,51 @@ def matrix_plan(
             indent=2,
         )
     )
+
+
+@app.command("doctor")
+def doctor_cmd(
+    config: Path | None = typer.Option(None, "--config", "-c"),
+) -> None:
+    """Check host tools, catalog, and optional qemu/csperf."""
+    session = _session(config)
+    checks = run_doctor(session.root)
+    table = Table(title="csfarm doctor")
+    table.add_column("Check")
+    table.add_column("Need")
+    table.add_column("OK")
+    table.add_column("Detail")
+    for c in checks:
+        table.add_row(c.name, "req" if c.required else "opt", "yes" if c.ok else "no", c.detail)
+    console.print(table)
+    if not doctor_ok(checks):
+        raise typer.Exit(code=1)
+
+
+@app.command("compare")
+def compare_cmd(
+    old: Path = typer.Argument(..., help="Older batch report.json"),
+    new: Path = typer.Argument(..., help="Newer batch report.json"),
+) -> None:
+    """Diff two batch reports (regressions / improvements)."""
+    diff = compare_reports(load_report(old), load_report(new))
+    console.print_json(json.dumps(diff, indent=2))
+    if diff["regressed"]:
+        raise typer.Exit(code=1)
+
+
+@app.command("report")
+def report_cmd(
+    src: Path = typer.Argument(..., help="batch report.json"),
+    out: Path | None = typer.Option(None, "--out", "-o", help="Write .md or .html"),
+) -> None:
+    """Render a markdown (or HTML) dashboard from a batch report."""
+    data = load_report(src)
+    if out:
+        write_dashboard(data, out)
+        console.print(f"Wrote {out}")
+    else:
+        console.print(dashboard_markdown(data))
 
 
 if __name__ == "__main__":

@@ -12,7 +12,7 @@ CLI: **`csfarm`**. Runtime timing hooks into
 [CompilerSutra Perf](https://github.com/compilersutra) (`csperf`) when installed;
 otherwise AppFarm records a timed workload JSON itself.
 
-**Status: v0.1.0 alpha** — usable on a Linux host with clang/gcc. See
+**Status: v0.1.1 alpha** — usable on a Linux host with clang/gcc. See
 [Status](#status) and [`docs/VISION.md`](docs/VISION.md) for what is and is not claimed.
 
 ## Quick start
@@ -83,8 +83,11 @@ docs/
 ```bash
 csfarm list
 csfarm flags
+csfarm doctor
 csfarm plan database/sqlite@3.53 --flags baseline
 csfarm run  database/sqlite@3.53 --flags baseline
+csfarm compare results/batch/old.json results/batch/new.json
+csfarm report results/batch/ganesh-full.json -o results/batch/report.md
 csfarm matrix-plan --type database
 ```
 
@@ -145,11 +148,11 @@ matrix. Arm64 cross-build needs buildx+QEMU (or a native ARM host).
 
 ## Status
 
-| Claim | v0.1.0 |
+| Claim | v0.1.1 |
 |-------|--------|
 | Catalog size | **115** apps |
 | Tier-1 set | **14** apps in [`configs/tier1.yaml`](configs/tier1.yaml) |
-| Host smoke (`clang` + `baseline`) | Batch report green on a developed Linux host |
+| Host smoke (`clang` + `baseline`) | **115/115** on a developed Linux host (ganesh-lab) |
 | “Full upstream test suites for every app” | **No** — many recipes use build/smoke checks |
 | Docker: build tool images | **Yes** (amd64) |
 | Docker: full farm from scratch | **Not yet** |

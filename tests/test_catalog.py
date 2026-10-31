@@ -9,6 +9,12 @@ from csfarm.resolve import FarmSession
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def test_package_version() -> None:
+    from csfarm import __version__
+
+    assert __version__ == "0.1.1"
+
+
 def test_catalog_linguistic_order() -> None:
     session = FarmSession(ROOT, ROOT / "configs" / "default.yaml")
     types = session.catalog.iter_types()
@@ -121,3 +127,46 @@ def test_runner_meta_on_plan() -> None:
     assert job.emulated is True
     d = job.as_dict()
     assert d["runner"] == "qemu-user" and d["emulated"] is True
+
+
+def test_compare_and_dashboard() -> None:
+    from csfarm.reports import compare_reports, dashboard_markdown
+
+    old = {
+        "green": 1,
+        "red": 1,
+        "total": 2,
+        "results": {
+            "compression/zstd@1.5.6": {"ok": True, "seconds": 1},
+            "languages/ruby@3.3.6": {"ok": False, "seconds": 2, "pipeline": [{"name": "build", "status": "failed"}]},
+        },
+    }
+    new = {
+        "green": 2,
+        "red": 0,
+        "total": 2,
+        "toolchain": "clang",
+        "flags": "baseline",
+        "runner": "host",
+        "isa": "x86_64",
+        "emulated": False,
+        "results": {
+            "compression/zstd@1.5.6": {"ok": True, "seconds": 1},
+            "languages/ruby@3.3.6": {"ok": True, "seconds": 3},
+        },
+    }
+    diff = compare_reports(old, new)
+    assert diff["improved"] == ["languages/ruby@3.3.6"]
+    assert diff["regressed"] == []
+    md = dashboard_markdown(new)
+    assert "languages/ruby@3.3.6" in md
+    assert "✅" in md
+
+
+def test_doctor_catalog() -> None:
+    from csfarm.doctor import run_doctor
+
+    checks = {c.name: c for c in run_doctor(ROOT)}
+    assert checks["python"].ok
+    assert checks["catalog"].ok
+    assert checks["tier1.yaml"].ok

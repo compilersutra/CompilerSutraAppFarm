@@ -29,7 +29,7 @@ matrices. AppFarm makes the same idea open and scriptable.
 | Green on host = green in Docker / every ISA | Host smoke and Docker/QEMU/HW are different runners |
 | Timed JSON = hardware performance counters | Without `csperf` + real HW, numbers are wall-clock only |
 | QEMU user-mode = real silicon | Emulated correctness only — never sell as HW perf |
-| 115 apps = production support commitment | **v0.1.0 alpha**; trust the **tier-1** set once it exists |
+| 115 apps = production support commitment | **v0.1.1 alpha**; trust the **tier-1** set |
 
 ## Success bar (near term)
 

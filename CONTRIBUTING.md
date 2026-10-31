@@ -13,7 +13,8 @@ pytest
 
 ## Adding or fixing an app
 
-1. Prefer editing `apps/<type>/<app>/versions/<ver>/recipe.json`.
+1. Prefer editing `apps/<type>/<app>/versions/<ver>/recipe.json`
+   (see [`docs/RECIPE.md`](docs/RECIPE.md)).
 2. Keep **test** commands short and deterministic for CI-friendly smoke
    (binary `--version`, or `test -f` on a built library). Call out in the
    version `README.md` if you only smoke-test.

@@ -30,6 +30,8 @@ jobs:
 
       - name: CLI smoke
         run: |
+          python -c "import csfarm; assert csfarm.__version__ == '0.1.1'"
           csfarm list >/dev/null
           csfarm registries >/dev/null
+          csfarm doctor
           csfarm plan database/sqlite@3.53 --flags baseline >/dev/null
