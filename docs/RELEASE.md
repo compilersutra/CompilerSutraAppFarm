@@ -11,8 +11,9 @@ push + CI green. Do not claim 1.0.
 - [x] `CHANGELOG.md` `[0.1.1]` written
 - [x] `pyproject.toml` / `csfarm.__version__` are `0.1.1`
 - [x] No secrets, `cache/`, `work/`, or huge `results/` in the commit
-- [ ] Push to `main` and confirm GitHub Actions `ci.yml` green
+- [x] Push to `main` and confirm GitHub Actions `ci.yml` green
 - [ ] Tag `v0.1.1` + GitHub Release from CHANGELOG
+- [ ] Repo visibility: public (optional; Apache-2.0 already in tree)
 
 ## Suggested smoke before publish
 

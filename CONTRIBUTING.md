@@ -40,6 +40,10 @@ pytest
 - Run `pytest` and `ruff check src tests` before opening a PR
 - Keep commits focused; no Cursor/AI co-author trailers
 
+## Security
+
+See [`SECURITY.md`](SECURITY.md). Do not file public issues for vulnerabilities.
+
 ## License
 
 By contributing, you agree your changes are under the Apache License 2.0.

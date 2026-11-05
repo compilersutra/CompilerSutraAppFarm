@@ -8,9 +8,9 @@
 Typed open-source **application farm** for compiler testing: pick an app and
 version, compose toolchain flags, then **fetch → build → test → measure**.
 
-CLI: **`csfarm`**. Runtime timing hooks into
-[CompilerSutra Perf](https://github.com/compilersutra) (`csperf`) when installed;
-otherwise AppFarm records a timed workload JSON itself.
+CLI: **`csfarm`**. Optional timing via
+[`csperf`](https://github.com/compilersutra) when installed; otherwise AppFarm
+records honest wall-clock samples (`tool: csfarm`, not hardware counters).
 
 **Status: v0.1.1 alpha** — usable on a Linux host with clang/gcc. See
 [Status](#status) and [`docs/VISION.md`](docs/VISION.md) for what is and is not claimed.
@@ -18,13 +18,13 @@ otherwise AppFarm records a timed workload JSON itself.
 ## Quick start
 
 ```bash
-git clone <this-repo> CompilerSutraAppFarm
+git clone https://github.com/compilersutra/CompilerSutraAppFarm.git
 cd CompilerSutraAppFarm
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e '.[dev]'
 
+csfarm doctor
 csfarm list
-csfarm registries
 csfarm run database/sqlite@3.53 --flags baseline
 ```
 
@@ -87,7 +87,7 @@ csfarm doctor
 csfarm plan database/sqlite@3.53 --flags baseline
 csfarm run  database/sqlite@3.53 --flags baseline
 csfarm compare results/batch/old.json results/batch/new.json
-csfarm report results/batch/ganesh-full.json -o results/batch/report.md
+csfarm report results/batch/report.json -o results/batch/report.md
 csfarm matrix-plan --type database
 ```
 
@@ -152,12 +152,12 @@ matrix. Arm64 cross-build needs buildx+QEMU (or a native ARM host).
 |-------|--------|
 | Catalog size | **115** apps |
 | Tier-1 set | **14** apps in [`configs/tier1.yaml`](configs/tier1.yaml) |
-| Host smoke (`clang` + `baseline`) | **115/115** on a developed Linux host (ganesh-lab) |
+| Host smoke (`clang` + `baseline`) | **115/115** on a developed Linux host |
 | “Full upstream test suites for every app” | **No** — many recipes use build/smoke checks |
 | Docker: build tool images | **Yes** (amd64) |
 | Docker: full farm from scratch | **Not yet** |
-| `database/mongodb` | Builds **mongo-c-driver** (server scons/bazel not wired on Py 3.12) |
-| CI | Install + unit tests (see `.github/workflows/ci.yml`) |
+| `database/mongodb` | Builds **mongo-c-driver** (full `mongod` not wired) |
+| CI | Unit + CLI smoke (`.github/workflows/ci.yml`); tier-1 subset on path changes |
 
 Release notes: [`CHANGELOG.md`](CHANGELOG.md) · contributing: [`CONTRIBUTING.md`](CONTRIBUTING.md) ·
 checklist: [`docs/RELEASE.md`](docs/RELEASE.md).

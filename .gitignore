@@ -1,13 +1,20 @@
 # SPDX-License-Identifier: Apache-2.0
 __pycache__/
 *.py[cod]
+*$py.class
 .venv/
+venv/
 dist/
 build/
 *.egg-info/
+*.egg
 .pytest_cache/
 .ruff_cache/
 .mypy_cache/
+.tox/
+htmlcov/
+.coverage
+.coverage.*
 cache/
 work/
 results/
@@ -18,8 +25,9 @@ tools/lib/
 tools/include/
 tools/share/
 tools/etc/
-.coverage
 *.xlsx
 *.archive
 *.extract/
 .DS_Store
+*.swp
+*~

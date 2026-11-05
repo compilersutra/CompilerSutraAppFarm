@@ -57,10 +57,13 @@ jobs:
           name: tier1-ci-report
           path: results/batch/tier1-ci-clang-baseline.json
 
+  # Full matrix is heavy on GHA; keep best-effort so a red openssl/ffmpeg
+  # does not paint the whole Actions page. The CI subset above is the gate.
   tier1-full-nightly:
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 360
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
 

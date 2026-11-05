@@ -21,19 +21,14 @@ versions/
 
 Do **not** put apps flat at the top level. New apps go under the matching type.
 
-## Bulk catalog (100+)
+## Maintainer seeding (optional)
+
+`configs/app_catalog.json` lists the corpus. Seeding scripts are for maintainers
+expanding the farm — prefer hand-edited recipes for reviews:
 
 ```bash
 python3 scripts/seed_app_catalog.py          # add missing apps (keeps rich trees)
-# python3 scripts/seed_app_catalog.py --force  # rewrite catalog-seeded apps
-```
-
-Source of truth: `configs/app_catalog.json` (115 entries). Rich multi-version apps (mongodb/mysql/postgres/sqlite/ffmpeg/redis) are left intact.
-
-Re-seed / refresh multi-version corpora for the big six:
-
-```bash
-python3 scripts/seed_version_corpus.py
+python3 scripts/seed_version_corpus.py       # refresh multi-version big apps
 ```
 
 Address a series: `csfarm show database/mongodb@8.3` or `csfarm plan media/ffmpeg@7.1`.

@@ -6,11 +6,24 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "compilersutra-appfarm"
 version = "0.1.1"
-description = "Typed OSS app farm for compiler correctness and csperf-backed runtime testing"
+description = "Typed OSS application farm for compiler testing (csfarm)"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "Apache-2.0" }
-authors = [{ name = "CompilerSutra" }]
+authors = [{ name = "CompilerSutra", email = "osc@compilersutra.com" }]
+keywords = ["compiler", "llvm", "clang", "gcc", "benchmark", "test-farm"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Compilers",
+  "Topic :: Software Development :: Testing",
+]
 dependencies = [
   "pydantic>=2.6",
   "pyyaml>=6.0",
@@ -22,6 +35,12 @@ dependencies = [
 dev = ["pytest>=8.0", "ruff>=0.6"]
 # Optional: real csperf measurement. Not required to import or run csfarm.
 perf = ["compilersutra-perf>=0.2.0"]
+
+[project.urls]
+Homepage = "https://github.com/compilersutra/CompilerSutraAppFarm"
+Repository = "https://github.com/compilersutra/CompilerSutraAppFarm"
+Issues = "https://github.com/compilersutra/CompilerSutraAppFarm/issues"
+Changelog = "https://github.com/compilersutra/CompilerSutraAppFarm/blob/main/CHANGELOG.md"
 
 [project.scripts]
 csfarm = "csfarm.cli:app"

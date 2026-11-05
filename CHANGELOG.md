@@ -28,6 +28,8 @@ This project uses [Semantic Versioning](https://semver.org/).
 - `csfarm.runner_meta` works without `compilersutra-perf` installed
 - Timed `csperf.json` tagged with `method` / `hardware_counters` / runner; real
   `csperf` used when installed
+- `SECURITY.md`, `CODEOWNERS`, PR template, PyPI-oriented `project.urls` /
+  classifiers; tier-1 full nightly is best-effort (`continue-on-error`)
 
 ### Known limitations (alpha)
 
