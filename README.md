@@ -5,15 +5,33 @@
 
 [![CI](https://github.com/compilersutra/CompilerSutraAppFarm/actions/workflows/ci.yml/badge.svg)](https://github.com/compilersutra/CompilerSutraAppFarm/actions/workflows/ci.yml)
 
-Typed open-source **application farm** for compiler testing: pick an app and
-version, compose toolchain flags, then **fetch → build → test → measure**.
+## Why it exists
 
-CLI: **`csfarm`**. Optional timing via
-[`csperf`](https://github.com/compilersutra) when installed; otherwise AppFarm
-records honest wall-clock samples (`tool: csfarm`, not hardware counters).
+Compiler and toolchain teams keep asking the same question: *with this clang /
+gcc / custom LLVM, and these flags, do real applications still build and run?*
+
+Most answers live in **closed vendor farms** — private app matrices, tribal
+scripts, and slides. That makes regressions hard to share, hard to reproduce,
+and hard to automate. CompilerSutra AppFarm exists to put that idea in the
+open: a **typed corpus** of OSS apps plus a scriptable pipeline so labs can
+compare toolchains and flag presets without rebuilding the farm from scratch.
+
+## Aim
+
+- **Correctness first:** fetch → build → test real apps under chosen compilers
+  and overlays (baseline, optimize, sanitize, LTO, …).
+- **Honest measurement:** optional [`csperf`](https://github.com/compilersutra)
+  when installed; otherwise wall-clock samples tagged `tool: csfarm` — never
+  sold as hardware counters.
+- **Trust a core, not a dump:** prefer the **tier-1** set for CI and claims;
+  the full catalog is breadth, not a support contract.
+- **Machine-readable results:** `run.json` / batch reports with `runner`,
+  `isa`, and `emulated` so host, Docker, and QEMU are never mixed by accident.
+
+CLI: **`csfarm`**. Details of scope and non-goals: [`docs/VISION.md`](docs/VISION.md).
 
 **Status: v0.1.1 alpha** — usable on a Linux host with clang/gcc. See
-[Status](#status) and [`docs/VISION.md`](docs/VISION.md) for what is and is not claimed.
+[Status](#status) for what is and is not claimed.
 
 ## Quick start
 
