@@ -4,7 +4,9 @@
 from __future__ import annotations
 
 import shutil
+import subprocess
 import sys
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -25,6 +27,31 @@ def _which(cmd: str) -> Check:
     if path:
         return Check(cmd, True, required, path)
     return Check(cmd, False, required, "not on PATH")
+
+
+_PROBE_SOURCE = "#include <stdlib.h>\nint main(void) { return 0; }\n"
+
+
+def _probe_compiler(cc: str) -> tuple[bool, str]:
+    try:
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp) / "probe.c"
+            source.write_text(_PROBE_SOURCE, encoding="utf-8")
+            proc = subprocess.run(
+                [cc, "-fsyntax-only", str(source)],
+                capture_output=True,
+                text=True,
+                timeout=15,
+                check=False,
+            )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        return False, str(exc)
+    if proc.returncode == 0:
+        return True, "ok"
+    lines = (proc.stderr or proc.stdout or "").strip().splitlines()
+    error = next((line for line in lines if "error" in line.lower()), None)
+    detail = error or (lines[0] if lines else f"exit {proc.returncode}")
+    return False, detail[:200]
 
 
 def run_doctor(root: Path) -> list[Check]:
@@ -52,6 +79,20 @@ def run_doctor(root: Path) -> list[Check]:
     checks.append(
         Check("c_compiler", bool(have_cc), True, have_cc or "need clang or gcc")
     )
+    probes: dict[str, tuple[bool, str]] = {}
+    for name in ("clang", "gcc"):
+        path = shutil.which(name)
+        if not path:
+            continue
+        probes[name] = _probe_compiler(path)
+        ok, detail = probes[name]
+        checks.append(Check(f"{name}_compile", ok, False, detail))
+    working = [name for name, (ok, _) in probes.items() if ok]
+    if working:
+        smoke_detail = f"{', '.join(working)} compile ok"
+    else:
+        smoke_detail = "; ".join(f"{name}: {detail}" for name, (_, detail) in probes.items()) or "need clang or gcc"
+    checks.append(Check("compiler_smoke", bool(working), True, smoke_detail))
     catalog = root / "apps"
     n_apps = len(list(catalog.glob("*/*/app.json"))) if catalog.is_dir() else 0
     checks.append(Check("catalog", n_apps >= 1, True, f"{n_apps} apps"))
